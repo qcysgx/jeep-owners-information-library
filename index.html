@@ -3,671 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeep 全系车主手册 · 下载与预览</title>
+    <title>Jeep 车主手册下载中心</title>
     <style>
-        /* 全局重置与字体 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background: linear-gradient(145deg, #eef2f6 0%, #d9e0e8 100%);
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(145deg, #e9ecef 0%, #dee2e6 100%);
             min-height: 100vh;
-            padding: 2rem 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
 
-        /* 主卡片——毛玻璃效果，大气 */
-        .download-hub {
-            max-width: 1300px;
+        .container {
+            max-width: 860px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 3rem;
-            padding: 2.8rem 2.5rem;
-            box-shadow: 0 30px 60px -25px rgba(0, 30, 60, 0.4), 0 10px 25px -10px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            background: #ffffff;
+            padding: 3rem 2.5rem;
+            margin: 20px auto;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.2), 0 8px 12px -4px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(2px);
+            transition: transform 0.2s ease;
         }
 
-        /* 头部区域 */
-        .hub-header {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: flex-end;
-            justify-content: space-between;
-            margin-bottom: 3rem;
-            gap: 1.5rem;
+        .container:hover {
+            transform: scale(1.01);
         }
 
-        .title-block h1 {
-            font-size: 2.6rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #102b3f, #1f4b70);
+        h1 {
+            color: #1e2a37;
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.6rem;
+            border-left: 8px solid #007bff;
+            padding-left: 1.5rem;
+            background: linear-gradient(135deg, #1e2a37 30%, #3a4a5a 80%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
         }
 
-        .title-block h1 span {
-            background: linear-gradient(145deg, #a45e2e, #c97e42);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 800;
-        }
-
-        .title-block .tagline {
-            color: #2f4b6e;
-            font-size: 1.1rem;
-            margin-top: 0.4rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .badge-group {
-            display: flex;
-            gap: 12px;
-        }
-
-        .badge {
-            background: #ced9e8;
-            padding: 0.3rem 1.2rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #17324d;
-            border: 1px solid rgba(255,255,255,0.7);
-        }
-
-        .stats {
-            background: #ffffffcc;
-            border-radius: 40px;
-            padding: 0.6rem 1.8rem;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #1c3f5c;
-            border: 1px solid white;
-            box-shadow: 0 8px 18px -14px #1e3f5e;
-        }
-
-        .stats strong {
-            color: #004c99;
-            font-size: 1.3rem;
-            margin-right: 4px;
-        }
-
-        /* 车型网格 — 六款卡片 */
-        .model-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem 1.8rem;
+        .subhead {
+            color: #495867;
+            font-size: 1.2rem;
             margin-bottom: 2.5rem;
+            font-weight: 400;
+            border-bottom: 2px dashed #cbd5e1;
+            padding-bottom: 1rem;
         }
 
-        /* 单个车型卡片 */
-        .model-card {
-            background: #ffffffd9;
-            backdrop-filter: blur(4px);
-            border-radius: 2rem;
-            border: 1px solid rgba(255,255,255,0.8);
-            box-shadow: 0 18px 30px -18px rgba(0, 45, 80, 0.3);
-            transition: transform 0.25s ease, box-shadow 0.3s;
-            overflow: hidden;
+        .download-grid {
             display: flex;
             flex-direction: column;
+            gap: 1.8rem;
         }
 
-        .model-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 28px 45px -20px #00284d;
+        .download-item {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 1.2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            transition: all 0.25s;
+        }
+
+        .download-item:hover {
             background: #ffffff;
-            border-color: #80b5ff;
+            border-color: #007bff;
+            box-shadow: 0 12px 22px -10px rgba(0, 123, 255, 0.3);
         }
 
-        /* 卡片头部 — 车型标识 */
-        .card-head {
-            padding: 1.4rem 1.8rem 0.8rem;
+        .item-info {
             display: flex;
             align-items: center;
             gap: 1rem;
-            border-bottom: 2px solid rgba(0,70,130,0.08);
-        }
-
-        .model-icon {
-            width: 52px;
-            height: 52px;
-            background: #1e3c5a;
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: 700;
-            color: white;
-            box-shadow: 0 8px 14px -10px #001e3b;
-            border: 2px solid rgba(255,255,255,0.3);
-        }
-
-        /* 各车型不同底色 */
-        .model-card[data-model="wrangler"] .model-icon { background: #1b4f7a; }
-        .model-card[data-model="grandcherokee"] .model-icon { background: #7f613f; }
-        .model-card[data-model="cherokee"] .model-icon { background: #3b7162; }
-        .model-card[data-model="renegade"] .model-icon { background: #b55a2b; }
-        .model-card[data-model="gladiator"] .model-icon { background: #5e563e; }
-        .model-card[data-model="compass"] .model-icon { background: #23668a; }
-
-        .card-head h2 {
-            font-size: 1.9rem;
-            font-weight: 650;
-            color: #102433;
-        }
-
-        .card-head h2 small {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #54728c;
-            background: #e5ecf5;
-            padding: 0.2rem 1rem;
-            border-radius: 30px;
-            margin-left: 0.6rem;
-        }
-
-        /* PDF 列表区域 */
-        .pdf-list {
-            padding: 1rem 1.8rem 1.8rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .pdf-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #f5faff;
-            padding: 0.55rem 1rem 0.55rem 1.2rem;
-            border-radius: 40px;
-            border: 1px solid #d3e1f0;
-            transition: all 0.15s;
-        }
-
-        .pdf-row:hover {
-            background: white;
-            border-color: #007bff;
-            box-shadow: 0 5px 15px -8px #1460a0;
-        }
-
-        .pdf-meta {
-            display: flex;
-            align-items: center;
-            gap: 0.9rem;
             flex-wrap: wrap;
-            flex: 2;
         }
 
-        .pdf-badge {
-            background: #dbe5f0;
-            border-radius: 30px;
-            padding: 4px 12px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: #003b70;
-            letter-spacing: 0.3px;
-            border: 1px solid #adc6e2;
-        }
-
-        .pdf-name {
-            font-weight: 550;
-            color: #142d42;
-            font-size: 0.98rem;
-        }
-
-        .pdf-name .year {
-            color: #55738b;
-            font-weight: 400;
-            font-size: 0.85rem;
-            margin-left: 6px;
-        }
-
-        /* 操作按钮组：预览 + 下载 */
-        .action-buttons {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .preview-btn {
-            background: #ecf3fc;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
+        .icon {
+            width: 44px;
+            height: 44px;
+            background: #e9edf2;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #1d4a77;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            border: 1px solid #bed9ff;
-            transition: 0.15s;
+            color: #1e2a37;
+            font-size: 1.6rem;
+            font-weight: 600;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
         }
 
-        .preview-btn:hover {
-            background: #28a745;
+        .item-info p {
+            font-size: 1.35rem;
+            font-weight: 500;
+            color: #0b1c2c;
+            letter-spacing: 0.3px;
+            margin: 0;
+        }
+
+        .item-info small {
+            font-size: 0.9rem;
+            color: #5f6c7a;
+            background: #e9edf2;
+            padding: 3px 12px;
+            border-radius: 30px;
+            margin-left: 10px;
+            font-weight: 400;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #007bff;
             color: white;
+            text-decoration: none;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 1.05rem;
+            letter-spacing: 0.8px;
+            border: none;
+            box-shadow: 0 8px 18px -6px #007bff80;
+            transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+            cursor: pointer;
+            border: 1px solid #007bff;
+        }
+
+        .download-btn:hover {
+            background: #0056b3;
+            box-shadow: 0 12px 24px -8px #0056b3;
+            border-color: #0056b3;
+            transform: scale(1.02);
+        }
+
+        .download-btn:active {
+            transform: scale(0.98);
+            background: #004494;
+        }
+
+        .view-btn {
+            background: #28a745;
             border-color: #28a745;
         }
 
-        .pdf-download {
-            background: #ecf3fc;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
+        .view-btn:hover {
+            background: #218838;
+            border-color: #218838;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            text-align: center;
+            color: #5f6c7a;
+            font-size: 0.95rem;
+            border-top: 1px solid #dce5ec;
+            padding-top: 2rem;
             display: flex;
-            align-items: center;
             justify-content: center;
-            color: #1d4a77;
-            text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: 500;
-            border: 1px solid #bed9ff;
-            transition: 0.15s;
-        }
-
-        .pdf-download:hover {
-            background: #007bff;
-            color: white;
-            border-color: #007bff;
-        }
-
-        .more-hint {
-            margin-top: 6px;
-            font-size: 0.85rem;
-            color: #486d89;
-            background: #e4eefa;
-            border-radius: 30px;
-            padding: 0.2rem 1.2rem;
-            align-self: flex-start;
-            border: 1px dashed #7fa4c4;
-        }
-
-        /* 底部区域 */
-        .hub-footer {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 2.2rem;
-            background: rgba(230, 242, 255, 0.6);
-            border-radius: 50px;
-            padding: 0.8rem 2rem;
-            border: 1px solid rgba(255,255,255,0.8);
-        }
-
-        .trust-items {
-            display: flex;
             gap: 2rem;
             flex-wrap: wrap;
         }
 
-        .trust-items span {
-            display: flex;
+        .badge {
+            background: #eef2f6;
+            border-radius: 50px;
+            padding: 0.3rem 1.2rem;
+            font-size: 0.9rem;
+            color: #2c3e4f;
+            display: inline-flex;
             align-items: center;
             gap: 6px;
-            color: #1d4060;
         }
 
-        .dot-blue {
-            width: 8px;
-            height: 8px;
-            background: #007bff;
-            border-radius: 10px;
+        .badge span {
+            color: #007bff;
+            font-weight: 600;
         }
 
-        .refresh-note {
-            color: #1e4a72;
-            font-weight: 500;
-        }
-
-        @media (max-width: 650px) {
-            .download-hub { padding: 1.8rem; }
-            .title-block h1 { font-size: 2rem; }
-            .card-head h2 { font-size: 1.6rem; }
-            .pdf-name { font-size: 0.9rem; }
-            .trust-items { gap: 1rem; }
+        @media (max-width: 600px) {
+            .container {
+                padding: 2rem 1.2rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+                padding-left: 1rem;
+            }
+            .download-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .item-info p {
+                font-size: 1.2rem;
+            }
+            .btn-group {
+                width: 100%;
+            }
+            .download-btn {
+                flex: 1;
+                text-align: center;
+            }
+            .footer-note {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="download-hub">
 
-        <!-- 头部：Jeep 车主手册下载中心 -->
-        <div class="hub-header">
-            <div class="title-block">
-                <h1>JEEP <span>车主手册</span> 下载中心</h1>
-                <div class="tagline">
-                    <span>📘 原厂PDF · 在线预览 + 下载</span>
-                    <span class="badge-group">
-                        <span class="badge">6 款车型</span>
-                        <span class="badge">28+ 手册</span>
-                    </span>
-                </div>
+<div class="container">
+    <h1>⚡ Jeep 车主手册下载中心</h1>
+    <div class="subhead">全系车型 · 在线预览 · 一键下载</div>
+
+    <div class="download-grid">
+
+        <!-- 牧马人 -->
+        <div class="download-item">
+            <div class="item-info">
+                <div class="icon">J</div>
+                <p>牧马人 2024 车主手册 <small>高清PDF</small></p>
             </div>
-            <div class="stats">
-                <strong>⚡ 新增预览功能</strong> 点击👁️立即阅读
-            </div>
-        </div>
-
-        <!-- 车型网格：牧马人、大切诺基、自由光、自由侠、角斗士、指南者 -->
-        <div class="model-grid">
-
-            <!-- 1. 牧马人 Wrangler -->
-            <div class="model-card" data-model="wrangler">
-                <div class="card-head">
-                    <div class="model-icon">🐎</div>
-                    <h2>牧马人 <small>Wrangler</small></h2>
-                </div>
-                <div class="pdf-list">
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">牧马人JL 车主手册 <span class="year">2023</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('manuals/wrangler_jl_2023.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="manuals/wrangler_jl_2023.pdf" onclick="downloadPDF(event, 'manuals/wrangler_jl_2023.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">牧马人4xe 混动补充 <span class="year">2023-2025</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('wrangler_4xe_supplement.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="wrangler_4xe_supplement.pdf" onclick="downloadPDF(event, 'wrangler_4xe_supplement.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">牧马人JL 维修手册 <span class="year">完整版</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('wrangler_jl_service.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="wrangler_jl_service.pdf" onclick="downloadPDF(event, 'wrangler_jl_service.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="more-hint">+ 快速参考卡 · 越野指南</div>
-                </div>
-            </div>
-
-            <!-- 2. 大切诺基 Grand Cherokee -->
-            <div class="model-card" data-model="grandcherokee">
-                <div class="card-head">
-                    <div class="model-icon">⛰️</div>
-                    <h2>大切诺基 <small>Grand Cherokee</small></h2>
-                </div>
-                <div class="pdf-list">
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">大切诺基L 车主手册 <span class="year">2024</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('grand_cherokee_L_2024.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="grand_cherokee_L_2024.pdf" onclick="downloadPDF(event, 'grand_cherokee_L_2024.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">4xe 插混补充手册 <span class="year">2023</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('grand_cherokee_4xe.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="grand_cherokee_4xe.pdf" onclick="downloadPDF(event, 'grand_cherokee_4xe.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">大切诺基WK 用户手册 <span class="year">2020-2022</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('grand_cherokee_wk.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="grand_cherokee_wk.pdf" onclick="downloadPDF(event, 'grand_cherokee_wk.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="more-hint">· 空气悬架附录 · 牵引指南</div>
-                </div>
-            </div>
-
-            <!-- 3. 自由光 Cherokee -->
-            <div class="model-card" data-model="cherokee">
-                <div class="card-head">
-                    <div class="model-icon">🌲</div>
-                    <h2>自由光 <small>Cherokee</small></h2>
-                </div>
-                <div class="pdf-list">
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">自由光 KL 车主手册 <span class="year">2023</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('cherokee_kl_2023.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="cherokee_kl_2023.pdf" onclick="downloadPDF(event, 'cherokee_kl_2023.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">自由光 Trailhawk 附录 <span class="year">越野包</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('cherokee_trailhawk.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="cherokee_trailhawk.pdf" onclick="downloadPDF(event, 'cherokee_trailhawk.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">自由光 2.4L 补充说明 <span class="year">2019-2022</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('cherokee_24l_addendum.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="cherokee_24l_addendum.pdf" onclick="downloadPDF(event, 'cherokee_24l_addendum.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="more-hint">+ Uconnect 手册 · 保养记录</div>
-                </div>
-            </div>
-
-            <!-- 4. 自由侠 Renegade -->
-            <div class="model-card" data-model="renegade">
-                <div class="card-head">
-                    <div class="model-icon">🧩</div>
-                    <h2>自由侠 <small>Renegade</small></h2>
-                </div>
-                <div class="pdf-list">
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">自由侠 车主手册 <span class="year">2024 改款</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('renegade_2024.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="renegade_2024.pdf" onclick="downloadPDF(event, 'renegade_2024.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">自由侠 1.3T 发动机补充 <span class="year">2021-2023</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('renegade_1_3t.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="renegade_1_3t.pdf" onclick="downloadPDF(event, 'renegade_1_3t.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">MyUconnect 快速入门 <span class="year">全系</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('uconnect_guide.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="uconnect_guide.pdf" onclick="downloadPDF(event, 'uconnect_guide.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="more-hint">· 四驱模式说明 · 拖车钩指南</div>
-                </div>
-            </div>
-
-            <!-- 5. 角斗士 Gladiator -->
-            <div class="model-card" data-model="gladiator">
-                <div class="card-head">
-                    <div class="model-icon">🛻</div>
-                    <h2>角斗士 <small>Gladiator</small></h2>
-                </div>
-                <div class="pdf-list">
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">角斗士 JT 车主手册 <span class="year">2024</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('gladiator_jt_2024.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="gladiator_jt_2024.pdf" onclick="downloadPDF(event, 'gladiator_jt_2024.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">角斗士 拖拽与载重指南 <span class="year">附录</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('gladiator_towing.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="gladiator_towing.pdf" onclick="downloadPDF(event, 'gladiator_towing.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">Rubicon 越野补充 <span class="year">差速锁/防倾杆</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('gladiator_rubicon.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="gladiator_rubicon.pdf" onclick="downloadPDF(event, 'gladiator_rubicon.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="more-hint">+ 柴油3.0L 补充 · 改装提示</div>
-                </div>
-            </div>
-
-            <!-- 6. 指南者 Compass -->
-            <div class="model-card" data-model="compass">
-                <div class="card-head">
-                    <div class="model-icon">🧭</div>
-                    <h2>指南者 <small>Compass</small></h2>
-                </div>
-                <div class="pdf-list">
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">指南者 车主手册 <span class="year">2024</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('compass_2024.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="compass_2024.pdf" onclick="downloadPDF(event, 'compass_2024.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">指南者 4xe 混动补充 <span class="year">2023</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('compass_4xe.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="compass_4xe.pdf" onclick="downloadPDF(event, 'compass_4xe.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="pdf-row">
-                        <div class="pdf-meta">
-                            <span class="pdf-badge">PDF</span>
-                            <span class="pdf-name">Uconnect 5 快速参考 <span class="year">触摸屏</span></span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="preview-btn" onclick="previewPDF('compass_uconnect5.pdf'); return false;" title="在线预览">👁️</a>
-                            <a href="#" class="pdf-download" download="compass_uconnect5.pdf" onclick="downloadPDF(event, 'compass_uconnect5.pdf')" title="下载PDF">⬇</a>
-                        </div>
-                    </div>
-                    <div class="more-hint">· 四驱系统详解 · 保养手册</div>
-                </div>
+            <div class="btn-group">
+                <a href="pdf/j001.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
+                <a href="pdf/j001.pdf" download class="download-btn">⬇ 下载</a>
             </div>
         </div>
 
-        <!-- 底部信任标识 -->
-        <div class="hub-footer">
-            <div class="trust-items">
-                <span><span class="dot-blue"></span> 原厂官方PDF · 无加密</span>
-                <span><span class="dot-blue"></span> 每月与北美同步更新</span>
-                <span><span class="dot-blue"></span> 包含混动/4xe 专篇</span>
+        <div class="download-item">
+            <div class="item-info">
+                <div class="icon">J</div>
+                <p>牧马人 2023 车主手册 <small>高清PDF</small></p>
             </div>
-            <div class="refresh-note">👁️ 点击眼睛预览 · ⬇ 点击箭头下载</div>
+            <div class="btn-group">
+                <a href="pdf/j002.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
+                <a href="pdf/j002.pdf" download class="download-btn">⬇ 下载</a>
+            </div>
         </div>
+
+        <div class="download-item">
+            <div class="item-info">
+                <div class="icon">J</div>
+                <p>牧马人 维修保养手册 <small>完整版</small></p>
+            </div>
+            <div class="btn-group">
+                <a href="pdf/j003.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
+                <a href="pdf/j003.pdf" download class="download-btn">⬇ 下载</a>
+            </div>
+        </div>
+
+        <!-- 大切诺基 -->
+        <div class="download-item">
+            <div class="item-info">
+                <div class="icon">G</div>
+                <p>大切诺基 2024 车主手册 <small>高清PDF</small></p>
+            </div>
+            <div class="btn-group">
+                <a href="pdf/j004.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
+                <a href="pdf/j004.pdf" download class="download-btn">⬇ 下载</a>
+            </div>
+        </div>
+
+        <div class="download-item">
+            <div class="item-info">
+                <div class="icon">G</div>
+                <p>大切诺基 2023 车主手册 <small>高清PDF</small></p>
+            </div>
+            <div class="btn-group">
+                <a href="pdf/j005.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
+                <a href="pdf/j005.pdf" download class="download-btn">⬇ 下载</a>
+            </div>
+        </div>
+
+        <!-- 自由光 -->
+        <div class="download-item">
+            <div class="item-info">
+                <div class="icon">C</div>
+                <p>自由光 2024 车主手册 <small>高清PDF</small></p>
+            </div>
+            <div class="btn-group">
+                <a href="pdf/j006.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
+                <a href="pdf/j006.pdf" download class="download-btn">⬇ 下载</a>
+            </div>
+        </div>
+
+        <div class="download-item">
+            <div class="item-info">
+                <div class="icon">C</div>
+                <p>自由光 快速使用指南 <small>精简版</small></p>
+            </div>
+            <div class="btn-group">
+                <a href="pdf/j007.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
+                <a href="pdf/j007.pdf" download class="download-btn">⬇ 下载</a>
+            </div>
+        </div>
+
+        <!-- 自由侠 -->
+        <div class="download-item">
+            <div class="item-info">
+                <div class="icon">R</div>
+                <p>自由侠 2024 车主手册 <small>高清PDF</small></p>
+            </div>
+            <div class="btn-group">
+                <a href="pdf/j008.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
+                <a href="pdf/j008.pdf" download class="download-btn">⬇ 下载</a>
+            </div>
+        </div>
+
+        <div class="download-item">
+            <div class="item-info">
+                <div class="icon">R</div>
+                <p>自由侠 保养周期表 <small>完整版</small></p>
+            </div>
+            <div class="btn-group">
+                <a href="pdf/j009.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
+                <a href="pdf/j009.pdf" download class="download-btn">⬇ 下载</a>
+            </div>
+        </div>
+
+        <!-- 角斗士 -->
+        <div class="download-item">
+            <div class="item-info">
+                <div class="icon">Gl</div>
+                <p>角斗士 2024 车主手册 <small>高清PDF</small></p>
+            </div>
+            <div class="btn-group">
+                <a href="pdf/j010.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
+                <a href="pdf/j010.pdf" download class="download-btn">⬇ 下载</a>
+            </div>
+        </div>
+
+        <div class="download-item">
+            <div class="item-info">
+                <div class="icon">Gl</div>
+                <p>角斗士 改装注意事项 <small>专业版</small></p>
+            </div>
+            <div class="btn-group">
+                <a href="pdf/j011.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
+                <a href="pdf/j011.pdf" download class="download-btn">⬇ 下载</a>
+            </div>
+        </div>
+
     </div>
 
-    <!-- 预览与下载功能脚本 -->
-    <script>
-        // 预览函数：在新页面打开PDF预览器（使用之前设计的预览页）
-        function previewPDF(filename) {
-            // 实际使用时，请确保preview.html与当前页面在同一目录下
-            const previewPage = `preview.html?file=${encodeURIComponent(filename)}`;
-            window.open(previewPage, '_blank', 'noopener,noreferrer');
-            console.log(`🔍 预览: ${filename}`);
-            return false;
-        }
+    <div class="footer-note">
+        <div class="badge"><span>📄 PDF</span> 高清无水印</div>
+        <div class="badge"><span>👁</span> 支持在线预览</div>
+        <div class="badge"><span>🔒</span> 匿名文件 · 安全下载</div>
+    </div>
+</div>
 
-        // 下载函数：模拟下载（实际部署时，只需设置正确的href即可）
-        function downloadPDF(event, filename) {
-            // 阻止默认跳转（因为href为#）
-            event.preventDefault();
-            
-            // 模拟下载提示
-            alert(`📥 演示模式：文件 "${filename}" 即将开始下载\n\n实际部署时，请将文件放入 manuals/ 文件夹，并确保链接正确。`);
-            
-            // 实际使用时，可以这样设置：
-            // window.location.href = `manuals/${filename}`;
-            // 或者使用 download 属性已设置，只需将href改为正确路径即可
-            
-            console.log(`📥 下载: ${filename}`);
-            return false;
-        }
-
-        // 页面加载完成后，可以将所有下载链接的href设置为正确路径（取消注释即可启用）
-        /*
-        window.addEventListener('load', function() {
-            const downloadLinks = document.querySelectorAll('.pdf-download');
-            downloadLinks.forEach(link => {
-                const filename = link.getAttribute('download');
-                if (filename) {
-                    link.href = `manuals/${filename}`;
-                }
-            });
-        });
-        */
-    </script>
-    <!-- 设计完全中文，每项PDF均配备预览(👁️)和下载(⬇)双按钮 -->
 </body>
 </html>
