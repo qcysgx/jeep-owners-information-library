@@ -184,7 +184,7 @@
             gap: 10px;
         }
 
-        /* 参数查询区域（参数标签） */
+        /* 参数查询区域（通用） */
         .param-section {
             max-width: 800px;
             margin: 0 auto;
@@ -459,10 +459,12 @@
             <p class="site-subtitle">全系车主手册、保险丝盒图解、油水参数 | 专业 · 保密 · 高清</p>
         </header>
 
-        <!-- 标签切换导航 -->
+        <!-- 标签切换导航 - 新增两个标签 -->
         <div class="tab-nav">
             <button class="tab-btn active" data-tab="manuals">车主手册</button>
             <button class="tab-btn" data-tab="parameters">保险丝盒&油水参数</button>
+            <button class="tab-btn" data-tab="quickstart">快速入门指南</button>
+            <button class="tab-btn" data-tab="maintenance">维保计划</button>
         </div>
 
         <!-- 车主手册标签内容 -->
@@ -646,7 +648,7 @@
             </div>
         </div>
 
-        <!-- 参数查询标签内容 -->
+        <!-- 保险丝盒&油水参数标签内容 -->
         <div class="tab-content" id="parameters">
             <div class="param-section">
                 <h2 class="param-title">Jeep 保险丝盒图解 & 油水参数查询</h2>
@@ -655,18 +657,18 @@
                 <div class="param-car-item">
                     <div class="param-car-name">牧马人 Wrangler</div>
                     <div class="row">
-                        <select class="year" data-car="wrangler">
+                        <select class="year" data-car="wrangler" data-type="parameters">
                             <option value="">请选择年款</option>
                             <option value="2024">2024款</option>
                             <option value="2023">2023款</option>
                         </select>
-                        <select class="type" data-car="wrangler">
+                        <select class="type" data-car="wrangler" data-type="parameters">
                             <option value="">请选择类型</option>
                             <option value="oil">油水参数列表</option>
                             <option value="fuse">保险丝图解</option>
                         </select>
                     </div>
-                    <div class="result" data-car="wrangler">
+                    <div class="result" data-car="wrangler" data-type="parameters">
                         <div class="result-text"></div>
                         <div class="btn-group">
                             <button class="btn btn-preview">预览</button>
@@ -679,18 +681,18 @@
                 <div class="param-car-item">
                     <div class="param-car-name">大切诺基 Grand Cherokee</div>
                     <div class="row">
-                        <select class="year" data-car="grandcherokee">
+                        <select class="year" data-car="grandcherokee" data-type="parameters">
                             <option value="">请选择年款</option>
                             <option value="2024">2024款</option>
                             <option value="2015">2015款</option>
                         </select>
-                        <select class="type" data-car="grandcherokee">
+                        <select class="type" data-car="grandcherokee" data-type="parameters">
                             <option value="">请选择类型</option>
                             <option value="oil">油水参数列表</option>
                             <option value="fuse">保险丝图解</option>
                         </select>
                     </div>
-                    <div class="result" data-car="grandcherokee">
+                    <div class="result" data-car="grandcherokee" data-type="parameters">
                         <div class="result-text"></div>
                         <div class="btn-group">
                             <button class="btn btn-preview">预览</button>
@@ -703,18 +705,18 @@
                 <div class="param-car-item">
                     <div class="param-car-name">自由光 Cherokee</div>
                     <div class="row">
-                        <select class="year" data-car="cherokee">
+                        <select class="year" data-car="cherokee" data-type="parameters">
                             <option value="">请选择年款</option>
                             <option value="2022">2022款</option>
                             <option value="2019">2019款</option>
                         </select>
-                        <select class="type" data-car="cherokee">
+                        <select class="type" data-car="cherokee" data-type="parameters">
                             <option value="">请选择类型</option>
                             <option value="oil">油水参数列表</option>
                             <option value="fuse">保险丝图解</option>
                         </select>
                     </div>
-                    <div class="result" data-car="cherokee">
+                    <div class="result" data-car="cherokee" data-type="parameters">
                         <div class="result-text"></div>
                         <div class="btn-group">
                             <button class="btn btn-preview">预览</button>
@@ -723,23 +725,23 @@
                     </div>
                 </div>
 
-                <!-- 新增：指南者 -->
+                <!-- 指南者 -->
                 <div class="param-car-item">
                     <div class="param-car-name">指南者 Compass</div>
                     <div class="row">
-                        <select class="year" data-car="compass">
+                        <select class="year" data-car="compass" data-type="parameters">
                             <option value="">请选择年款</option>
                             <option value="2022">2022款</option>
                             <option value="2020">2020款</option>
                             <option value="2017">2017款</option>
                         </select>
-                        <select class="type" data-car="compass">
+                        <select class="type" data-car="compass" data-type="parameters">
                             <option value="">请选择类型</option>
                             <option value="oil">油水参数列表</option>
                             <option value="fuse">保险丝图解</option>
                         </select>
                     </div>
-                    <div class="result" data-car="compass">
+                    <div class="result" data-car="compass" data-type="parameters">
                         <div class="result-text"></div>
                         <div class="btn-group">
                             <button class="btn btn-preview">预览</button>
@@ -748,23 +750,23 @@
                     </div>
                 </div>
 
-                <!-- 新增：自由侠 -->
+                <!-- 自由侠 -->
                 <div class="param-car-item">
                     <div class="param-car-name">自由侠 Renegade</div>
                     <div class="row">
-                        <select class="year" data-car="renegade">
+                        <select class="year" data-car="renegade" data-type="parameters">
                             <option value="">请选择年款</option>
                             <option value="2021">2021款</option>
                             <option value="2018">2018款</option>
                             <option value="2016">2016款</option>
                         </select>
-                        <select class="type" data-car="renegade">
+                        <select class="type" data-car="renegade" data-type="parameters">
                             <option value="">请选择类型</option>
                             <option value="oil">油水参数列表</option>
                             <option value="fuse">保险丝图解</option>
                         </select>
                     </div>
-                    <div class="result" data-car="renegade">
+                    <div class="result" data-car="renegade" data-type="parameters">
                         <div class="result-text"></div>
                         <div class="btn-group">
                             <button class="btn btn-preview">预览</button>
@@ -773,22 +775,22 @@
                     </div>
                 </div>
 
-                <!-- 新增：角斗士 -->
+                <!-- 角斗士 -->
                 <div class="param-car-item">
                     <div class="param-car-name">角斗士 Gladiator</div>
                     <div class="row">
-                        <select class="year" data-car="gladiator">
+                        <select class="year" data-car="gladiator" data-type="parameters">
                             <option value="">请选择年款</option>
                             <option value="2024">2024款</option>
                             <option value="2022">2022款</option>
                         </select>
-                        <select class="type" data-car="gladiator">
+                        <select class="type" data-car="gladiator" data-type="parameters">
                             <option value="">请选择类型</option>
                             <option value="oil">油水参数列表</option>
                             <option value="fuse">保险丝图解</option>
                         </select>
                     </div>
-                    <div class="result" data-car="gladiator">
+                    <div class="result" data-car="gladiator" data-type="parameters">
                         <div class="result-text"></div>
                         <div class="btn-group">
                             <button class="btn btn-preview">预览</button>
@@ -799,7 +801,313 @@
             </div>
         </div>
 
-        <!-- 全新设计的联系方式区域 - 横向小卡片 -->
+        <!-- 快速入门指南标签内容 -->
+        <div class="tab-content" id="quickstart">
+            <div class="param-section">
+                <h2 class="param-title">Jeep 快速入门指南查询</h2>
+                
+                <!-- 牧马人 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">牧马人 Wrangler</div>
+                    <div class="row">
+                        <select class="year" data-car="wrangler" data-type="quickstart">
+                            <option value="">请选择年款</option>
+                            <option value="2024">2024款</option>
+                            <option value="2023">2023款</option>
+                        </select>
+                        <select class="type" data-car="wrangler" data-type="quickstart">
+                            <option value="">请选择指南类型</option>
+                            <option value="basic">基础操作指南</option>
+                            <option value="multimedia">多媒体系统指南</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="wrangler" data-type="quickstart">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 大切诺基 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">大切诺基 Grand Cherokee</div>
+                    <div class="row">
+                        <select class="year" data-car="grandcherokee" data-type="quickstart">
+                            <option value="">请选择年款</option>
+                            <option value="2024">2024款</option>
+                            <option value="2015">2015款</option>
+                        </select>
+                        <select class="type" data-car="grandcherokee" data-type="quickstart">
+                            <option value="">请选择指南类型</option>
+                            <option value="basic">基础操作指南</option>
+                            <option value="multimedia">多媒体系统指南</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="grandcherokee" data-type="quickstart">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 自由光 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">自由光 Cherokee</div>
+                    <div class="row">
+                        <select class="year" data-car="cherokee" data-type="quickstart">
+                            <option value="">请选择年款</option>
+                            <option value="2022">2022款</option>
+                            <option value="2019">2019款</option>
+                        </select>
+                        <select class="type" data-car="cherokee" data-type="quickstart">
+                            <option value="">请选择指南类型</option>
+                            <option value="basic">基础操作指南</option>
+                            <option value="multimedia">多媒体系统指南</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="cherokee" data-type="quickstart">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 指南者 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">指南者 Compass</div>
+                    <div class="row">
+                        <select class="year" data-car="compass" data-type="quickstart">
+                            <option value="">请选择年款</option>
+                            <option value="2022">2022款</option>
+                            <option value="2020">2020款</option>
+                            <option value="2017">2017款</option>
+                        </select>
+                        <select class="type" data-car="compass" data-type="quickstart">
+                            <option value="">请选择指南类型</option>
+                            <option value="basic">基础操作指南</option>
+                            <option value="multimedia">多媒体系统指南</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="compass" data-type="quickstart">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 自由侠 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">自由侠 Renegade</div>
+                    <div class="row">
+                        <select class="year" data-car="renegade" data-type="quickstart">
+                            <option value="">请选择年款</option>
+                            <option value="2021">2021款</option>
+                            <option value="2018">2018款</option>
+                            <option value="2016">2016款</option>
+                        </select>
+                        <select class="type" data-car="renegade" data-type="quickstart">
+                            <option value="">请选择指南类型</option>
+                            <option value="basic">基础操作指南</option>
+                            <option value="multimedia">多媒体系统指南</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="renegade" data-type="quickstart">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 角斗士 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">角斗士 Gladiator</div>
+                    <div class="row">
+                        <select class="year" data-car="gladiator" data-type="quickstart">
+                            <option value="">请选择年款</option>
+                            <option value="2024">2024款</option>
+                            <option value="2022">2022款</option>
+                        </select>
+                        <select class="type" data-car="gladiator" data-type="quickstart">
+                            <option value="">请选择指南类型</option>
+                            <option value="basic">基础操作指南</option>
+                            <option value="multimedia">多媒体系统指南</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="gladiator" data-type="quickstart">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 维保计划标签内容 -->
+        <div class="tab-content" id="maintenance">
+            <div class="param-section">
+                <h2 class="param-title">Jeep 维保计划查询</h2>
+                
+                <!-- 牧马人 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">牧马人 Wrangler</div>
+                    <div class="row">
+                        <select class="year" data-car="wrangler" data-type="maintenance">
+                            <option value="">请选择年款</option>
+                            <option value="2024">2024款</option>
+                            <option value="2023">2023款</option>
+                        </select>
+                        <select class="type" data-car="wrangler" data-type="maintenance">
+                            <option value="">请选择维保类型</option>
+                            <option value="regular">常规保养计划</option>
+                            <option value="offroad">越野后保养计划</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="wrangler" data-type="maintenance">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 大切诺基 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">大切诺基 Grand Cherokee</div>
+                    <div class="row">
+                        <select class="year" data-car="grandcherokee" data-type="maintenance">
+                            <option value="">请选择年款</option>
+                            <option value="2024">2024款</option>
+                            <option value="2015">2015款</option>
+                        </select>
+                        <select class="type" data-car="grandcherokee" data-type="maintenance">
+                            <option value="">请选择维保类型</option>
+                            <option value="regular">常规保养计划</option>
+                            <option value="longdistance">长途出行维保计划</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="grandcherokee" data-type="maintenance">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 自由光 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">自由光 Cherokee</div>
+                    <div class="row">
+                        <select class="year" data-car="cherokee" data-type="maintenance">
+                            <option value="">请选择年款</option>
+                            <option value="2022">2022款</option>
+                            <option value="2019">2019款</option>
+                        </select>
+                        <select class="type" data-car="cherokee" data-type="maintenance">
+                            <option value="">请选择维保类型</option>
+                            <option value="regular">常规保养计划</option>
+                            <option value="seasonal">季节性维保计划</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="cherokee" data-type="maintenance">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 指南者 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">指南者 Compass</div>
+                    <div class="row">
+                        <select class="year" data-car="compass" data-type="maintenance">
+                            <option value="">请选择年款</option>
+                            <option value="2022">2022款</option>
+                            <option value="2020">2020款</option>
+                            <option value="2017">2017款</option>
+                        </select>
+                        <select class="type" data-car="compass" data-type="maintenance">
+                            <option value="">请选择维保类型</option>
+                            <option value="regular">常规保养计划</option>
+                            <option value="urban">城市通勤维保计划</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="compass" data-type="maintenance">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 自由侠 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">自由侠 Renegade</div>
+                    <div class="row">
+                        <select class="year" data-car="renegade" data-type="maintenance">
+                            <option value="">请选择年款</option>
+                            <option value="2021">2021款</option>
+                            <option value="2018">2018款</option>
+                            <option value="2016">2016款</option>
+                        </select>
+                        <select class="type" data-car="renegade" data-type="maintenance">
+                            <option value="">请选择维保类型</option>
+                            <option value="regular">常规保养计划</option>
+                            <option value="mini">迷你保养计划</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="renegade" data-type="maintenance">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 角斗士 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">角斗士 Gladiator</div>
+                    <div class="row">
+                        <select class="year" data-car="gladiator" data-type="maintenance">
+                            <option value="">请选择年款</option>
+                            <option value="2024">2024款</option>
+                            <option value="2022">2022款</option>
+                        </select>
+                        <select class="type" data-car="gladiator" data-type="maintenance">
+                            <option value="">请选择维保类型</option>
+                            <option value="regular">常规保养计划</option>
+                            <option value="work">作业后维保计划</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="gladiator" data-type="maintenance">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 联系方式区域 -->
         <footer class="site-footer">
             <div class="contact-section">
                 <h3 class="contact-title">📞 联系我们</h3>
@@ -858,82 +1166,224 @@
             });
         });
 
-        // 参数查询文件映射（新增指南者、自由侠、角斗士）
+        // 完整的文件映射（包含新增的快速入门和维保计划）
         const fileMap = {
-            wrangler: {
-                2024: {
-                    oil: "manuals/wrangler_2024_oil.pdf",
-                    fuse: "manuals/wrangler_2024_fuse.pdf"
+            // 保险丝盒&油水参数
+            parameters: {
+                wrangler: {
+                    2024: {
+                        oil: "manuals/wrangler_2024_oil.pdf",
+                        fuse: "manuals/wrangler_2024_fuse.pdf"
+                    },
+                    2023: {
+                        oil: "manuals/wrangler_2023_oil.pdf",
+                        fuse: "manuals/wrangler_2023_fuse.pdf"
+                    }
                 },
-                2023: {
-                    oil: "manuals/wrangler_2023_oil.pdf",
-                    fuse: "manuals/wrangler_2023_fuse.pdf"
+                grandcherokee: {
+                    2024: {
+                        oil: "manuals/grandcherokee_2024_oil.pdf",
+                        fuse: "manuals/grandcherokee_2024_fuse.pdf"
+                    },
+                    2015: {
+                        oil: "manuals/grandcherokee_2015_oil.pdf",
+                        fuse: "manuals/grandcherokee_2015_fuse.pdf"
+                    }
+                },
+                cherokee: {
+                    2022: {
+                        oil: "manuals/cherokee_2022_oil.pdf",
+                        fuse: "manuals/cherokee_2022_fuse.pdf"
+                    },
+                    2019: {
+                        oil: "manuals/cherokee_2019_oil.pdf",
+                        fuse: "manuals/cherokee_2019_fuse.pdf"
+                    }
+                },
+                compass: {
+                    2022: {
+                        oil: "manuals/compass_2022_oil.pdf",
+                        fuse: "manuals/compass_2022_fuse.pdf"
+                    },
+                    2020: {
+                        oil: "manuals/compass_2020_oil.pdf",
+                        fuse: "manuals/compass_2020_fuse.pdf"
+                    },
+                    2017: {
+                        oil: "manuals/compass_2017_oil.pdf",
+                        fuse: "manuals/compass_2017_fuse.pdf"
+                    }
+                },
+                renegade: {
+                    2021: {
+                        oil: "manuals/renegade_2021_oil.pdf",
+                        fuse: "manuals/renegade_2021_fuse.pdf"
+                    },
+                    2018: {
+                        oil: "manuals/renegade_2018_oil.pdf",
+                        fuse: "manuals/renegade_2018_fuse.pdf"
+                    },
+                    2016: {
+                        oil: "manuals/renegade_2016_oil.pdf",
+                        fuse: "manuals/renegade_2016_fuse.pdf"
+                    }
+                },
+                gladiator: {
+                    2024: {
+                        oil: "manuals/gladiator_2024_oil.pdf",
+                        fuse: "manuals/gladiator_2024_fuse.pdf"
+                    },
+                    2022: {
+                        oil: "manuals/gladiator_2022_oil.pdf",
+                        fuse: "manuals/gladiator_2022_fuse.pdf"
+                    }
                 }
             },
-            grandcherokee: {
-                2024: {
-                    oil: "manuals/grandcherokee_2024_oil.pdf",
-                    fuse: "manuals/grandcherokee_2024_fuse.pdf"
+            // 快速入门指南
+            quickstart: {
+                wrangler: {
+                    2024: {
+                        basic: "manuals/wrangler_2024_basic.pdf",
+                        multimedia: "manuals/wrangler_2024_multimedia.pdf"
+                    },
+                    2023: {
+                        basic: "manuals/wrangler_2023_basic.pdf",
+                        multimedia: "manuals/wrangler_2023_multimedia.pdf"
+                    }
                 },
-                2015: {
-                    oil: "manuals/grandcherokee_2015_oil.pdf",
-                    fuse: "manuals/grandcherokee_2015_fuse.pdf"
+                grandcherokee: {
+                    2024: {
+                        basic: "manuals/grandcherokee_2024_basic.pdf",
+                        multimedia: "manuals/grandcherokee_2024_multimedia.pdf"
+                    },
+                    2015: {
+                        basic: "manuals/grandcherokee_2015_basic.pdf",
+                        multimedia: "manuals/grandcherokee_2015_multimedia.pdf"
+                    }
+                },
+                cherokee: {
+                    2022: {
+                        basic: "manuals/cherokee_2022_basic.pdf",
+                        multimedia: "manuals/cherokee_2022_multimedia.pdf"
+                    },
+                    2019: {
+                        basic: "manuals/cherokee_2019_basic.pdf",
+                        multimedia: "manuals/cherokee_2019_multimedia.pdf"
+                    }
+                },
+                compass: {
+                    2022: {
+                        basic: "manuals/compass_2022_basic.pdf",
+                        multimedia: "manuals/compass_2022_multimedia.pdf"
+                    },
+                    2020: {
+                        basic: "manuals/compass_2020_basic.pdf",
+                        multimedia: "manuals/compass_2020_multimedia.pdf"
+                    },
+                    2017: {
+                        basic: "manuals/compass_2017_basic.pdf",
+                        multimedia: "manuals/compass_2017_multimedia.pdf"
+                    }
+                },
+                renegade: {
+                    2021: {
+                        basic: "manuals/renegade_2021_basic.pdf",
+                        multimedia: "manuals/renegade_2021_multimedia.pdf"
+                    },
+                    2018: {
+                        basic: "manuals/renegade_2018_basic.pdf",
+                        multimedia: "manuals/renegade_2018_multimedia.pdf"
+                    },
+                    2016: {
+                        basic: "manuals/renegade_2016_basic.pdf",
+                        multimedia: "manuals/renegade_2016_multimedia.pdf"
+                    }
+                },
+                gladiator: {
+                    2024: {
+                        basic: "manuals/gladiator_2024_basic.pdf",
+                        multimedia: "manuals/gladiator_2024_multimedia.pdf"
+                    },
+                    2022: {
+                        basic: "manuals/gladiator_2022_basic.pdf",
+                        multimedia: "manuals/gladiator_2022_multimedia.pdf"
+                    }
                 }
             },
-            cherokee: {
-                2022: {
-                    oil: "manuals/cherokee_2022_oil.pdf",
-                    fuse: "manuals/cherokee_2022_fuse.pdf"
+            // 维保计划
+            maintenance: {
+                wrangler: {
+                    2024: {
+                        regular: "manuals/wrangler_2024_regular.pdf",
+                        offroad: "manuals/wrangler_2024_offroad_maint.pdf"
+                    },
+                    2023: {
+                        regular: "manuals/wrangler_2023_regular.pdf",
+                        offroad: "manuals/wrangler_2023_offroad_maint.pdf"
+                    }
                 },
-                2019: {
-                    oil: "manuals/cherokee_2019_oil.pdf",
-                    fuse: "manuals/cherokee_2019_fuse.pdf"
-                }
-            },
-            // 新增：指南者文件映射
-            compass: {
-                2022: {
-                    oil: "manuals/compass_2022_oil.pdf",
-                    fuse: "manuals/compass_2022_fuse.pdf"
+                grandcherokee: {
+                    2024: {
+                        regular: "manuals/grandcherokee_2024_regular.pdf",
+                        longdistance: "manuals/grandcherokee_2024_longdistance.pdf"
+                    },
+                    2015: {
+                        regular: "manuals/grandcherokee_2015_regular.pdf",
+                        longdistance: "manuals/grandcherokee_2015_longdistance.pdf"
+                    }
                 },
-                2020: {
-                    oil: "manuals/compass_2020_oil.pdf",
-                    fuse: "manuals/compass_2020_fuse.pdf"
+                cherokee: {
+                    2022: {
+                        regular: "manuals/cherokee_2022_regular.pdf",
+                        seasonal: "manuals/cherokee_2022_seasonal.pdf"
+                    },
+                    2019: {
+                        regular: "manuals/cherokee_2019_regular.pdf",
+                        seasonal: "manuals/cherokee_2019_seasonal.pdf"
+                    }
                 },
-                2017: {
-                    oil: "manuals/compass_2017_oil.pdf",
-                    fuse: "manuals/compass_2017_fuse.pdf"
-                }
-            },
-            // 新增：自由侠文件映射
-            renegade: {
-                2021: {
-                    oil: "manuals/renegade_2021_oil.pdf",
-                    fuse: "manuals/renegade_2021_fuse.pdf"
+                compass: {
+                    2022: {
+                        regular: "manuals/compass_2022_regular.pdf",
+                        urban: "manuals/compass_2022_urban.pdf"
+                    },
+                    2020: {
+                        regular: "manuals/compass_2020_regular.pdf",
+                        urban: "manuals/compass_2020_urban.pdf"
+                    },
+                    2017: {
+                        regular: "manuals/compass_2017_regular.pdf",
+                        urban: "manuals/compass_2017_urban.pdf"
+                    }
                 },
-                2018: {
-                    oil: "manuals/renegade_2018_oil.pdf",
-                    fuse: "manuals/renegade_2018_fuse.pdf"
+                renegade: {
+                    2021: {
+                        regular: "manuals/renegade_2021_regular.pdf",
+                        mini: "manuals/renegade_2021_mini.pdf"
+                    },
+                    2018: {
+                        regular: "manuals/renegade_2018_regular.pdf",
+                        mini: "manuals/renegade_2018_mini.pdf"
+                    },
+                    2016: {
+                        regular: "manuals/renegade_2016_regular.pdf",
+                        mini: "manuals/renegade_2016_mini.pdf"
+                    }
                 },
-                2016: {
-                    oil: "manuals/renegade_2016_oil.pdf",
-                    fuse: "manuals/renegade_2016_fuse.pdf"
-                }
-            },
-            // 新增：角斗士文件映射
-            gladiator: {
-                2024: {
-                    oil: "manuals/gladiator_2024_oil.pdf",
-                    fuse: "manuals/gladiator_2024_fuse.pdf"
-                },
-                2022: {
-                    oil: "manuals/gladiator_2022_oil.pdf",
-                    fuse: "manuals/gladiator_2022_fuse.pdf"
+                gladiator: {
+                    2024: {
+                        regular: "manuals/gladiator_2024_regular.pdf",
+                        work: "manuals/gladiator_2024_work.pdf"
+                    },
+                    2022: {
+                        regular: "manuals/gladiator_2022_regular.pdf",
+                        work: "manuals/gladiator_2022_work.pdf"
+                    }
                 }
             }
         };
 
-        // 参数查询逻辑（自动适配新增车型）
+        // 统一的参数查询逻辑（适配所有板块）
         document.querySelectorAll('.param-car-item').forEach(car => {
             const yearSelect = car.querySelector('.year');
             const typeSelect = car.querySelector('.type');
@@ -942,20 +1392,34 @@
             const previewBtn = car.querySelector('.btn-preview');
             const downloadBtn = car.querySelector('.btn-download');
             const carId = yearSelect.dataset.car;
+            const moduleType = yearSelect.dataset.type;
 
             function updateResult() {
                 const year = yearSelect.value;
                 const type = typeSelect.value;
                 
                 // 验证选择项
-                if (!year || !type || !fileMap[carId] || !fileMap[carId][year] || !fileMap[carId][year][type]) {
+                if (!year || !type || !fileMap[moduleType] || !fileMap[moduleType][carId] || !fileMap[moduleType][carId][year] || !fileMap[moduleType][carId][year][type]) {
                     result.classList.remove('show');
                     return;
                 }
 
                 // 获取文件路径
-                const filePath = fileMap[carId][year][type];
-                const typeText = type === 'oil' ? '油水参数' : '保险丝图解';
+                const filePath = fileMap[moduleType][carId][year][type];
+                
+                // 根据不同模块设置显示文本
+                let typeText = '';
+                if (moduleType === 'parameters') {
+                    typeText = type === 'oil' ? '油水参数' : '保险丝图解';
+                } else if (moduleType === 'quickstart') {
+                    typeText = type === 'basic' ? '基础操作指南' : '多媒体系统指南';
+                } else if (moduleType === 'maintenance') {
+                    typeText = type === 'regular' ? '常规保养计划' : 
+                               type === 'offroad' ? '越野后保养计划' :
+                               type === 'longdistance' ? '长途出行维保计划' :
+                               type === 'seasonal' ? '季节性维保计划' :
+                               type === 'urban' ? '城市通勤维保计划' : '作业后维保计划';
+                }
                 
                 // 更新显示内容
                 resultText.textContent = `${year}款 · ${typeText}`;
@@ -965,7 +1429,7 @@
                 downloadBtn.onclick = () => {
                     const link = document.createElement('a');
                     link.href = filePath;
-                    link.download = `${carId}_${year}_${type}.pdf`;
+                    link.download = `${carId}_${year}_${type}_${moduleType}.pdf`;
                     link.click();
                 };
                 
