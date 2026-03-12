@@ -3,407 +3,385 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeep 车主手册下载中心</title>
+    <meta name="description" content="Jeep全系车主手册下载中心，包含牧马人、大切诺基、自由光等车型在线预览与下载">
+    <title>Jeep Owner's Manual Hub | 全系手册中心</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* 基础重置 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: #0f0f0f; /* 哑光黑背景 */
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+            background-image:
+                radial-gradient(circle at 10% 10%, rgba(46, 204, 113, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 90% 90%, rgba(52, 152, 219, 0.1) 0%, transparent 50%);
         }
 
-        body {
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(145deg, #e9ecef 0%, #dee2e6 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* 容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
         }
 
-        .container {
-            max-width: 860px;
-            width: 100%;
-            background: #ffffff;
-            padding: 3rem 2.5rem;
-            margin: 20px auto;
-            border-radius: 28px;
-            box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.2), 0 8px 12px -4px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255,255,255,0.5);
-            backdrop-filter: blur(2px);
-            transition: transform 0.2s ease;
+        /* 头部 */
+        .site-header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid #222;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .site-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #2ecc71, transparent);
+        }
+        .site-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+        }
+        .site-subtitle {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            font-weight: 300;
         }
 
-        .container:hover {
-            transform: scale(1.01);
+        /* 车型网格 */
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
         }
 
-        h1 {
-            color: #1e2a37;
-            font-size: 2.2rem;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.6rem;
-            border-left: 8px solid #007bff;
-            padding-left: 1.5rem;
-            background: linear-gradient(135deg, #1e2a37 30%, #3a4a5a 80%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        /* 车型卡片 */
+        .car-card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
         }
-
-        .subhead {
-            color: #495867;
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            font-weight: 400;
-            border-bottom: 2px dashed #cbd5e1;
-            padding-bottom: 1rem;
+        .car-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
         }
-
-        .download-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1.8rem;
+        .car-card:hover::before { opacity: 1; }
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-color: #2ecc71;
         }
-
-        .download-item {
-            background: #f8fafc;
-            border-radius: 20px;
-            padding: 1.2rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-            transition: all 0.25s;
-        }
-
-        .download-item:hover {
-            background: #ffffff;
-            border-color: #007bff;
-            box-shadow: 0 12px 22px -10px rgba(0, 123, 255, 0.3);
-        }
-
-        .item-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .icon {
-            width: 44px;
-            height: 44px;
-            background: #e9edf2;
-            border-radius: 14px;
+        .car-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: #1e2a37;
-            font-size: 1.6rem;
-            font-weight: 600;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+            gap: 12px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
         }
-
-        .item-info p {
-            font-size: 1.35rem;
-            font-weight: 500;
-            color: #0b1c2c;
-            letter-spacing: 0.3px;
-            margin: 0;
+        .car-icon { font-size: 2rem; }
+        .car-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
         }
-
-        .item-info small {
+        .car-model {
             font-size: 0.9rem;
-            color: #5f6c7a;
-            background: #e9edf2;
-            padding: 3px 12px;
-            border-radius: 30px;
-            margin-left: 10px;
+            color: #2ecc71;
             font-weight: 400;
         }
 
-        .btn-group {
+        /* 文档列表 */
+        .doc-list {
+            list-style: none;
+            position: relative;
+            z-index: 2;
+        }
+        .doc-item {
+            background: #222;
+            margin-bottom: 12px;
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #444;
+            transition: border 0.2s ease;
+        }
+        .doc-item:hover { border-color: #3498db; }
+        .doc-title {
+            font-size: 0.95rem;
+            color: #ecf0f1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .doc-title::before {
+            content: '📄';
+            opacity: 0.7;
+        }
+        .doc-actions {
             display: flex;
             gap: 10px;
         }
 
-        .download-btn {
-            display: inline-block;
-            padding: 12px 20px;
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 40px;
-            font-weight: 500;
-            font-size: 1.05rem;
-            letter-spacing: 0.8px;
-            border: none;
-            box-shadow: 0 8px 18px -6px #007bff80;
-            transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
-            cursor: pointer;
-            border: 1px solid #007bff;
-        }
-
-        .download-btn:hover {
-            background: #0056b3;
-            box-shadow: 0 12px 24px -8px #0056b3;
-            border-color: #0056b3;
-            transform: scale(1.02);
-        }
-
-        .download-btn:active {
-            transform: scale(0.98);
-            background: #004494;
-        }
-
-        .view-btn {
-            background: #28a745;
-            border-color: #28a745;
-        }
-
-        .view-btn:hover {
-            background: #218838;
-            border-color: #218838;
-        }
-
-        .footer-note {
-            margin-top: 3rem;
-            text-align: center;
-            color: #5f6c7a;
-            font-size: 0.95rem;
-            border-top: 1px solid #dce5ec;
-            padding-top: 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background: #eef2f6;
-            border-radius: 50px;
-            padding: 0.3rem 1.2rem;
-            font-size: 0.9rem;
-            color: #2c3e4f;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .badge span {
-            color: #007bff;
+        /* 按钮样式 */
+        .btn {
+            padding: 8px 16px;
+            border-radius: 8px;
             font-weight: 600;
+            font-size: 0.85rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .btn-preview {
+            background: #3498db;
+            color: white;
+        }
+        .btn-preview:hover {
+            background: #2980b9;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+        }
+        .btn-download {
+            background: #e74c3c;
+            color: white;
+        }
+        .btn-download:hover {
+            background: #c0392b;
+            box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
         }
 
-        @media (max-width: 600px) {
-            .container {
-                padding: 2rem 1.2rem;
-            }
-            h1 {
-                font-size: 1.8rem;
-                padding-left: 1rem;
-            }
-            .download-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-            .item-info p {
-                font-size: 1.2rem;
-            }
-            .btn-group {
-                width: 100%;
-            }
-            .download-btn {
-                flex: 1;
-                text-align: center;
-            }
-            .footer-note {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
+        /* 页脚 */
+        .site-footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        /* 响应式优化 */
+        @media (max-width: 768px) {
+            .car-grid { grid-template-columns: 1fr; }
+            .doc-item { flex-direction: column; gap: 10px; align-items: flex-start; }
+            .doc-actions { width: 100%; justify-content: space-between; }
+            .btn { width: 48%; text-align: center; }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <header class="site-header">
+            <h1 class="site-title">JEEP OWNER'S MANUAL</h1>
+            <p class="site-subtitle">Jeep全系车主手册在线查阅与下载中心 | 专业 · 保密 · 高清</p>
+        </header>
 
-<div class="container">
-    <h1>⚡ Jeep 车主手册下载中心</h1>
-    <div class="subhead">全系车型 · 在线预览 · 一键下载</div>
+        <main class="car-grid">
+            <!-- 牧马人 -->
+            <article class="car-card">
+                <div class="car-header">
+                    <span class="car-icon">🚙</span>
+                    <div>
+                        <div class="car-name">牧马人 Wrangler</div>
+                        <div class="car-model">Iconic Off-Road Legend</div>
+                    </div>
+                </div>
+                <ul class="doc-list">
+                    <li class="doc-item">
+                        <span class="doc-title">2024 车主手册</span>
+                        <div class="doc-actions">
+                            <a href="manuals/j001.pdf" target="_blank" class="btn btn-preview">预览</a>
+                            <a href="manuals/j001.pdf" download class="btn btn-download">下载</a>
+                        </div>
+                    </li>
+                    <li class="doc-item">
+                        <span class="doc-title">2023 车主手册</span>
+                        <div class="doc-actions">
+                            <a href="manuals/j002.pdf" target="_blank" class="btn btn-preview">预览</a>
+                            <a href="manuals/j002.pdf" download class="btn btn-download">下载</a>
+                        </div>
+                    </li>
+                    <li class="doc-item">
+                        <span class="doc-title">牧马人4xe 补充版</span>
+                        <div class="doc-actions">
+                            <a href="manuals/j003.pdf" target="_blank" class="btn btn-preview">预览</a>
+                            <a href="manuals/j003.pdf" download class="btn btn-download">下载</a>
+                        </div>
+                    </li>
+                </ul>
+            </article>
 
-    <div class="download-grid">
+            <!-- 大切诺基 -->
+            <article class="car-card">
+                <div class="car-header">
+                    <span class="car-icon">🚙</span>
+                    <div>
+                        <div class="car-name">大切诺基 Grand Cherokee</div>
+                        <div class="car-model">Premium Comfort & Performance</div>
+                    </div>
+                </div>
+                <ul class="doc-list">
+                    <li class="doc-item">
+                        <span class="doc-title">2024 车主手册</span>
+                        <div class="doc-actions">
+                            <a href="manuals/j004.pdf" target="_blank" class="btn btn-preview">预览</a>
+                            <a href="manuals/j004.pdf" download class="btn btn-download">下载</a>
+                        </div>
+                    </li>
+                    <li class="doc-item">
+                        <span class="doc-title">2014-2015 车主手册</span>
+                        <div class="doc-actions">
+                            <a href="manuals/j005.pdf" target="_blank" class="btn btn-preview">预览</a>
+                            <a href="manuals/j005.pdf" download class="btn btn-download">下载</a>
+                        </div>
+                    </li>
+                </ul>
+            </article>
 
-        <!-- 牧马人 -->
-        <div class="download-item">
-            <div class="item-info">
-                <div class="icon">JL</div>
-                <p>牧马人 2024 车主手册 <small>高清PDF</small></p>
-            </div>
-            <div class="btn-group">
-                <a href="manuals/j001.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
-                <a href="manuals/j001.pdf" download class="download-btn">⬇ 下载</a>
-            </div>
-        </div>
+            <!-- 自由光 -->
+            <article class="car-card">
+                <div class="car-header">
+                    <span class="car-icon">🚙</span>
+                    <div>
+                        <div class="car-name">自由光 Cherokee</div>
+                        <div class="car-model">Smart & Versatile</div>
+                    </div>
+                </div>
+                <ul class="doc-list">
+                    <li class="doc-item">
+                        <span class="doc-title">2014-2018 车主手册</span>
+                        <div class="doc-actions">
+                            <a href="manuals/j006.pdf" target="_blank" class="btn btn-preview">预览</a>
+                            <a href="manuals/j006.pdf" download class="btn btn-download">下载</a>
+                        </div>
+                    </li>
+                    <li class="doc-item">
+                        <span class="doc-title">2019-2022 车主手册</span>
+                        <div class="doc-actions">
+                            <a href="manuals/j008.pdf" target="_blank" class="btn btn-preview">预览</a>
+                            <a href="manuals/j008.pdf" download class="btn btn-download">下载</a>
+                        </div>
+                    </li>
+                </ul>
+            </article>
 
-        <div class="download-item">
-            <div class="item-info">
-                <div class="icon">JL</div>
-                <p>牧马人 2023 车主手册 <small>高清PDF</small></p>
-            </div>
-            <div class="btn-group">
-                <a href="manuals/j002.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
-                <a href="manuals/j002.pdf" download class="download-btn">⬇ 下载</a>
-            </div>
-        </div>
+            <!-- 指南者 -->
+            <article class="car-card">
+                <div class="car-header">
+                    <span class="car-icon">🚙</span>
+                    <div>
+                        <div class="car-name">指南者 Compass</div>
+                        <div class="car-model">Compact Urban SUV</div>
+                    </div>
+                </div>
+                <ul class="doc-list">
+                    <li class="doc-item">
+                        <span class="doc-title">2011-2017 车主手册</span>
+                        <div class="doc-actions">
+                            <a href="manuals/j009.pdf" target="_blank" class="btn btn-preview">预览</a>
+                            <a href="manuals/j009.pdf" download class="btn btn-download">下载</a>
+                        </div>
+                    </li>
+                    <li class="doc-item">
+                        <span class="doc-title">2018-2020 车主手册</span>
+                        <div class="doc-actions">
+                            <a href="manuals/j010.pdf" target="_blank" class="btn btn-preview">预览</a>
+                            <a href="manuals/j010.pdf" download class="btn btn-download">下载</a>
+                        </div>
+                    </li>
+                    <li class="doc-item">
+                        <span class="doc-title">2020-2022 车主手册</span>
+                        <div class="doc-actions">
+                            <a href="manuals/j011.pdf" target="_blank" class="btn btn-preview">预览</a>
+                            <a href="manuals/j011.pdf" download class="btn btn-download">下载</a>
+                        </div>
+                    </li>
+                </ul>
+            </article>
 
-        <div class="download-item">
-            <div class="item-info">
-                <div class="icon">JL</div>
-                <p>牧马人 牧马人4xe <small>补充版</small></p>
-            </div>
-            <div class="btn-group">
-                <a href="manuals/j003.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
-                <a href="manuals/j003.pdf" download class="download-btn">⬇ 下载</a>
-            </div>
-        </div>
+            <!-- 自由侠 -->
+            <article class="car-card">
+                <div class="car-header">
+                    <span class="car-icon">🚙</span>
+                    <div>
+                        <div class="car-name">自由侠 Renegade</div>
+                        <div class="car-model">Compact Adventure</div>
+                    </div>
+                </div>
+                <ul class="doc-list">
+                    <li class="doc-item">
+                        <span class="doc-title">2016-2018 车主手册</span>
+                        <div class="doc-actions">
+                            <a href="manuals/j012.pdf" target="_blank" class="btn btn-preview">预览</a>
+                            <a href="manuals/j012.pdf" download class="btn btn-download">下载</a>
+                        </div>
+                    </li>
+                    <li class="doc-item">
+                        <span class="doc-title">2019-2021 车主手册</span>
+                        <div class="doc-actions">
+                            <a href="manuals/j013.pdf" target="_blank" class="btn btn-preview">预览</a>
+                            <a href="manuals/j013.pdf" download class="btn btn-download">下载</a>
+                        </div>
+                    </li>
+                </ul>
+            </article>
 
-        <!-- 大切诺基 -->
-        <div class="download-item">
-            <div class="item-info">
-                <div class="icon">WL</div>
-                <p>大切诺基 2024 车主手册 <small>高清PDF</small></p>
-            </div>
-            <div class="btn-group">
-                <a href="manuals/j004.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
-                <a href="manuals/j004.pdf" download class="download-btn">⬇ 下载</a>
-            </div>
-        </div>
+            <!-- 角斗士 -->
+            <article class="car-card">
+                <div class="car-header">
+                    <span class="car-icon">🚙</span>
+                    <div>
+                        <div class="car-name">角斗士 Gladiator</div>
+                        <div class="car-model">Work & Play Hard</div>
+                    </div>
+                </div>
+                <ul class="doc-list">
+                    <li class="doc-item">
+                        <span class="doc-title">2022-2024 车主手册</span>
+                        <div class="doc-actions">
+                            <a href="manuals/j014.pdf" target="_blank" class="btn btn-preview">预览</a>
+                            <a href="manuals/j014.pdf" download class="btn btn-download">下载</a>
+                        </div>
+                    </li>
+                    <li class="doc-item">
+                        <span class="doc-title">改装注意事项</span>
+                        <div class="doc-actions">
+                            <a href="manuals/j015.pdf" target="_blank" class="btn btn-preview">预览</a>
+                            <a href="manuals/j015.pdf" download class="btn btn-download">下载</a>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+        </main>
 
-        <div class="download-item">
-            <div class="item-info">
-                <div class="icon">WK</div>
-                <p>大切诺基 2014-2015 车主手册 <small>高清PDF</small></p>
-            </div>
-            <div class="btn-group">
-                <a href="manuals/j005.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
-                <a href="manuals/j005.pdf" download class="download-btn">⬇ 下载</a>
-            </div>
-        </div>
-
-        <!-- 自由光 -->
-        <div class="download-item">
-            <div class="item-info">
-                <div class="icon">KL</div>
-                <p>自由光 2014-2018 车主手册 <small>高清PDF</small></p>
-            </div>
-            <div class="btn-group">
-                <a href="manuals/j006.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
-                <a href="manuals/j006.pdf" download class="download-btn">⬇ 下载</a>
-            </div>
-        </div>
-
-        <div class="download-item">
-            <div class="item-info">
-                <div class="icon">KL</div>
-                <p>自由光 2019-2022 车主手册 <small>完整版</small></p>
-            </div>
-            <div class="btn-group">
-                <a href="manuals/j008.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
-                <a href="manuals/j008.pdf" download class="download-btn">⬇ 下载</a>
-            </div>
-        </div>
-
- <!-- 指南者 -->
-        <div class="download-item">
-            <div class="item-info">
-                <div class="icon">MK</div>
-                <p>指南者 2011-2017 车主手册 <small>高清PDF</small></p>
-            </div>
-            <div class="btn-group">
-                <a href="manuals/j009.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
-                <a href="manuals/j009.pdf" download class="download-btn">⬇ 下载</a>
-            </div>
-        </div>
-
-        <div class="download-item">
-            <div class="item-info">
-                <div class="icon">M4</div>
-                <p>指南者 2018-2020 车主手册 <small>完整版</small></p>
-            </div>
-            <div class="btn-group">
-                <a href="manuals/j010.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
-                <a href="manuals/j010.pdf" download class="download-btn">⬇ 下载</a>
-            </div>
-        </div>
-
-        <div class="download-item">
-            <div class="item-info">
-                <div class="icon">M4</div>
-                <p>指南者 2020-2022 车主手册 <small>完整版</small></p>
-            </div>
-            <div class="btn-group">
-                <a href="manuals/j011.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
-                <a href="manuals/j011.pdf" download class="download-btn">⬇ 下载</a>
-            </div>
-        </div>
-
-        <!-- 自由侠 -->
-        <div class="download-item">
-            <div class="item-info">
-                <div class="icon">BQ</div>
-                <p>自由侠 2016-2018 车主手册 <small>高清PDF</small></p>
-            </div>
-            <div class="btn-group">
-                <a href="manuals/j012.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
-                <a href="manuals/j012.pdf" download class="download-btn">⬇ 下载</a>
-            </div>
-        </div>
-
-        <div class="download-item">
-            <div class="item-info">
-                <div class="icon">BQ</div>
-                <p>自由侠 2019-2021车主手册 <small>完整版</small></p>
-            </div>
-            <div class="btn-group">
-                <a href="manuals/j013.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
-                <a href="manuals/j013.pdf" download class="download-btn">⬇ 下载</a>
-            </div>
-        </div>
-
-        <!-- 角斗士 -->
-        <div class="download-item">
-            <div class="item-info">
-                <div class="icon">JT</div>
-                <p>角斗士 2022-2024 车主手册 <small>高清PDF</small></p>
-            </div>
-            <div class="btn-group">
-                <a href="manuals/j014.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
-                <a href="manuals/j014.pdf" download class="download-btn">⬇ 下载</a>
-            </div>
-        </div>
-
-        <div class="download-item">
-            <div class="item-info">
-                <div class="icon">Gl</div>
-                <p>角斗士 改装注意事项 <small>专业版</small></p>
-            </div>
-            <div class="btn-group">
-                <a href="manuals/j015.pdf" target="_blank" class="download-btn view-btn">👁 预览</a>
-                <a href="manuals/j015.pdf" download class="download-btn">⬇ 下载</a>
-            </div>
-        </div>
-
+        <footer class="site-footer">
+            © 2024 Jeep Manual Hub | All manuals are for reference only. Please refer to the official vehicle documentation for accuracy.
+        </footer>
     </div>
-
-    <div class="footer-note">
-        <div class="badge"><span>📄 PDF</span> 高清无水印</div>
-        <div class="badge"><span>👁</span> 支持在线预览</div>
-        <div class="badge"><span>🔒</span> 匿名文件 · 安全下载</div>
-    </div>
-</div>
-
 </body>
 </html>
