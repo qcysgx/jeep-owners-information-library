@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jeep全系车主手册下载中心，包含牧马人、大切诺基、自由光等车型在线预览与下载">
-    <title>Jeep Owner's Manual Hub | 全系手册中心</title>
+    <meta name="description" content="Jeep全系车主手册、保险丝盒图解、油水参数下载查询中心，包含牧马人、大切诺基、自由光等车型">
+    <title>Jeep 车主服务中心 | 手册&参数查询</title>
     <style>
         /* 基础重置 */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -58,14 +59,53 @@
             font-weight: 300;
         }
 
-        /* 车型网格 */
+        /* 标签切换 */
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            border: 1px solid #333;
+        }
+        .tab-btn.active {
+            background: #2ecc71;
+            color: white;
+            box-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
+        }
+        .tab-btn:hover:not(.active) {
+            border-color: #3498db;
+            color: #3498db;
+        }
+
+        /* 标签内容 */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        /* 车型网格（手册标签） */
         .car-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
         }
 
-        /* 车型卡片 */
+        /* 车型卡片（通用） */
         .car-card {
             background: #1a1a1a;
             border-radius: 16px;
@@ -111,7 +151,7 @@
             font-weight: 400;
         }
 
-        /* 文档列表 */
+        /* 文档列表（手册标签） */
         .doc-list {
             list-style: none;
             position: relative;
@@ -145,7 +185,83 @@
             gap: 10px;
         }
 
-        /* 按钮样式 */
+        /* 参数查询区域（参数标签） */
+        .param-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .param-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            color: #2ecc71;
+        }
+        .param-car-item {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        .param-car-item:hover {
+            border-color: #2ecc71;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .param-car-name {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .param-car-name::before {
+            content: '🚙';
+            font-size: 1.5rem;
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        select {
+            flex: 1;
+            min-width: 140px;
+            padding: 12px 14px;
+            background: #222;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border 0.2s ease;
+        }
+        select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .result {
+            padding: 18px;
+            background: #222;
+            border-radius: 10px;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #444;
+        }
+        .result.show {
+            display: flex;
+            animation: slideIn 0.2s ease;
+        }
+        .result-text {
+            font-size: 1rem;
+            color: #ecf0f1;
+        }
+
+        /* 按钮样式（通用） */
         .btn {
             padding: 8px 16px;
             border-radius: 8px;
@@ -185,203 +301,528 @@
             font-size: 0.9rem;
         }
 
+        /* 动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
         /* 响应式优化 */
         @media (max-width: 768px) {
             .car-grid { grid-template-columns: 1fr; }
             .doc-item { flex-direction: column; gap: 10px; align-items: flex-start; }
             .doc-actions { width: 100%; justify-content: space-between; }
             .btn { width: 48%; text-align: center; }
+            
+            .result {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+            .result .btn-group {
+                width: 100%;
+                display: flex;
+                gap: 10px;
+            }
+            .result .btn-group .btn {
+                width: 50%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header class="site-header">
-            <h1 class="site-title">JEEP OWNER'S MANUAL</h1>
-            <p class="site-subtitle">Jeep全系车主手册在线查阅与下载中心 | 专业 · 保密 · 高清</p>
+            <h1 class="site-title">JEEP 车主服务中心</h1>
+            <p class="site-subtitle">全系车主手册、保险丝盒图解、油水参数 | 专业 · 保密 · 高清</p>
         </header>
 
-        <main class="car-grid">
-            <!-- 牧马人 -->
-            <article class="car-card">
-                <div class="car-header">
-                    <span class="car-icon">🚙</span>
-                    <div>
-                        <div class="car-name">牧马人 Wrangler</div>
-                        <div class="car-model">Iconic Off-Road Legend</div>
-                    </div>
-                </div>
-                <ul class="doc-list">
-                    <li class="doc-item">
-                        <span class="doc-title">2024 车主手册</span>
-                        <div class="doc-actions">
-                            <a href="manuals/j001.pdf" target="_blank" class="btn btn-preview">预览</a>
-                            <a href="manuals/j001.pdf" download class="btn btn-download">下载</a>
-                        </div>
-                    </li>
-                    <li class="doc-item">
-                        <span class="doc-title">2023 车主手册</span>
-                        <div class="doc-actions">
-                            <a href="manuals/j002.pdf" target="_blank" class="btn btn-preview">预览</a>
-                            <a href="manuals/j002.pdf" download class="btn btn-download">下载</a>
-                        </div>
-                    </li>
-                    <li class="doc-item">
-                        <span class="doc-title">牧马人4xe 补充版</span>
-                        <div class="doc-actions">
-                            <a href="manuals/j003.pdf" target="_blank" class="btn btn-preview">预览</a>
-                            <a href="manuals/j003.pdf" download class="btn btn-download">下载</a>
-                        </div>
-                    </li>
-                </ul>
-            </article>
+        <!-- 标签切换导航 -->
+        <div class="tab-nav">
+            <button class="tab-btn active" data-tab="manuals">车主手册</button>
+            <button class="tab-btn" data-tab="parameters">保险丝盒&油水参数</button>
+        </div>
 
-            <!-- 大切诺基 -->
-            <article class="car-card">
-                <div class="car-header">
-                    <span class="car-icon">🚙</span>
-                    <div>
-                        <div class="car-name">大切诺基 Grand Cherokee</div>
-                        <div class="car-model">Premium Comfort & Performance</div>
+        <!-- 车主手册标签内容 -->
+        <div class="tab-content active" id="manuals">
+            <div class="car-grid">
+                <!-- 牧马人 -->
+                <article class="car-card">
+                    <div class="car-header">
+                        <span class="car-icon">🚙</span>
+                        <div>
+                            <div class="car-name">牧马人 Wrangler</div>
+                            <div class="car-model">Iconic Off-Road Legend</div>
+                        </div>
                     </div>
-                </div>
-                <ul class="doc-list">
-                    <li class="doc-item">
-                        <span class="doc-title">2024 车主手册</span>
-                        <div class="doc-actions">
-                            <a href="manuals/j004.pdf" target="_blank" class="btn btn-preview">预览</a>
-                            <a href="manuals/j004.pdf" download class="btn btn-download">下载</a>
-                        </div>
-                    </li>
-                    <li class="doc-item">
-                        <span class="doc-title">2014-2015 车主手册</span>
-                        <div class="doc-actions">
-                            <a href="manuals/j005.pdf" target="_blank" class="btn btn-preview">预览</a>
-                            <a href="manuals/j005.pdf" download class="btn btn-download">下载</a>
-                        </div>
-                    </li>
-                </ul>
-            </article>
+                    <ul class="doc-list">
+                        <li class="doc-item">
+                            <span class="doc-title">2024 车主手册</span>
+                            <div class="doc-actions">
+                                <a href="manuals/j001.pdf" target="_blank" class="btn btn-preview">预览</a>
+                                <a href="manuals/j001.pdf" download class="btn btn-download">下载</a>
+                            </div>
+                        </li>
+                        <li class="doc-item">
+                            <span class="doc-title">2023 车主手册</span>
+                            <div class="doc-actions">
+                                <a href="manuals/j002.pdf" target="_blank" class="btn btn-preview">预览</a>
+                                <a href="manuals/j002.pdf" download class="btn btn-download">下载</a>
+                            </div>
+                        </li>
+                        <li class="doc-item">
+                            <span class="doc-title">牧马人4xe 补充版</span>
+                            <div class="doc-actions">
+                                <a href="manuals/j003.pdf" target="_blank" class="btn btn-preview">预览</a>
+                                <a href="manuals/j003.pdf" download class="btn btn-download">下载</a>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
 
-            <!-- 自由光 -->
-            <article class="car-card">
-                <div class="car-header">
-                    <span class="car-icon">🚙</span>
-                    <div>
-                        <div class="car-name">自由光 Cherokee</div>
-                        <div class="car-model">Smart & Versatile</div>
+                <!-- 大切诺基 -->
+                <article class="car-card">
+                    <div class="car-header">
+                        <span class="car-icon">🚙</span>
+                        <div>
+                            <div class="car-name">大切诺基 Grand Cherokee</div>
+                            <div class="car-model">Premium Comfort & Performance</div>
+                        </div>
                     </div>
-                </div>
-                <ul class="doc-list">
-                    <li class="doc-item">
-                        <span class="doc-title">2014-2018 车主手册</span>
-                        <div class="doc-actions">
-                            <a href="manuals/j006.pdf" target="_blank" class="btn btn-preview">预览</a>
-                            <a href="manuals/j006.pdf" download class="btn btn-download">下载</a>
-                        </div>
-                    </li>
-                    <li class="doc-item">
-                        <span class="doc-title">2019-2022 车主手册</span>
-                        <div class="doc-actions">
-                            <a href="manuals/j008.pdf" target="_blank" class="btn btn-preview">预览</a>
-                            <a href="manuals/j008.pdf" download class="btn btn-download">下载</a>
-                        </div>
-                    </li>
-                </ul>
-            </article>
+                    <ul class="doc-list">
+                        <li class="doc-item">
+                            <span class="doc-title">2024 车主手册</span>
+                            <div class="doc-actions">
+                                <a href="manuals/j004.pdf" target="_blank" class="btn btn-preview">预览</a>
+                                <a href="manuals/j004.pdf" download class="btn btn-download">下载</a>
+                            </div>
+                        </li>
+                        <li class="doc-item">
+                            <span class="doc-title">2014-2015 车主手册</span>
+                            <div class="doc-actions">
+                                <a href="manuals/j005.pdf" target="_blank" class="btn btn-preview">预览</a>
+                                <a href="manuals/j005.pdf" download class="btn btn-download">下载</a>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
 
-            <!-- 指南者 -->
-            <article class="car-card">
-                <div class="car-header">
-                    <span class="car-icon">🚙</span>
-                    <div>
-                        <div class="car-name">指南者 Compass</div>
-                        <div class="car-model">Compact Urban SUV</div>
+                <!-- 自由光 -->
+                <article class="car-card">
+                    <div class="car-header">
+                        <span class="car-icon">🚙</span>
+                        <div>
+                            <div class="car-name">自由光 Cherokee</div>
+                            <div class="car-model">Smart & Versatile</div>
+                        </div>
                     </div>
-                </div>
-                <ul class="doc-list">
-                    <li class="doc-item">
-                        <span class="doc-title">2011-2017 车主手册</span>
-                        <div class="doc-actions">
-                            <a href="manuals/j009.pdf" target="_blank" class="btn btn-preview">预览</a>
-                            <a href="manuals/j009.pdf" download class="btn btn-download">下载</a>
-                        </div>
-                    </li>
-                    <li class="doc-item">
-                        <span class="doc-title">2018-2020 车主手册</span>
-                        <div class="doc-actions">
-                            <a href="manuals/j010.pdf" target="_blank" class="btn btn-preview">预览</a>
-                            <a href="manuals/j010.pdf" download class="btn btn-download">下载</a>
-                        </div>
-                    </li>
-                    <li class="doc-item">
-                        <span class="doc-title">2020-2022 车主手册</span>
-                        <div class="doc-actions">
-                            <a href="manuals/j011.pdf" target="_blank" class="btn btn-preview">预览</a>
-                            <a href="manuals/j011.pdf" download class="btn btn-download">下载</a>
-                        </div>
-                    </li>
-                </ul>
-            </article>
+                    <ul class="doc-list">
+                        <li class="doc-item">
+                            <span class="doc-title">2014-2018 车主手册</span>
+                            <div class="doc-actions">
+                                <a href="manuals/j006.pdf" target="_blank" class="btn btn-preview">预览</a>
+                                <a href="manuals/j006.pdf" download class="btn btn-download">下载</a>
+                            </div>
+                        </li>
+                        <li class="doc-item">
+                            <span class="doc-title">2019-2022 车主手册</span>
+                            <div class="doc-actions">
+                                <a href="manuals/j008.pdf" target="_blank" class="btn btn-preview">预览</a>
+                                <a href="manuals/j008.pdf" download class="btn btn-download">下载</a>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
 
-            <!-- 自由侠 -->
-            <article class="car-card">
-                <div class="car-header">
-                    <span class="car-icon">🚙</span>
-                    <div>
-                        <div class="car-name">自由侠 Renegade</div>
-                        <div class="car-model">Compact Adventure</div>
+                <!-- 指南者 -->
+                <article class="car-card">
+                    <div class="car-header">
+                        <span class="car-icon">🚙</span>
+                        <div>
+                            <div class="car-name">指南者 Compass</div>
+                            <div class="car-model">Compact Urban SUV</div>
+                        </div>
                     </div>
-                </div>
-                <ul class="doc-list">
-                    <li class="doc-item">
-                        <span class="doc-title">2016-2018 车主手册</span>
-                        <div class="doc-actions">
-                            <a href="manuals/j012.pdf" target="_blank" class="btn btn-preview">预览</a>
-                            <a href="manuals/j012.pdf" download class="btn btn-download">下载</a>
-                        </div>
-                    </li>
-                    <li class="doc-item">
-                        <span class="doc-title">2019-2021 车主手册</span>
-                        <div class="doc-actions">
-                            <a href="manuals/j013.pdf" target="_blank" class="btn btn-preview">预览</a>
-                            <a href="manuals/j013.pdf" download class="btn btn-download">下载</a>
-                        </div>
-                    </li>
-                </ul>
-            </article>
+                    <ul class="doc-list">
+                        <li class="doc-item">
+                            <span class="doc-title">2011-2017 车主手册</span>
+                            <div class="doc-actions">
+                                <a href="manuals/j009.pdf" target="_blank" class="btn btn-preview">预览</a>
+                                <a href="manuals/j009.pdf" download class="btn btn-download">下载</a>
+                            </div>
+                        </li>
+                        <li class="doc-item">
+                            <span class="doc-title">2018-2020 车主手册</span>
+                            <div class="doc-actions">
+                                <a href="manuals/j010.pdf" target="_blank" class="btn btn-preview">预览</a>
+                                <a href="manuals/j010.pdf" download class="btn btn-download">下载</a>
+                            </div>
+                        </li>
+                        <li class="doc-item">
+                            <span class="doc-title">2020-2022 车主手册</span>
+                            <div class="doc-actions">
+                                <a href="manuals/j011.pdf" target="_blank" class="btn btn-preview">预览</a>
+                                <a href="manuals/j011.pdf" download class="btn btn-download">下载</a>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
 
-            <!-- 角斗士 -->
-            <article class="car-card">
-                <div class="car-header">
-                    <span class="car-icon">🚙</span>
-                    <div>
-                        <div class="car-name">角斗士 Gladiator</div>
-                        <div class="car-model">Work & Play Hard</div>
+                <!-- 自由侠 -->
+                <article class="car-card">
+                    <div class="car-header">
+                        <span class="car-icon">🚙</span>
+                        <div>
+                            <div class="car-name">自由侠 Renegade</div>
+                            <div class="car-model">Compact Adventure</div>
+                        </div>
+                    </div>
+                    <ul class="doc-list">
+                        <li class="doc-item">
+                            <span class="doc-title">2016-2018 车主手册</span>
+                            <div class="doc-actions">
+                                <a href="manuals/j012.pdf" target="_blank" class="btn btn-preview">预览</a>
+                                <a href="manuals/j012.pdf" download class="btn btn-download">下载</a>
+                            </div>
+                        </li>
+                        <li class="doc-item">
+                            <span class="doc-title">2019-2021 车主手册</span>
+                            <div class="doc-actions">
+                                <a href="manuals/j013.pdf" target="_blank" class="btn btn-preview">预览</a>
+                                <a href="manuals/j013.pdf" download class="btn btn-download">下载</a>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- 角斗士 -->
+                <article class="car-card">
+                    <div class="car-header">
+                        <span class="car-icon">🚙</span>
+                        <div>
+                            <div class="car-name">角斗士 Gladiator</div>
+                            <div class="car-model">Work & Play Hard</div>
+                        </div>
+                    </div>
+                    <ul class="doc-list">
+                        <li class="doc-item">
+                            <span class="doc-title">2022-2024 车主手册</span>
+                            <div class="doc-actions">
+                                <a href="manuals/j014.pdf" target="_blank" class="btn btn-preview">预览</a>
+                                <a href="manuals/j014.pdf" download class="btn btn-download">下载</a>
+                            </div>
+                        </li>
+                        <li class="doc-item">
+                            <span class="doc-title">改装注意事项</span>
+                            <div class="doc-actions">
+                                <a href="manuals/j015.pdf" target="_blank" class="btn btn-preview">预览</a>
+                                <a href="manuals/j015.pdf" download class="btn btn-download">下载</a>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+
+        <!-- 参数查询标签内容 -->
+        <div class="tab-content" id="parameters">
+            <div class="param-section">
+                <h2 class="param-title">Jeep 保险丝盒图解 & 油水参数查询</h2>
+                
+                <!-- 牧马人 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">牧马人 Wrangler</div>
+                    <div class="row">
+                        <select class="year" data-car="wrangler">
+                            <option value="">请选择年款</option>
+                            <option value="2024">2024款</option>
+                            <option value="2023">2023款</option>
+                        </select>
+                        <select class="type" data-car="wrangler">
+                            <option value="">请选择类型</option>
+                            <option value="oil">油水参数列表</option>
+                            <option value="fuse">保险丝图解</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="wrangler">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
+                        </div>
                     </div>
                 </div>
-                <ul class="doc-list">
-                    <li class="doc-item">
-                        <span class="doc-title">2022-2024 车主手册</span>
-                        <div class="doc-actions">
-                            <a href="manuals/j014.pdf" target="_blank" class="btn btn-preview">预览</a>
-                            <a href="manuals/j014.pdf" download class="btn btn-download">下载</a>
+
+                <!-- 大切诺基 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">大切诺基 Grand Cherokee</div>
+                    <div class="row">
+                        <select class="year" data-car="grandcherokee">
+                            <option value="">请选择年款</option>
+                            <option value="2024">2024款</option>
+                            <option value="2015">2015款</option>
+                        </select>
+                        <select class="type" data-car="grandcherokee">
+                            <option value="">请选择类型</option>
+                            <option value="oil">油水参数列表</option>
+                            <option value="fuse">保险丝图解</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="grandcherokee">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
                         </div>
-                    </li>
-                    <li class="doc-item">
-                        <span class="doc-title">改装注意事项</span>
-                        <div class="doc-actions">
-                            <a href="manuals/j015.pdf" target="_blank" class="btn btn-preview">预览</a>
-                            <a href="manuals/j015.pdf" download class="btn btn-download">下载</a>
+                    </div>
+                </div>
+
+                <!-- 自由光 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">自由光 Cherokee</div>
+                    <div class="row">
+                        <select class="year" data-car="cherokee">
+                            <option value="">请选择年款</option>
+                            <option value="2022">2022款</option>
+                            <option value="2019">2019款</option>
+                        </select>
+                        <select class="type" data-car="cherokee">
+                            <option value="">请选择类型</option>
+                            <option value="oil">油水参数列表</option>
+                            <option value="fuse">保险丝图解</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="cherokee">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
                         </div>
-                    </li>
-                </ul>
-            </article>
-        </main>
+                    </div>
+                </div>
+
+                <!-- 新增：指南者 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">指南者 Compass</div>
+                    <div class="row">
+                        <select class="year" data-car="compass">
+                            <option value="">请选择年款</option>
+                            <option value="2022">2022款</option>
+                            <option value="2020">2020款</option>
+                            <option value="2017">2017款</option>
+                        </select>
+                        <select class="type" data-car="compass">
+                            <option value="">请选择类型</option>
+                            <option value="oil">油水参数列表</option>
+                            <option value="fuse">保险丝图解</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="compass">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 新增：自由侠 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">自由侠 Renegade</div>
+                    <div class="row">
+                        <select class="year" data-car="renegade">
+                            <option value="">请选择年款</option>
+                            <option value="2021">2021款</option>
+                            <option value="2018">2018款</option>
+                            <option value="2016">2016款</option>
+                        </select>
+                        <select class="type" data-car="renegade">
+                            <option value="">请选择类型</option>
+                            <option value="oil">油水参数列表</option>
+                            <option value="fuse">保险丝图解</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="renegade">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 新增：角斗士 -->
+                <div class="param-car-item">
+                    <div class="param-car-name">角斗士 Gladiator</div>
+                    <div class="row">
+                        <select class="year" data-car="gladiator">
+                            <option value="">请选择年款</option>
+                            <option value="2024">2024款</option>
+                            <option value="2022">2022款</option>
+                        </select>
+                        <select class="type" data-car="gladiator">
+                            <option value="">请选择类型</option>
+                            <option value="oil">油水参数列表</option>
+                            <option value="fuse">保险丝图解</option>
+                        </select>
+                    </div>
+                    <div class="result" data-car="gladiator">
+                        <div class="result-text"></div>
+                        <div class="btn-group">
+                            <button class="btn btn-preview">预览</button>
+                            <button class="btn btn-download">下载</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <footer class="site-footer">
-            © 2024 Jeep Manual Hub | All manuals are for reference only. Please refer to the official vehicle documentation for accuracy.
+            © 2024 Jeep 车主服务中心 | All manuals are for reference only. Please refer to the official vehicle documentation for accuracy.
         </footer>
     </div>
+
+    <script>
+        // 标签切换逻辑
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 移除所有激活状态
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // 添加当前激活状态
+                btn.classList.add('active');
+                const tabId = btn.dataset.tab;
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // 参数查询文件映射（新增指南者、自由侠、角斗士）
+        const fileMap = {
+            wrangler: {
+                2024: {
+                    oil: "manuals/wrangler_2024_oil.pdf",
+                    fuse: "manuals/wrangler_2024_fuse.pdf"
+                },
+                2023: {
+                    oil: "manuals/wrangler_2023_oil.pdf",
+                    fuse: "manuals/wrangler_2023_fuse.pdf"
+                }
+            },
+            grandcherokee: {
+                2024: {
+                    oil: "manuals/grandcherokee_2024_oil.pdf",
+                    fuse: "manuals/grandcherokee_2024_fuse.pdf"
+                },
+                2015: {
+                    oil: "manuals/grandcherokee_2015_oil.pdf",
+                    fuse: "manuals/grandcherokee_2015_fuse.pdf"
+                }
+            },
+            cherokee: {
+                2022: {
+                    oil: "manuals/cherokee_2022_oil.pdf",
+                    fuse: "manuals/cherokee_2022_fuse.pdf"
+                },
+                2019: {
+                    oil: "manuals/cherokee_2019_oil.pdf",
+                    fuse: "manuals/cherokee_2019_fuse.pdf"
+                }
+            },
+            // 新增：指南者文件映射
+            compass: {
+                2022: {
+                    oil: "manuals/compass_2022_oil.pdf",
+                    fuse: "manuals/compass_2022_fuse.pdf"
+                },
+                2020: {
+                    oil: "manuals/compass_2020_oil.pdf",
+                    fuse: "manuals/compass_2020_fuse.pdf"
+                },
+                2017: {
+                    oil: "manuals/compass_2017_oil.pdf",
+                    fuse: "manuals/compass_2017_fuse.pdf"
+                }
+            },
+            // 新增：自由侠文件映射
+            renegade: {
+                2021: {
+                    oil: "manuals/renegade_2021_oil.pdf",
+                    fuse: "manuals/renegade_2021_fuse.pdf"
+                },
+                2018: {
+                    oil: "manuals/renegade_2018_oil.pdf",
+                    fuse: "manuals/renegade_2018_fuse.pdf"
+                },
+                2016: {
+                    oil: "manuals/renegade_2016_oil.pdf",
+                    fuse: "manuals/renegade_2016_fuse.pdf"
+                }
+            },
+            // 新增：角斗士文件映射
+            gladiator: {
+                2024: {
+                    oil: "manuals/gladiator_2024_oil.pdf",
+                    fuse: "manuals/gladiator_2024_fuse.pdf"
+                },
+                2022: {
+                    oil: "manuals/gladiator_2022_oil.pdf",
+                    fuse: "manuals/gladiator_2022_fuse.pdf"
+                }
+            }
+        };
+
+        // 参数查询逻辑（自动适配新增车型）
+        document.querySelectorAll('.param-car-item').forEach(car => {
+            const yearSelect = car.querySelector('.year');
+            const typeSelect = car.querySelector('.type');
+            const result = car.querySelector('.result');
+            const resultText = car.querySelector('.result-text');
+            const previewBtn = car.querySelector('.btn-preview');
+            const downloadBtn = car.querySelector('.btn-download');
+            const carId = yearSelect.dataset.car;
+
+            function updateResult() {
+                const year = yearSelect.value;
+                const type = typeSelect.value;
+                
+                // 验证选择项
+                if (!year || !type || !fileMap[carId] || !fileMap[carId][year] || !fileMap[carId][year][type]) {
+                    result.classList.remove('show');
+                    return;
+                }
+
+                // 获取文件路径
+                const filePath = fileMap[carId][year][type];
+                const typeText = type === 'oil' ? '油水参数' : '保险丝图解';
+                
+                // 更新显示内容
+                resultText.textContent = `${year}款 · ${typeText}`;
+                
+                // 绑定按钮事件
+                previewBtn.onclick = () => window.open(filePath, '_blank');
+                downloadBtn.onclick = () => {
+                    const link = document.createElement('a');
+                    link.href = filePath;
+                    link.download = `${carId}_${year}_${type}.pdf`;
+                    link.click();
+                };
+                
+                // 显示结果区域
+                result.classList.add('show');
+            }
+
+            // 监听选择变化
+            yearSelect.addEventListener('change', updateResult);
+            typeSelect.addEventListener('change', updateResult);
+        });
+    </script>
 </body>
 </html>
