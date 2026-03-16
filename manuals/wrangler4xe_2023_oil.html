@@ -1015,7 +1015,7 @@
         </div>
     </div>
 
-    <!-- 筛选功能JS -->
+    <!-- 筛选功能JS（核心修改部分） -->
     <script>
         // 筛选表格数据
         function filterTables() {
@@ -1026,7 +1026,48 @@
             // 获取所有表格
             const tables = document.querySelectorAll('.fluid-table');
             
-            // 遍历所有表格
+            // 第一步：统计该发动机下是否有对应油液类型的数据
+            let hasEngineFluidData = false;
+            if (engineFilter !== 'all' && fluidFilter !== 'all') {
+                tables.forEach(table => {
+                    const tableEngine = table.getAttribute('data-engine');
+                    if (tableEngine === engineFilter) {
+                        const rows = table.querySelectorAll('tbody tr');
+                        rows.forEach(row => {
+                            const rowFluid = row.getAttribute('data-fluid');
+                            if (rowFluid === fluidFilter) {
+                                hasEngineFluidData = true;
+                            }
+                        });
+                    }
+                });
+            }
+            
+            // 第二步：先重置所有元素为隐藏状态
+            tables.forEach(table => {
+                table.style.display = 'none';
+                // 隐藏表格对应的标题元素
+                let header = table;
+                while (header && header.tagName !== 'H2') {
+                    header = header.previousElementSibling;
+                }
+                if (header && header.tagName === 'H2') {
+                    header.style.display = 'none';
+                    // 隐藏标题的兄弟元素（提示框等）
+                    let sibling = header.nextElementSibling;
+                    while (sibling && sibling.tagName !== 'TABLE') {
+                        if (sibling.classList.contains('warning-box') || sibling.classList.contains('note-box')) {
+                            sibling.style.display = 'none';
+                        }
+                        sibling = sibling.nextElementSibling;
+                    }
+                }
+                // 隐藏所有行
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach(row => row.style.display = 'none');
+            });
+            
+            // 第三步：根据筛选规则显示对应内容
             tables.forEach(table => {
                 const tableEngine = table.getAttribute('data-engine');
                 const rows = table.querySelectorAll('tbody tr');
@@ -1035,31 +1076,58 @@
                 // 遍历表格行
                 rows.forEach(row => {
                     const rowFluid = row.getAttribute('data-fluid');
-                    let isEngineMatch = engineFilter === 'all' || tableEngine === engineFilter;
-                    let isFluidMatch = fluidFilter === 'all' || rowFluid === fluidFilter;
+                    let shouldShowRow = false;
                     
-                    if (isEngineMatch && isFluidMatch) {
+                    // 规则1：选择特定发动机+特定油液
+                    if (engineFilter !== 'all' && fluidFilter !== 'all') {
+                        if (hasEngineFluidData) {
+                            // 有对应数据：只显示该发动机下的对应油液
+                            shouldShowRow = (tableEngine === engineFilter && rowFluid === fluidFilter);
+                        } else {
+                            // 无对应数据：显示所有该油液类型（不受发动机限制）
+                            shouldShowRow = (rowFluid === fluidFilter);
+                        }
+                    }
+                    // 规则2：选择特定发动机+全部油液
+                    else if (engineFilter !== 'all' && fluidFilter === 'all') {
+                        // 显示该发动机油液 + 通用油液（data-engine="all"）
+                        shouldShowRow = (tableEngine === engineFilter || tableEngine === 'all');
+                    }
+                    // 规则3：选择全部发动机+特定油液
+                    else if (engineFilter === 'all' && fluidFilter !== 'all') {
+                        // 显示所有该油液类型
+                        shouldShowRow = (rowFluid === fluidFilter);
+                    }
+                    // 规则4：选择全部发动机+全部油液
+                    else {
+                        // 显示所有内容
+                        shouldShowRow = true;
+                    }
+                    
+                    if (shouldShowRow) {
                         row.style.display = '';
                         tableHasVisibleRows = true;
-                    } else {
-                        row.style.display = 'none';
                     }
                 });
                 
-                // 控制表格显示/隐藏（如果没有可见行则隐藏表格）
+                // 控制表格显示/隐藏（如果有可见行则显示表格）
                 if (tableHasVisibleRows) {
                     table.style.display = '';
-                    // 显示表格对应的标题
-                    const tableId = table.previousElementSibling?.id || table.parentElement.querySelector('h2')?.id;
-                    if (tableId) {
-                        document.getElementById(tableId)?.parentElement.style.display = '';
+                    // 显示表格对应的标题和相关提示框
+                    let header = table;
+                    while (header && header.tagName !== 'H2') {
+                        header = header.previousElementSibling;
                     }
-                } else {
-                    table.style.display = 'none';
-                    // 隐藏表格对应的标题
-                    const tableId = table.previousElementSibling?.id || table.parentElement.querySelector('h2')?.id;
-                    if (tableId) {
-                        document.getElementById(tableId)?.parentElement.style.display = 'none';
+                    if (header && header.tagName === 'H2') {
+                        header.style.display = '';
+                        // 显示标题的兄弟元素（提示框等）
+                        let sibling = header.nextElementSibling;
+                        while (sibling && sibling !== table) {
+                            if (sibling.classList.contains('warning-box') || sibling.classList.contains('note-box')) {
+                                sibling.style.display = '';
+                            }
+                            sibling = sibling.nextElementSibling;
+                        }
                     }
                 }
             });
@@ -1072,8 +1140,12 @@
             filterTables();
         }
 
-        // 页面加载完成后初始化
+        // 页面加载完成后初始化并显示全部内容
         window.onload = function() {
+            // 为筛选按钮添加点击事件
+            document.querySelector('.filter-btn[onclick="filterTables()"]').addEventListener('click', filterTables);
+            document.querySelector('.filter-btn[onclick="resetFilters()"]').addEventListener('click', resetFilters);
+            // 初始化显示全部内容
             filterTables();
         };
     </script>
