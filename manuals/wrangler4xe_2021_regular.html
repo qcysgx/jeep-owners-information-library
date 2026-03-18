@@ -189,6 +189,15 @@
                 background: #f0f7ff;
                 border-radius: 4px 4px 0 0;
             }
+            /* ----- 维护项目列收窄约1.5cm (原180px - 1.5cm ≈ 123px) ----- */
+            .maintain-item,
+            thead th:first-child {
+                min-width: calc(180px - 1.5cm);   /* 移动端首列宽度精确减少1.5cm */
+                width: calc(180px - 1.5cm);        /* 保证实际宽度应用，同时允许换行 */
+                white-space: normal;                /* 内容折行，避免文字溢出 */
+                word-break: break-word;             /* 长单词/链接也可断行 */
+                /* 保留原有粘性定位、背景色、边框等所有其他样式 */
+            }
         }
 
         /* ===== PC端大屏微调 ===== */
