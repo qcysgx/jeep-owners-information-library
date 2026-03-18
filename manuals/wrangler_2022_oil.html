@@ -2,1152 +2,670 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>Jeep JL系列 油液容量及推荐规格说明</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Jeep JL 油液规格 · 全能手册</title>
     <style>
-        /* 全局样式重置 */
+        /* ---------- 全局设计变量 柔和现代 ---------- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "微软雅黑", "Microsoft YaHei", Arial, sans-serif;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Microsoft YaHei', sans-serif;
         }
 
-        /* 页面基础样式 */
         body {
-            background-color: #f0f2f5;
-            padding: 20px 10px;
-            color: #333;
-            line-height: 1.7;
+            background: linear-gradient(145deg, #e9eef3 0%, #dbe1e8 100%);
+            padding: 24px 16px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
         }
 
-        /* 主容器 */
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            max-width: 1600px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(4px);
+            border-radius: 36px 36px 28px 28px;
+            box-shadow: 0 25px 50px -12px rgba(0, 20, 40, 0.35), inset 0 1px 2px rgba(255,255,255,0.6);
+            padding: 30px 28px;
+            border: 1px solid rgba(255,255,255,0.5);
         }
 
-        /* 标题样式 */
+        /* 标题美化 */
         h1 {
-            color: #2c3e50;
-            font-size: 24px;
+            font-size: clamp(24px, 5vw, 34px);
             font-weight: 700;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #3498db;
-            text-align: center;
+            color: #0b2b40;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        h1:after {
+            content: '';
+            flex: 1;
+            height: 3px;
+            background: linear-gradient(90deg, #1e6f9f, #94b7cf, transparent);
+            border-radius: 10px;
         }
 
         h2 {
-            color: #34495e;
-            font-size: 20px;
+            font-size: clamp(20px, 4vw, 26px);
             font-weight: 600;
-            margin: 40px 0 20px;
-            padding-left: 10px;
-            border-left: 4px solid #3498db;
+            color: #164863;
+            margin: 0 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 3px solid transparent;
+            border-image: linear-gradient(120deg, #2a7faa, #5fa3c9, #b3d4e9);
+            border-image-slice: 1;
+            display: inline-block;
+            letter-spacing: -0.3px;
         }
 
-        h3 {
-            color: #4a6fa5;
-            font-size: 18px;
-            font-weight: 600;
-            margin: 30px 0 15px;
+        /* 提示卡片 */
+        .note-box, .warning-box {
+            padding: 18px 22px;
+            margin: 20px 0 25px 0;
+            border-radius: 24px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            box-shadow: 0 6px 14px rgba(0,35,60,0.08);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255,255,255,0.7);
         }
-
-        /* 提示框样式 */
         .note-box {
-            background-color: #e8f4fd;
-            border-left: 4px solid #3498db;
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
-            font-size: 14px;
+            background: #ebf4fb;
+            border-left: 6px solid #2d7fb9;
+            color: #104469;
         }
-
         .warning-box {
-            background-color: #fef5e7;
-            border-left: 4px solid #e67e22;
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
-            font-size: 14px;
-            color: #d35400;
+            background: #fff3e0;
+            border-left: 6px solid #e67e22;
+            color: #79400b;
+        }
+        .warning-box strong, .note-box strong {
+            font-weight: 700;
+            color: inherit;
         }
 
-        /* 筛选栏样式 */
+        /* 筛选栏 — 玻璃态 */
         .filter-container {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 15px 30px -12px rgba(0, 45, 70, 0.2);
+            padding: 24px 28px;
+            border-radius: 48px;
+            margin: 30px 0 40px 0;
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            align-items: center;
+            gap: 20px 30px;
+            align-items: flex-end;
         }
 
         .filter-group {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 8px;
+            min-width: 180px;
+            flex: 1 1 200px;
         }
 
         .filter-label {
-            font-size: 14px;
-            color: #2c3e50;
-            font-weight: 500;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #1b4b6c;
+            opacity: 0.8;
+            margin-left: 6px;
         }
 
         .filter-select {
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 14px;
-            min-width: 180px;
+            background: white;
+            border: 2px solid #cddde9;
+            border-radius: 40px;
+            padding: 14px 20px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #0a364f;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%2334819b" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            background-size: 18px;
+            transition: all 0.2s;
+            cursor: pointer;
         }
-
-        .filter-select:focus {
+        .filter-select:hover, .filter-select:focus {
+            border-color: #1f6e9c;
+            box-shadow: 0 0 0 4px rgba(47, 128, 186, 0.15);
             outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
         }
 
         .filter-btn {
-            padding: 8px 16px;
-            background-color: #3498db;
-            color: #fff;
+            background: #1a5e8c;
             border: none;
-            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            box-shadow: 0 12px 24px -10px #1a5e8c;
             cursor: pointer;
-            font-size: 14px;
-            margin-top: 17px;
+            transition: all 0.15s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            min-width: 120px;
         }
-
         .filter-btn:hover {
-            background-color: #2980b9;
+            background: #0d4164;
+            transform: translateY(-2px);
+            box-shadow: 0 20px 28px -12px #0b3b5a;
+        }
+        .filter-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 8px 12px -8px #0b3b5a;
+        }
+        .filter-btn.secondary {
+            background: #6f8fa2;
+            box-shadow: 0 8px 18px -8px #4b6372;
+        }
+        .filter-btn.secondary:hover {
+            background: #567588;
         }
 
-        /* 表格样式（核心） */
+        /* 引擎分组卡片 — 主要美化 */
+        .engine-group {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 28px 24px;
+            margin-bottom: 40px;
+            box-shadow: 0 12px 30px -12px rgba(0, 42, 70, 0.25), 0 0 0 1px rgba(255,255,255,0.6) inset;
+            transition: all 0.2s;
+        }
+        .engine-group:last-of-type {
+            margin-bottom: 10px;
+        }
+
+        /* 表格区域 — 干净、透气 */
         .fluid-table {
             width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            font-size: 14px;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 18px 0 8px 0;
+            font-size: 0.9rem;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0, 20, 30, 0.1);
+            background: white;
         }
 
         .fluid-table th {
-            background-color: #f8f9fa;
-            color: #2c3e50;
+            background: #203e55;
+            color: #f2f8fd;
             font-weight: 600;
-            padding: 12px 15px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            padding: 16px 14px;
             text-align: left;
-            border: 1px solid #e0e0e0;
-            position: sticky;
-            top: 0;
-            z-index: 10;
+            border-right: 1px solid #2f5777;
+            white-space: nowrap;
+        }
+        .fluid-table th:last-child {
+            border-right: none;
         }
 
         .fluid-table td {
-            padding: 10px 15px;
-            border: 1px solid #e0e0e0;
+            padding: 14px 14px;
+            background: white;
+            border-bottom: 1px solid #e1ecf5;
+            color: #193e54;
             vertical-align: top;
+            line-height: 1.6;
         }
 
-        .fluid-table tbody tr:nth-child(even) {
-            background-color: #fafafa;
+        .fluid-table tbody tr:last-child td {
+            border-bottom: none;
         }
 
-        .fluid-table tbody tr:hover {
-            background-color: #f5f8fa;
-            cursor: default;
+        .fluid-table tbody tr:hover td {
+            background: #f1f9ff;
+            transition: 0.1s;
         }
 
-        /* 规格标注样式 */
-        .spec-highlight {
-            color: #e74c3c;
-            font-weight: 500;
-        }
-
+        /* 内联备注小字 */
         .note-text {
-            font-size: 12px;
-            color: #7f8c8d;
-            margin-top: 5px;
+            font-size: 0.8rem;
+            color: #4c6d86;
             display: block;
+            margin-top: 4px;
+            font-weight: 400;
+            line-height: 1.5;
         }
 
-        /* 页脚样式 */
-        .footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #e0e0e0;
-            color: #7f8c8d;
-            font-size: 13px;
-            text-align: center;
+        .spec-highlight {
+            color: #c4452b;
+            font-weight: 700;
+            background: #ffe9e2;
+            padding: 2px 8px;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 0.85rem;
         }
 
-        /* 适配移动端 */
-        @media (max-width: 768px) {
+        /* 零件号等优化 */
+        .fluid-table td:nth-child(4),
+        .fluid-table td:nth-child(5) {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: #1b5175;
+        }
+
+        /* 移动端专属调整 */
+        @media (max-width: 760px) {
+            body {
+                padding: 12px 8px;
+            }
             .container {
-                padding: 15px;
+                padding: 16px 14px;
+                border-radius: 28px;
             }
-
             h1 {
-                font-size: 20px;
+                font-size: 1.9rem;
             }
-
-            h2 {
-                font-size: 18px;
-            }
-
-            h3 {
-                font-size: 16px;
-            }
-
             .filter-container {
-                padding: 15px;
+                padding: 20px 16px;
+                border-radius: 32px;
+                gap: 16px;
             }
-
             .filter-select {
-                min-width: 100%;
+                padding: 12px 18px;
+                font-size: 0.95rem;
             }
-
+            .filter-btn {
+                padding: 12px 20px;
+                flex: 1 1 auto;
+            }
+            .engine-group {
+                padding: 16px 12px;
+                border-radius: 24px;
+            }
+            /* 表格在移动端柔和滚动，保留换行 */
             .fluid-table {
                 display: block;
+                width: 100%;
                 overflow-x: auto;
-                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+                border-radius: 18px;
+                font-size: 0.85rem;
             }
+            .fluid-table th, .fluid-table td {
+                white-space: normal;        /* 允许换行，避免超长横向滚动 */
+                word-break: break-word;
+                padding: 12px 8px;
+                min-width: 140px;           /* 保证可读性，仍可横向看全 */
+            }
+            .fluid-table th {
+                white-space: nowrap;        /* 表头可保持不换行，减少高度 */
+            }
+            /* 调整表格列宽比例 */
+            .fluid-table td:first-child {
+                font-weight: 600;
+                background-color: #f9fcff;
+            }
+            .note-box, .warning-box {
+                padding: 14px 18px;
+                border-radius: 20px;
+            }
+        }
+
+        /* 小屏手机 ( < 420px ) 优化 */
+        @media (max-width: 420px) {
+            .filter-group {
+                min-width: 100%;
+            }
+            .filter-btn {
+                width: 100%;
+            }
+            .fluid-table td {
+                min-width: 130px;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* 页脚 */
+        .footer {
+            margin-top: 40px;
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #35637c;
+            border-top: 2px dashed #b6d3e6;
+        }
+
+        /* 筛选隐藏辅助 */
+        .engine-group.hidden-group {
+            display: none;
+        }
+
+        /* 表格行隐藏 (由JS控制) */
+        .fluid-table tbody tr.hidden-row {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- 标题 -->
-        <h1>Jeep JL系列 油液容量及推荐规格说明</h1>
-
-        <!-- 基础说明 -->
-        <div class="note-box">
-            <strong>文档说明：</strong>
-            本手册包含JL系列全发动机型号（2.0L/2.0L PHEV/2.2L/3.0L/3.6L/6.4L）的油液容量、推荐类型、零件号等信息；标注"*"的容量包含加热器和冷却液储液罐注满至MAX刻度的量；所有规格均基于原厂标准，维修时请严格遵循推荐要求。
-        </div>
-
-        <!-- 筛选功能 -->
-        <div class="filter-container">
-            <div class="filter-group">
-                <label class="filter-label">选择发动机型号</label>
-                <select class="filter-select" id="engineFilter">
-                    <option value="all">全部发动机</option>
-                    <option value="2.0L">2.0L 发动机</option>
-                    <option value="2.0L PHEV">2.0L PHEV 发动机</option>
-                    <option value="2.2L">2.2L 发动机</option>
-                    <option value="3.0L">3.0L 发动机</option>
-                    <option value="3.6L">3.6L 发动机</option>
-                    <option value="6.4L">6.4L 发动机</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label class="filter-label">选择油液类型</label>
-                <select class="filter-select" id="fluidFilter">
-                    <option value="all">全部油液类型</option>
-                    <option value="发动机机油">发动机机油</option>
-                    <option value="冷却液">冷却液</option>
-                    <option value="燃油">燃油</option>
-                    <option value="火花塞">火花塞</option>
-                    <option value="制冷剂">制冷剂</option>
-                    <option value="桥油">桥油</option>
-                    <option value="制动液">制动液</option>
-                    <option value="转向油">转向油</option>
-                    <option value="分动箱油">分动箱油</option>
-                    <option value="变速箱油">变速箱油</option>
-                </select>
-            </div>
-            <button class="filter-btn" onclick="filterTables()">筛选</button>
-            <button class="filter-btn" style="background-color: #95a5a6;" onclick="resetFilters()">重置</button>
-        </div>
-
-        <!-- 1. 2.0L 发动机 -->
-        <h2 id="engine-2.0L">2.0L 发动机</h2>
-        <div class="warning-box">
-            <strong>重要提示：</strong>
-            未使用推荐的SN PLUS级或等效机油可能导致发动机损坏，此类损坏不在车辆保修范围内。
-        </div>
-
-        <table class="fluid-table" data-engine="2.0L">
-            <thead>
-                <tr>
-                    <th>油液类型</th>
-                    <th>容量规格</th>
-                    <th>推荐类型及标准</th>
-                    <th>零件号</th>
-                    <th>全球零件号</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-fluid="发动机机油">
-                    <td>发动机机油（带滤清器）</td>
-                    <td>5夸脱 / 4.73升</td>
-                    <td>
-                        推荐使用Mopar API SN PLUS认证SAE 5W-30全合成发动机机油，符合FCA材料标准MS-13340；<br>
-                        若无法获得SN PLUS级或等效机油，可使用SAE 0W-30 ACEA C2/API SN全合成发动机机油，符合FCA材料标准9.55535–GS（如SELENIA DIGITEK）
-                    </td>
-                    <td>05166241PA</td>
-                    <td>68163848GB、05166241GA</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>
-                        冷却系统（2018-2020款）<br>
-                        <span class="note-text">发动机：10.3夸脱 / 9.7升</span><br>
-                        <span class="note-text">中冷器（无电机发电单元）：3.2夸脱 / 3.0升</span><br>
-                        <span class="note-text">中冷器（带电机发电单元）：3.5夸脱 / 3.3升</span><br>
-                        <span class="note-text">电池：2.5夸脱 / 2.4升</span>
-                    </td>
-                    <td>-</td>
-                    <td>推荐使用Mopar 10年/150,000英里配方OAT（有机添加剂技术）防冻液/冷却液，或符合材料标准MS.90032的等效产品</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>
-                        冷却系统（2021款）<br>
-                        <span class="note-text">发动机：10.3夸脱 / 9.7升</span><br>
-                        <span class="note-text">中冷器：3.2夸脱 / 3.0升</span>
-                    </td>
-                    <td>-</td>
-                    <td>推荐使用Mopar 10年/150,000英里配方OAT（有机添加剂技术）防冻液/冷却液，或符合材料标准MS.90032的等效产品</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>
-                        冷却系统（2022款）<br>
-                        <span class="note-text">发动机：12夸脱 / 11.4升</span><br>
-                        <span class="note-text">中冷器：3.7夸脱 / 3.5升</span>
-                    </td>
-                    <td>-</td>
-                    <td>推荐使用Mopar 10年/150,000英里配方OAT（有机添加剂技术）防冻液/冷却液，或符合材料标准MS.90032的等效产品</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>
-                        冷却系统（2023款）<br>
-                        <span class="note-text">发动机：11.8夸脱 / 11.2升</span><br>
-                        <span class="note-text">中冷器：3.7夸脱 / 3.5升</span>
-                    </td>
-                    <td>-</td>
-                    <td>推荐使用Mopar 10年/150,000英里配方OAT（有机添加剂技术）防冻液/冷却液，或符合材料标准MS.90032的等效产品</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>
-                        冷却系统（2024款-当前）<br>
-                        <span class="note-text">发动机：12.0夸脱 / 11.4升</span><br>
-                        <span class="note-text">中冷器：3.7夸脱 / 3.5升</span>
-                    </td>
-                    <td>-</td>
-                    <td>推荐使用Mopar 10年/150,000英里配方OAT（有机添加剂技术）防冻液/冷却液，或符合材料标准MS.90032的等效产品</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="燃油">
-                    <td>
-                        燃油箱容量<br>
-                        <span class="note-text">双门（北美）：17.5加仑 / 66升</span><br>
-                        <span class="note-text">双门（出口）：17.5加仑 / 66升</span><br>
-                        <span class="note-text">四门（北美）：21.5加仑 / 81升</span><br>
-                        <span class="note-text">四门（出口）：21.5加仑 / 81升</span>
-                    </td>
-                    <td>-</td>
-                    <td>
-                        北美市场：87号辛烷值（R+M)/2，含0-15%乙醇；<br>
-                        出口市场：最低95号研究法辛烷值（RON），符合EN228标准
-                    </td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr data-fluid="火花塞">
-                    <td>火花塞间隙</td>
-                    <td>0.024-0.025英寸 / 0.60-0.65毫米</td>
-                    <td>推荐使用Mopar火花塞</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- 2. 2.0L PHEV 发动机 -->
-        <h2 id="engine-2.0L-PHEV">2.0L PHEV 发动机（插电混动版）</h2>
-        <div class="warning-box">
-            <strong>重要提示：</strong>
-            未使用推荐的API SP/GF-6级或等效机油可能导致发动机损坏，此类损坏不在车辆保修范围内；冷却液需使用去离子水或蒸馏水混合，以确保防腐蚀保护效果。
-        </div>
-
-        <table class="fluid-table" data-engine="2.0L PHEV">
-            <thead>
-                <tr>
-                    <th>油液类型</th>
-                    <th>容量规格</th>
-                    <th>推荐类型及标准</th>
-                    <th>零件号</th>
-                    <th>全球零件号</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-fluid="发动机机油">
-                    <td>发动机机油（带滤清器）</td>
-                    <td>5夸脱 / 4.7升</td>
-                    <td>
-                        推荐使用Mopar API SP/GF-6认证SAE 5W-30全合成发动机机油，符合FCA材料标准MS-13340；<br>
-                        可使用符合API SP/GF-6认证的等效SAE 5W-30全合成发动机机油；<br>
-                        若无法获得API SP/GF-6级或等效机油，请联系当地经销商获取推荐
-                    </td>
-                    <td>05166241PA</td>
-                    <td>05166241GA</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>
-                        冷却系统（2021款）<br>
-                        <span class="note-text">发动机：9.1夸脱 / 8.6升</span><br>
-                        <span class="note-text">电池：4.3夸脱 / 4.1升</span><br>
-                        <span class="note-text">电力电子设备：4.5夸脱 / 4.3升</span>
-                    </td>
-                    <td>-</td>
-                    <td>推荐使用Mopar 10年/150,000英里（240,000公里）配方OAT（有机添加剂技术）防冻液/冷却液，混合去离子水或蒸馏水以确保防腐蚀保护，或符合FCA材料标准MS.90032的等效产品</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>
-                        冷却系统（2022-2023款）<br>
-                        <span class="note-text">发动机：12.5夸脱 / 11.8升</span><br>
-                        <span class="note-text">电池：5.4夸脱 / 5.3升</span><br>
-                        <span class="note-text">电力电子设备：5.7夸脱 / 5.4升</span>
-                    </td>
-                    <td>-</td>
-                    <td>推荐使用Mopar 10年/150,000英里（240,000公里）配方OAT（有机添加剂技术）防冻液/冷却液，混合去离子水或蒸馏水以确保防腐蚀保护，或符合FCA材料标准MS.90032的等效产品</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>
-                        冷却系统（2024款-当前）<br>
-                        <span class="note-text">发动机：12夸脱 / 11.4升</span><br>
-                        <span class="note-text">电池：5.6夸脱 / 5.3升</span><br>
-                        <span class="note-text">电力电子设备：5.7夸脱 / 5.4升</span>
-                    </td>
-                    <td>-</td>
-                    <td>推荐使用Mopar 10年/150,000英里（240,000公里）配方OAT（有机添加剂技术）防冻液/冷却液，混合去离子水或蒸馏水以确保防腐蚀保护，或符合FCA材料标准MS.90032的等效产品</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="燃油">
-                    <td>燃油箱容量</td>
-                    <td>17.2加仑 / 65升</td>
-                    <td>
-                        北美市场：87号辛烷值（R+M)/2方法，含0-15%乙醇；<br>
-                        出口市场：最低95号研究法辛烷值（RON），符合EN228标准
-                    </td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr data-fluid="火花塞">
-                    <td>火花塞间隙</td>
-                    <td>0.024-0.025英寸 / 0.60-0.65毫米</td>
-                    <td>推荐使用Mopar火花塞</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- 3. 2.2L 发动机 -->
-        <h2 id="engine-2.2L">2.2L 发动机</h2>
-
-        <table class="fluid-table" data-engine="2.2L">
-            <thead>
-                <tr>
-                    <th>油液类型</th>
-                    <th>容量规格</th>
-                    <th>推荐类型及标准</th>
-                    <th>零件号</th>
-                    <th>全球零件号</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-fluid="发动机机油">
-                    <td>发动机机油（带滤清器）</td>
-                    <td>5夸脱 / 4.73升</td>
-                    <td>推荐使用符合FCA材料标准9.55535–DS1和ACEA C2的全合成低灰分0W-30发动机机油</td>
-                    <td>05166241PA</td>
-                    <td>68218920GA</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>
-                        冷却系统<br>
-                        <span class="note-text">发动机：10.1夸脱 / 9.54升</span><br>
-                        <span class="note-text">中冷器：3.1夸脱 / 2.92升</span>
-                    </td>
-                    <td>-</td>
-                    <td>推荐使用Mopar 10年/150,000英里配方OAT（有机添加剂技术）防冻液/冷却液，或符合材料标准MS.90032的等效产品</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="燃油">
-                    <td>
-                        燃油箱容量<br>
-                        <span class="note-text">双门：17.5加仑 / 66升</span><br>
-                        <span class="note-text">四门：21.5加仑 / 81升</span>
-                    </td>
-                    <td>-</td>
-                    <td>符合EN590标准的柴油</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- 4. 3.0L 发动机 -->
-        <h2 id="engine-3.0L">3.0L 发动机</h2>
-
-        <table class="fluid-table" data-engine="3.0L">
-            <thead>
-                <tr>
-                    <th>油液类型</th>
-                    <th>容量规格</th>
-                    <th>推荐类型及标准</th>
-                    <th>零件号</th>
-                    <th>全球零件号</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-fluid="发动机机油">
-                    <td>发动机机油（带滤清器）</td>
-                    <td>9夸脱 / 8.5升</td>
-                    <td>推荐使用5W-40合成发动机机油（如Mopar），符合FCA材料标准MS-12991，且需满足API SN发动机油类别要求</td>
-                    <td>68231020AA</td>
-                    <td>68231020GA</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>
-                        冷却系统（2020款）<br>
-                        <span class="note-text">发动机：12夸脱 / 11.4升</span>
-                    </td>
-                    <td>-</td>
-                    <td>推荐使用Mopar 10年/150,000英里配方OAT防冻液/冷却液，或符合材料标准MS.90032的等效产品</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>
-                        冷却系统（2022款）<br>
-                        <span class="note-text">发动机：14.8夸脱 / 14升</span>
-                    </td>
-                    <td>-</td>
-                    <td>推荐使用Mopar 10年/150,000英里配方OAT防冻液/冷却液，或符合材料标准MS.90032的等效产品</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>
-                        冷却系统（2023款）<br>
-                        <span class="note-text">发动机：14夸脱 / 13.2升</span>
-                    </td>
-                    <td>-</td>
-                    <td>推荐使用Mopar 10年/150,000英里配方OAT防冻液/冷却液，或符合材料标准MS.90032的等效产品</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="燃油">
-                    <td>燃油箱容量</td>
-                    <td>18.3加仑 / 69.3升</td>
-                    <td>
-                        符合ASTM D-975标准的超低硫柴油（含0-5%生物柴油）；<br>
-                        可使用符合ASTM D-7467标准的含大于5%但不超过20%生物柴油的混合燃料，但需遵循缩短的保养周期
-                    </td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr data-fluid="发动机机油">
-                    <td>柴油排气处理液（DEF）</td>
-                    <td>5.1加仑 / 19.3升</td>
-                    <td>符合ISO 22241标准</td>
-                    <td>68035704AC</td>
-                    <td>-</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- 5. 3.6L 发动机 -->
-        <h2 id="engine-3.6L">3.6L 发动机</h2>
-
-        <table class="fluid-table" data-engine="3.6L">
-            <thead>
-                <tr>
-                    <th>油液类型</th>
-                    <th>容量规格</th>
-                    <th>推荐类型及标准</th>
-                    <th>零件号</th>
-                    <th>全球零件号</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-fluid="发动机机油">
-                    <td>发动机机油（带滤清器）</td>
-                    <td>5夸脱 / 4.73升</td>
-                    <td>推荐使用API认证SAE 0W-20发动机机油，符合FCA材料标准MS-6395（如Mopar、Pennzoil、Shell Helix）；请参考发动机机油加注口盖标注的正确SAE等级</td>
-                    <td>68218950AB</td>
-                    <td>68218950GA</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>
-                        冷却系统（2018-2021款）<br>
-                        <span class="note-text">发动机：11.2夸脱 / 10.6升</span><br>
-                        <span class="note-text">电机发电单元：1.9夸脱 / 1.8升</span><br>
-                        <span class="note-text">电池：2.5夸脱 / 2.4升</span>
-                    </td>
-                    <td>-</td>
-                    <td>推荐使用Mopar 10年/150,000英里配方OAT（有机添加剂技术）防冻液/冷却液，或符合材料标准MS.90032的等效产品</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>
-                        冷却系统（2022款）<br>
-                        <span class="note-text">发动机：13.4夸脱 / 12.7升</span><br>
-                        <span class="note-text">电机发电单元：2.2夸脱 / 2.1升</span><br>
-                        <span class="note-text">电源包单元：3.3夸脱 / 3.1升</span>
-                    </td>
-                    <td>-</td>
-                    <td>推荐使用Mopar 10年/150,000英里配方OAT（有机添加剂技术）防冻液/冷却液，或符合材料标准MS.90032的等效产品</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>
-                        冷却系统（2023款）<br>
-                        <span class="note-text">发动机：13.4夸脱 / 12.7升</span><br>
-                        <span class="note-text">电机发电单元：2.3夸脱 / 2.2升</span><br>
-                        <span class="note-text">电源包单元：3.1夸脱 / 2.9升</span>
-                    </td>
-                    <td>-</td>
-                    <td>推荐使用Mopar 10年/150,000英里配方OAT（有机添加剂技术）防冻液/冷却液，或符合材料标准MS.90032的等效产品</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>
-                        冷却系统（2024款-当前）<br>
-                        <span class="note-text">发动机：13.4夸脱 / 12.7升</span><br>
-                        <span class="note-text">电机发电单元：2.3夸脱 / 2.2升</span><br>
-                        <span class="note-text">电源包单元：3.3夸脱 / 3.1升</span>
-                    </td>
-                    <td>-</td>
-                    <td>推荐使用Mopar 10年/150,000英里配方OAT（有机添加剂技术）防冻液/冷却液，或符合材料标准MS.90032的等效产品</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="燃油">
-                    <td>
-                        燃油箱容量<br>
-                        <span class="note-text">双门（北美）：17.5加仑 / 70升</span><br>
-                        <span class="note-text">双门（出口）：17.5加仑 / 66升</span><br>
-                        <span class="note-text">四门（北美）：21.5加仑 / 81升</span><br>
-                        <span class="note-text">四门（出口）：21.5加仑 / 81升</span>
-                    </td>
-                    <td>-</td>
-                    <td>
-                        北美市场：87号辛烷值，含0-15%乙醇；<br>
-                        出口市场：最低91号研究法辛烷值（RON）
-                    </td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr data-fluid="火花塞">
-                    <td>火花塞间隙</td>
-                    <td>0.043英寸 / 1.1毫米</td>
-                    <td>推荐使用Mopar火花塞</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- 6. 6.4L 发动机 -->
-        <h2 id="engine-6.4L">6.4L 发动机</h2>
-        <div class="warning-box">
-            <strong>重要提示：</strong>
-            仅可使用91号或更高辛烷值的优质无铅汽油（R+M)/2方法，含0-15%乙醇；<strong class="spec-highlight">禁止使用E-85乙醇汽油</strong>。
-        </div>
-
-        <table class="fluid-table" data-engine="6.4L">
-            <thead>
-                <tr>
-                    <th>油液类型</th>
-                    <th>容量规格</th>
-                    <th>推荐类型及标准</th>
-                    <th>零件号</th>
-                    <th>全球零件号</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-fluid="发动机机油">
-                    <td>发动机机油（带滤清器）</td>
-                    <td>7.5夸脱 / 7.1升</td>
-                    <td>
-                        为获得最佳性能和全方位保护，FCA仅推荐符合美国石油学会（API）SN类别的全合成发动机机油；<br>
-                        FCA推荐使用Pennzoil Ultra 0W-40或等效的Mopar发动机机油，符合FCA材料标准MS-12633，适用于所有工作温度
-                    </td>
-                    <td>68171066PB</td>
-                    <td>68171066GA</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>冷却系统（2021-2022款）</td>
-                    <td>16夸脱 / 15升</td>
-                    <td>推荐使用符合MS.90032标准的Mopar 10年/150,000英里配方OAT防冻液/冷却液</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="冷却液">
-                    <td>冷却系统（2023款-当前）</td>
-                    <td>15.6夸脱 / 14.8升</td>
-                    <td>推荐使用符合MS.90032标准的Mopar 10年/150,000英里配方OAT防冻液/冷却液</td>
-                    <td>68163848AB</td>
-                    <td>68163848GB</td>
-                </tr>
-                <tr data-fluid="燃油">
-                    <td>燃油箱容量</td>
-                    <td>21.5加仑 / 81升</td>
-                    <td>仅可使用91号或更高辛烷值的优质无铅汽油（R+M)/2方法，含0-15%乙醇；禁止使用E-85乙醇汽油</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr data-fluid="火花塞">
-                    <td>火花塞间隙</td>
-                    <td>0.043英寸 / 1.10毫米</td>
-                    <td>推荐使用Mopar火花塞</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- 7. 空调制冷剂系统 -->
-        <h2 id="ac-system">空调制冷剂系统</h2>
-
-        <table class="fluid-table" data-engine="all">
-            <thead>
-                <tr>
-                    <th>部件/油液类型</th>
-                    <th>加注量</th>
-                    <th>推荐类型及标准</th>
-                    <th>零件号</th>
-                    <th>全球零件号</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-fluid="制冷剂">
-                    <td>制冷剂（基础款）</td>
-                    <td>1.06磅 / 482克</td>
-                    <td>仅可使用R-1234yf制冷剂</td>
-                    <td>68224028AA</td>
-                    <td>68224028GA</td>
-                </tr>
-                <tr data-fluid="制冷剂">
-                    <td>制冷剂（基础款）</td>
-                    <td>1.19磅 / 539克</td>
-                    <td>仅可使用R-134a制冷剂</td>
-                    <td>82300101AC</td>
-                    <td>82300101GB</td>
-                </tr>
-                <tr data-fluid="制冷剂">
-                    <td>制冷剂（PHEV款）</td>
-                    <td>1.19磅 / 539克</td>
-                    <td>仅可使用R-1234yf制冷剂</td>
-                    <td>68224028AA</td>
-                    <td>68224028GA</td>
-                </tr>
-                <tr data-fluid="制冷剂">
-                    <td>制冷剂油（基础款）</td>
-                    <td>-</td>
-                    <td>FD46XG</td>
-                    <td>05114554AC</td>
-                    <td>05114554GC</td>
-                </tr>
-                <tr data-fluid="制冷剂">
-                    <td>制冷剂油（PHEV款）</td>
-                    <td>-</td>
-                    <td>仅可使用符合材料标准MS-12727的Mopar POE油或等效产品</td>
-                    <td>68453175AB</td>
-                    <td>68453175GB</td>
-                </tr>
-                <tr data-fluid="制冷剂">
-                    <td>制冷剂油（系统总加注量）</td>
-                    <td>基础款：5.0盎司 / 150毫升；PHEV款：6.0盎司 / 180毫升</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr data-fluid="制冷剂">
-                    <td>制冷剂油（空调冷凝器）</td>
-                    <td>2.0盎司 / 60毫升</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr data-fluid="制冷剂">
-                    <td>制冷剂油（空调蒸发器）</td>
-                    <td>2.0盎司 / 60毫升</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr data-fluid="制冷剂">
-                    <td>制冷剂油（空调储液干燥器）</td>
-                    <td>1.0盎司 / 30毫升</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr data-fluid="制冷剂">
-                    <td>制冷剂油（空调压缩机）</td>
-                    <td>-</td>
-                    <td>参考24-供暖和空调/管路/制冷剂油/标准流程</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- 8. 车桥系统 -->
-        <h2 id="axles">车桥系统</h2>
-
-        <table class="fluid-table" data-engine="all">
-            <thead>
-                <tr>
-                    <th>车桥类型</th>
-                    <th>容量规格</th>
-                    <th>推荐类型及标准</th>
-                    <th>零件号</th>
-                    <th>全球零件号</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-fluid="桥油">
-                    <td>前桥 - 186 FBI（30型）</td>
-                    <td>1.82品脱 / 0.86升</td>
-                    <td>推荐使用Mopar齿轮和车桥润滑油SAE 75W（API GL-5）</td>
-                    <td>68378949AA</td>
-                    <td>68378949GA</td>
-                </tr>
-                <tr data-fluid="桥油">
-                    <td>前桥 - 210 FBI（44型）</td>
-                    <td>2.18品脱 / 1.03升</td>
-                    <td>推荐使用Mopar齿轮和车桥润滑油SAE 75W-85（API GL-5）</td>
-                    <td>68378949AA</td>
-                    <td>68378949GA</td>
-                </tr>
-                <tr data-fluid="桥油">
-                    <td>后桥 - 200 RBI（44型）</td>
-                    <td>2.43品脱 / 1.15升</td>
-                    <td>Mopar合成齿轮和车桥润滑油SAE 75W-140，带限滑差速器的车型需要添加摩擦改性剂</td>
-                    <td>68218657AB</td>
-                    <td>68218657GA</td>
-                </tr>
-                <tr data-fluid="桥油">
-                    <td>后桥 - 220 RBI（44型）- EDL</td>
-                    <td>3.06品脱 / 1.45升</td>
-                    <td>推荐使用Mopar齿轮和车桥润滑油SAE 75W-85（API GL-5）</td>
-                    <td>68378949AA</td>
-                    <td>68378949GA</td>
-                </tr>
-                <tr data-fluid="桥油">
-                    <td>后桥 - 220 RBI（44型）- TL</td>
-                    <td>2.87品脱 / 1.36升</td>
-                    <td>推荐使用Mopar齿轮和车桥润滑油SAE 75W-85（API GL-5）</td>
-                    <td>68378949AA</td>
-                    <td>68378949GA</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- 9. 底盘系统 -->
-        <h2 id="chassis">底盘系统</h2>
-
-        <table class="fluid-table" data-engine="all">
-            <thead>
-                <tr>
-                    <th>部件类型</th>
-                    <th>容量规格</th>
-                    <th>推荐类型及标准</th>
-                    <th>零件号</th>
-                    <th>全球零件号</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-fluid="制动液">
-                    <td>制动主缸（2018-2020款）</td>
-                    <td>无具体加注量</td>
-                    <td>推荐使用Mopar DOT 3制动液（SAE J1703）；若无法获得DOT 3 SAE J1703制动液，可使用DOT 4制动液</td>
-                    <td>04318080AD</td>
-                    <td>04318080GD</td>
-                </tr>
-                <tr data-fluid="制动液">
-                    <td>制动主缸（2021款-当前）</td>
-                    <td>无具体加注量</td>
-                    <td>推荐使用Mopar DOT 3制动液（SAE J1709）</td>
-                    <td>04318080AD</td>
-                    <td>04318080GD</td>
-                </tr>
-                <tr data-fluid="转向油">
-                    <td>动力转向储液罐</td>
-                    <td>无具体加注量</td>
-                    <td>推荐使用Mopar电动转向泵油</td>
-                    <td>05154460AA</td>
-                    <td>05154460GA</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- 10. 分动箱 -->
-        <h2 id="transfer-case">分动箱</h2>
-        <div class="note-box">
-            <strong>说明：</strong>
-            标注"♦"的为近似干加注量，或加注至加注螺孔下缘位置。
-        </div>
-
-        <table class="fluid-table" data-engine="all">
-            <thead>
-                <tr>
-                    <th>分动箱型号</th>
-                    <th>容量规格</th>
-                    <th>推荐类型及标准</th>
-                    <th>零件号</th>
-                    <th>全球零件号</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-fluid="分动箱油">
-                    <td>♦ MP1622/MP1622-OR</td>
-                    <td>3.38品脱 / 1.6升</td>
-                    <td>推荐使用Mopar ATF+4自动变速箱油</td>
-                    <td>68218057AB</td>
-                    <td>68218057GB</td>
-                </tr>
-                <tr data-fluid="分动箱油">
-                    <td>♦ MP3022C/MP3022C-OR</td>
-                    <td>3.72品脱 / 1.76升</td>
-                    <td>推荐使用Mopar ATF+4自动变速箱油</td>
-                    <td>68218057AB</td>
-                    <td>68218057GB</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- 11. 变速箱 -->
-        <h2 id="transmission">变速箱</h2>
-        <div class="note-box">
-            <strong>说明：</strong>
-            标注"♦"的为干加注量（实际加注量可能因内部冷却器类型和尺寸、冷却器管路长度和内径或是否使用辅助冷却器而变化，请参考相应维修资料获取正确流程）；标注"♦♦"的为近似干加注量，或加注至加注螺孔下缘位置。
-        </div>
-        <div class="warning-box">
-            <strong>重要提示：</strong>
-            未使用正确规格的变速箱油可能影响变速箱的功能或性能；标称加注量为参考值，因制造公差和加注流程不同，不同车辆可能存在差异。
-        </div>
-
-        <table class="fluid-table" data-engine="all">
-            <thead>
-                <tr>
-                    <th>变速箱类型/型号</th>
-                    <th>容量规格</th>
-                    <th>推荐类型及标准</th>
-                    <th>零件号</th>
-                    <th>全球零件号</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-fluid="变速箱油">
-                    <td>自动变速箱 - ♦8HP50/850RE</td>
-                    <td>
-                        干加注量：8.5夸脱 / 8.0升<br>
-                        <span class="note-text">油底壳更换：5.5夸脱 / 5.2升</span>
-                    </td>
-                    <td>推荐使用Mopar ATF+4自动变速箱油，符合FCA材料标准MS-9602</td>
-                    <td>68218057AB</td>
-                    <td>68218057GB</td>
-                </tr>
-                <tr data-fluid="变速箱油">
-                    <td>自动变速箱 - ♦8HP75/870RE</td>
-                    <td>
-                        干加注量：9.0夸脱 / 8.5升<br>
-                        <span class="note-text">油底壳更换：5.5夸脱 / 5.2升</span>
-                    </td>
-                    <td>推荐使用Mopar ATF+4自动变速箱油，符合FCA材料标准MS-9602</td>
-                    <td>68218057AB</td>
-                    <td>68218057GB</td>
-                </tr>
-                <tr data-fluid="变速箱油">
-                    <td>手动变速箱 - ♦♦NSG370</td>
-                    <td>2.1品脱 / 1.0升</td>
-                    <td>推荐使用Mopar手动变速箱油SAE 75W-85，符合API GL-4标准</td>
-                    <td>68378949AA</td>
-                    <td>68378949GA</td>
-                </tr>
-                <tr data-fluid="变速箱油">
-                    <td>自动变速箱 - ♦948TE (9速)</td>
-                    <td>
-                        干加注量：9.7夸脱 / 9.2升<br>
-                        <span class="note-text">油底壳更换：5.0夸脱 / 4.7升</span>
-                    </td>
-                    <td>推荐使用Mopar ATF ULV (Ultra Low Viscosity) 自动变速箱油，符合FCA材料标准MS-13895</td>
-                    <td>68257765AA</td>
-                    <td>68257765GA</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- 页脚 -->
-        <div class="footer">
-            <p>© 2026 Jeep JL系列油液规格手册 | 所有数据均基于原厂技术规范，维修时请以车辆实际情况为准</p>
-        </div>
+<div class="container">
+    <h1>⛰️ Jeep JL · 油液技术规格</h1>
+    <!-- 基础说明卡片 -->
+    <div class="note-box">
+        <strong>📋 手册说明</strong><br>
+        包含JL系列全发动机 (2.0L / PHEV / 2.2L / 3.0L / 3.6L / 6.4L) 油液容量、推荐标准及零件号。<br>
+        标注"*"容量含加热器及储液罐MAX值；所有数据基于原厂最新规范，维修时务必遵循。
     </div>
 
-    <!-- 筛选功能JS（核心修改部分） -->
-    <script>
-        // 筛选表格数据
-        function filterTables() {
-            // 获取筛选条件
-            const engineFilter = document.getElementById('engineFilter').value;
-            const fluidFilter = document.getElementById('fluidFilter').value;
-            
-            // 获取所有表格
-            const tables = document.querySelectorAll('.fluid-table');
-            
-            // 第一步：统计该发动机下是否有对应油液类型的数据
-            let hasEngineFluidData = false;
-            if (engineFilter !== 'all' && fluidFilter !== 'all') {
-                tables.forEach(table => {
-                    const tableEngine = table.getAttribute('data-engine');
-                    if (tableEngine === engineFilter) {
-                        const rows = table.querySelectorAll('tbody tr');
-                        rows.forEach(row => {
-                            const rowFluid = row.getAttribute('data-fluid');
-                            if (rowFluid === fluidFilter) {
-                                hasEngineFluidData = true;
-                            }
-                        });
+    <!-- 筛选栏 (玻璃质感) -->
+    <div class="filter-container">
+        <div class="filter-group">
+            <label class="filter-label">🔍 发动机型号</label>
+            <select class="filter-select" id="engineFilter">
+                <option value="all">所有发动机</option>
+                <option value="2.0L">2.0L 涡轮增压</option>
+                <option value="2.0L PHEV">2.0L PHEV 插混</option>
+                <option value="2.2L">2.2L 柴油</option>
+                <option value="3.0L">3.0L 柴油</option>
+                <option value="3.6L">3.6L Pentastar</option>
+                <option value="6.4L">6.4L 392 HEMI</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label class="filter-label">🧪 油液类型</label>
+            <select class="filter-select" id="fluidFilter">
+                <option value="all">全部油液</option>
+                <option value="发动机机油">发动机机油</option>
+                <option value="冷却液">冷却液</option>
+                <option value="燃油">燃油</option>
+                <option value="火花塞">火花塞</option>
+                <option value="制冷剂">制冷剂</option>
+                <option value="桥油">桥油/差速器</option>
+                <option value="制动液">制动液</option>
+                <option value="转向油">转向油</option>
+                <option value="分动箱油">分动箱油</option>
+                <option value="变速箱油">变速箱油</option>
+            </select>
+        </div>
+        <button class="filter-btn" id="filterBtn">筛选</button>
+        <button class="filter-btn secondary" id="resetBtn">重置</button>
+    </div>
+
+    <!-- ========= 发动机组块 (全部包裹为engine-group) ========= -->
+    <!-- 2.0L 组 -->
+    <div class="engine-group" id="group-2.0L">
+        <h2>2.0L 涡轮增压 发动机</h2>
+        <div class="warning-box">
+            <strong>⚠️ 重要：</strong> 必须使用SN PLUS级或等效机油，否则发动机损坏不保修。
+        </div>
+        <table class="fluid-table" data-engine="2.0L">
+            <thead><tr><th>油液类型</th><th>容量规格</th><th>推荐类型及标准</th><th>零件号</th><th>全球零件号</th></tr></thead>
+            <tbody>
+                <tr data-fluid="发动机机油"><td>发动机机油（带滤清器）</td><td>5夸脱 / 4.73升</td><td>推荐Mopar API SN PLUS SAE 5W-30全合成(MS-13340)；或0W-30 ACEA C2(如SELENIA DIGITEK)</td><td>05166241PA</td><td>68163848GB、05166241GA</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统(2018-20)<br><span class="note-text">发动机:10.3夸脱/9.7L</span><span class="note-text">中冷器(无电机):3.2夸脱/3.0L</span><span class="note-text">中冷器(带电机):3.5夸脱/3.3L</span><span class="note-text">电池:2.5夸脱/2.4L</span></td><td>-</td><td>Mopar OAT 10年/24万km 防冻液 MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统(2021)<br><span class="note-text">发动机:10.3夸脱/9.7L</span><span class="note-text">中冷器:3.2夸脱/3.0L</span></td><td>-</td><td>Mopar OAT 10年/24万km 防冻液 MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统(2022)<br><span class="note-text">发动机:12夸脱/11.4L</span><span class="note-text">中冷器:3.7夸脱/3.5L</span></td><td>-</td><td>Mopar OAT 10年/24万km 防冻液 MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统(2023)<br><span class="note-text">发动机:11.8夸脱/11.2L</span><span class="note-text">中冷器:3.7夸脱/3.5L</span></td><td>-</td><td>Mopar OAT 10年/24万km 防冻液 MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统(2024-)<br><span class="note-text">发动机:12.0夸脱/11.4L</span><span class="note-text">中冷器:3.7夸脱/3.5L</span></td><td>-</td><td>Mopar OAT 10年/24万km 防冻液 MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="燃油"><td>燃油箱<br><span class="note-text">双门北美/出口:17.5gal/66L</span><span class="note-text">四门北美/出口:21.5gal/81L</span></td><td>-</td><td>87号(R+M)/2 (北美)；出口≥95 RON (EN228)</td><td>-</td><td>-</td></tr>
+                <tr data-fluid="火花塞"><td>火花塞间隙</td><td>0.024-0.025英寸 / 0.60-0.65mm</td><td>Mopar 火花塞</td><td>-</td><td>-</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 2.0L PHEV 组 -->
+    <div class="engine-group" id="group-2.0L-PHEV">
+        <h2>2.0L PHEV 插电混动</h2>
+        <div class="warning-box"><strong>⚠️ 重要：</strong> 必须用API SP/GF-6级机油；冷却液需用去离子/蒸馏水混合。</div>
+        <table class="fluid-table" data-engine="2.0L PHEV">
+            <thead><tr><th>油液类型</th><th>容量规格</th><th>推荐类型及标准</th><th>零件号</th><th>全球零件号</th></tr></thead>
+            <tbody>
+                <tr data-fluid="发动机机油"><td>发动机机油(带滤清器)</td><td>5夸脱 / 4.7L</td><td>Mopar API SP/GF-6 SAE 5W-30 (MS-13340) 或等效</td><td>05166241PA</td><td>05166241GA</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统(2021)<br><span class="note-text">发动机:9.1夸脱/8.6L</span><span class="note-text">电池:4.3夸脱/4.1L</span><span class="note-text">电力电子:4.5夸脱/4.3L</span></td><td>-</td><td>Mopar OAT 10年防冻液+去离子水 MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统(2022-23)<br><span class="note-text">发动机:12.5夸脱/11.8L</span><span class="note-text">电池:5.4夸脱/5.3L</span><span class="note-text">电力电子:5.7夸脱/5.4L</span></td><td>-</td><td>Mopar OAT 10年防冻液+去离子水 MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统(2024-)<br><span class="note-text">发动机:12夸脱/11.4L</span><span class="note-text">电池:5.6夸脱/5.3L</span><span class="note-text">电力电子:5.7夸脱/5.4L</span></td><td>-</td><td>Mopar OAT 10年防冻液+去离子水 MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="燃油"><td>燃油箱</td><td>17.2加仑 / 65L</td><td>87号 (R+M)/2 或出口≥95 RON</td><td>-</td><td>-</td></tr>
+                <tr data-fluid="火花塞"><td>火花塞间隙</td><td>0.024-0.025英寸 / 0.60-0.65mm</td><td>Mopar火花塞</td><td>-</td><td>-</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 2.2L 柴油 -->
+    <div class="engine-group" id="group-2.2L">
+        <h2>2.2L 柴油发动机</h2>
+        <table class="fluid-table" data-engine="2.2L">
+            <thead><tr><th>油液类型</th><th>容量规格</th><th>推荐类型及标准</th><th>零件号</th><th>全球零件号</th></tr></thead>
+            <tbody>
+                <tr data-fluid="发动机机油"><td>发动机机油(带滤清器)</td><td>5夸脱 / 4.73L</td><td>全合成低灰分0W-30 ACEA C2 (FCA 9.55535–DS1)</td><td>05166241PA</td><td>68218920GA</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统<br><span class="note-text">发动机:10.1夸脱/9.54L</span><span class="note-text">中冷器:3.1夸脱/2.92L</span></td><td>-</td><td>Mopar OAT 10年防冻液 MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="燃油"><td>燃油箱<br><span class="note-text">双门17.5gal/66L · 四门21.5gal/81L</span></td><td>-</td><td>符合EN590 柴油</td><td>-</td><td>-</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 3.0L 柴油 -->
+    <div class="engine-group" id="group-3.0L">
+        <h2>3.0L 柴油 V6</h2>
+        <table class="fluid-table" data-engine="3.0L">
+            <thead><tr><th>油液类型</th><th>容量规格</th><th>推荐类型及标准</th><th>零件号</th><th>全球零件号</th></tr></thead>
+            <tbody>
+                <tr data-fluid="发动机机油"><td>发动机机油(带滤清器)</td><td>9夸脱 / 8.5L</td><td>5W-40 合成 (MS-12991, API SN)</td><td>68231020AA</td><td>68231020GA</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统(2020)</td><td>12夸脱 / 11.4L</td><td>Mopar OAT MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统(2022)</td><td>14.8夸脱 / 14L</td><td>Mopar OAT MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统(2023)</td><td>14夸脱 / 13.2L</td><td>Mopar OAT MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="燃油"><td>燃油箱</td><td>18.3加仑 / 69.3L</td><td>超低硫柴油 (B0-B5)；B20需缩短保养</td><td>-</td><td>-</td></tr>
+                <tr data-fluid="发动机机油"><td>柴油排气处理液DEF</td><td>5.1加仑 / 19.3L</td><td>ISO 22241</td><td>68035704AC</td><td>-</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 3.6L 发动机 -->
+    <div class="engine-group" id="group-3.6L">
+        <h2>3.6L Pentastar</h2>
+        <table class="fluid-table" data-engine="3.6L">
+            <thead><tr><th>油液类型</th><th>容量规格</th><th>推荐类型及标准</th><th>零件号</th><th>全球零件号</th></tr></thead>
+            <tbody>
+                <tr data-fluid="发动机机油"><td>发动机机油(带滤清器)</td><td>5夸脱 / 4.73L</td><td>API SN 0W-20 (MS-6395) 推荐Mopar/Pennzoil</td><td>68218950AB</td><td>68218950GA</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统(2018-21)<br><span class="note-text">发动机:11.2夸脱/10.6L</span><span class="note-text">电机发电单元:1.9夸脱/1.8L</span><span class="note-text">电池:2.5夸脱/2.4L</span></td><td>-</td><td>Mopar OAT MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统(2022)<br><span class="note-text">发动机:13.4夸脱/12.7L</span><span class="note-text">电机发电:2.2夸脱/2.1L</span><span class="note-text">电源包:3.3夸脱/3.1L</span></td><td>-</td><td>Mopar OAT MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统(2023)<br><span class="note-text">发动机:13.4夸脱/12.7L</span><span class="note-text">电机发电:2.3夸脱/2.2L</span><span class="note-text">电源包:3.1夸脱/2.9L</span></td><td>-</td><td>Mopar OAT MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统(2024-)<br><span class="note-text">发动机:13.4夸脱/12.7L</span><span class="note-text">电机发电:2.3夸脱/2.2L</span><span class="note-text">电源包:3.3夸脱/3.1L</span></td><td>-</td><td>Mopar OAT MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="燃油"><td>燃油箱<br><span class="note-text">双门北美17.5gal/70L 出口66L · 四门81L</span></td><td>-</td><td>87号(北美) / 出口≥91 RON</td><td>-</td><td>-</td></tr>
+                <tr data-fluid="火花塞"><td>火花塞间隙</td><td>0.043英寸 / 1.1mm</td><td>Mopar火花塞</td><td>-</td><td>-</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 6.4L 发动机 -->
+    <div class="engine-group" id="group-6.4L">
+        <h2>6.4L 392 HEMI</h2>
+        <div class="warning-box"><strong>⛽ 燃油警告：</strong> 仅用91号以上优质无铅，禁止E-85！</div>
+        <table class="fluid-table" data-engine="6.4L">
+            <thead><tr><th>油液类型</th><th>容量规格</th><th>推荐类型及标准</th><th>零件号</th><th>全球零件号</th></tr></thead>
+            <tbody>
+                <tr data-fluid="发动机机油"><td>发动机机油(带滤清器)</td><td>7.5夸脱 / 7.1L</td><td>Pennzoil Ultra 0W-40 或 Mopar MS-12633 全合成</td><td>68171066PB</td><td>68171066GA</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统(2021-22)</td><td>16夸脱 / 15L</td><td>Mopar OAT MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="冷却液"><td>冷却系统(2023-)</td><td>15.6夸脱 / 14.8L</td><td>Mopar OAT MS.90032</td><td>68163848AB</td><td>68163848GB</td></tr>
+                <tr data-fluid="燃油"><td>燃油箱</td><td>21.5加仑 / 81L</td><td>91号以上 (R+M)/2, 无铅</td><td>-</td><td>-</td></tr>
+                <tr data-fluid="火花塞"><td>火花塞间隙</td><td>0.043英寸 / 1.10mm</td><td>Mopar火花塞</td><td>-</td><td>-</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 空调系统 (通用 all) -->
+    <div class="engine-group" id="group-ac">
+        <h2>❄️ 空调制冷剂系统</h2>
+        <table class="fluid-table" data-engine="all">
+            <thead><tr><th>部件/油液</th><th>加注量</th><th>推荐标准</th><th>零件号</th><th>全球零件号</th></tr></thead>
+            <tbody>
+                <tr data-fluid="制冷剂"><td>制冷剂(基础款 R-1234yf)</td><td>1.06lb / 482g</td><td>R-1234yf</td><td>68224028AA</td><td>68224028GA</td></tr>
+                <tr data-fluid="制冷剂"><td>制冷剂(基础款 R-134a)</td><td>1.19lb / 539g</td><td>R-134a</td><td>82300101AC</td><td>82300101GB</td></tr>
+                <tr data-fluid="制冷剂"><td>制冷剂(PHEV R-1234yf)</td><td>1.19lb / 539g</td><td>R-1234yf</td><td>68224028AA</td><td>68224028GA</td></tr>
+                <tr data-fluid="制冷剂"><td>制冷剂油(基础款)</td><td>-</td><td>FD46XG</td><td>05114554AC</td><td>05114554GC</td></tr>
+                <tr data-fluid="制冷剂"><td>制冷剂油(PHEV)</td><td>-</td><td>Mopar POE MS-12727</td><td>68453175AB</td><td>68453175GB</td></tr>
+                <tr data-fluid="制冷剂"><td>系统总油量</td><td>基础5.0oz/150ml · PHEV 6.0oz/180ml</td><td>-</td><td>-</td><td>-</td></tr>
+                <tr data-fluid="制冷剂"><td>冷凝器油量</td><td>2.0oz / 60ml</td><td>-</td><td>-</td><td>-</td></tr>
+                <tr data-fluid="制冷剂"><td>蒸发器油量</td><td>2.0oz / 60ml</td><td>-</td><td>-</td><td>-</td></tr>
+                <tr data-fluid="制冷剂"><td>储液干燥器油量</td><td>1.0oz / 30ml</td><td>-</td><td>-</td><td>-</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 车桥系统 all -->
+    <div class="engine-group" id="group-axles">
+        <h2>🔧 车桥系统</h2>
+        <table class="fluid-table" data-engine="all">
+            <thead><tr><th>车桥类型</th><th>容量</th><th>推荐润滑油</th><th>零件号</th><th>全球零件号</th></tr></thead>
+            <tbody>
+                <tr data-fluid="桥油"><td>前桥 186 FBI (30型)</td><td>1.82pt / 0.86L</td><td>Mopar 75W GL-5</td><td>68378949AA</td><td>68378949GA</td></tr>
+                <tr data-fluid="桥油"><td>前桥 210 FBI (44型)</td><td>2.18pt / 1.03L</td><td>Mopar 75W-85 GL-5</td><td>68378949AA</td><td>68378949GA</td></tr>
+                <tr data-fluid="桥油"><td>后桥 200 RBI (44型)</td><td>2.43pt / 1.15L</td><td>Mopar 75W-140 限滑差速器需摩擦改性剂</td><td>68218657AB</td><td>68218657GA</td></tr>
+                <tr data-fluid="桥油"><td>后桥 220 RBI (44型) EDL</td><td>3.06pt / 1.45L</td><td>Mopar 75W-85 GL-5</td><td>68378949AA</td><td>68378949GA</td></tr>
+                <tr data-fluid="桥油"><td>后桥 220 RBI (44型) TL</td><td>2.87pt / 1.36L</td><td>Mopar 75W-85 GL-5</td><td>68378949AA</td><td>68378949GA</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 底盘系统 all -->
+    <div class="engine-group" id="group-chassis">
+        <h2>🛞 底盘系统</h2>
+        <table class="fluid-table" data-engine="all">
+            <thead><tr><th>部件</th><th>容量</th><th>推荐标准</th><th>零件号</th><th>全球零件号</th></tr></thead>
+            <tbody>
+                <tr data-fluid="制动液"><td>制动主缸 (2018-20)</td><td>—</td><td>Mopar DOT 3 (SAE J1703) 或 DOT4</td><td>04318080AD</td><td>04318080GD</td></tr>
+                <tr data-fluid="制动液"><td>制动主缸 (2021-)</td><td>—</td><td>Mopar DOT 3 (SAE J1709)</td><td>04318080AD</td><td>04318080GD</td></tr>
+                <tr data-fluid="转向油"><td>动力转向储液罐</td><td>—</td><td>Mopar电动转向泵油</td><td>05154460AA</td><td>05154460GA</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 分动箱 all -->
+    <div class="engine-group" id="group-transfer">
+        <h2>⚙️ 分动箱</h2>
+        <div class="note-box"><strong>♦ 近似干加注量，或至加注口下缘</strong></div>
+        <table class="fluid-table" data-engine="all">
+            <thead><tr><th>型号</th><th>容量</th><th>润滑油</th><th>零件号</th><th>全球零件号</th></tr></thead>
+            <tbody>
+                <tr data-fluid="分动箱油"><td>♦ MP1622/MP1622-OR</td><td>3.38pt / 1.6L</td><td>Mopar ATF+4</td><td>68218057AB</td><td>68218057GB</td></tr>
+                <tr data-fluid="分动箱油"><td>♦ MP3022C/MP3022C-OR</td><td>3.72pt / 1.76L</td><td>Mopar ATF+4</td><td>68218057AB</td><td>68218057GB</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 变速箱 all -->
+    <div class="engine-group" id="group-transmission">
+        <h2>🔄 变速箱</h2>
+        <div class="warning-box"><strong>注意：</strong>必须使用正确油品，加注量因冷却器而异，以维修资料为准。</div>
+        <table class="fluid-table" data-engine="all">
+            <thead><tr><th>型号</th><th>容量</th><th>推荐油液</th><th>零件号</th><th>全球零件号</th></tr></thead>
+            <tbody>
+                <tr data-fluid="变速箱油"><td>♦8HP50/850RE 自动</td><td>干8.5qt/8.0L · 油底壳5.5qt/5.2L</td><td>Mopar ATF+4 (MS-9602)</td><td>68218057AB</td><td>68218057GB</td></tr>
+                <tr data-fluid="变速箱油"><td>♦8HP75/870RE 自动</td><td>干9.0qt/8.5L · 油底壳5.5qt/5.2L</td><td>Mopar ATF+4 (MS-9602)</td><td>68218057AB</td><td>68218057GB</td></tr>
+                <tr data-fluid="变速箱油"><td>♦♦NSG370 手动</td><td>2.1pt / 1.0L</td><td>Mopar 75W-85 GL-4</td><td>68378949AA</td><td>68378949GA</td></tr>
+                <tr data-fluid="变速箱油"><td>♦948TE (9速) 自动</td><td>干9.7qt/9.2L · 油底壳5.0qt/4.7L</td><td>Mopar ATF ULV (MS-13895)</td><td>68257765AA</td><td>68257765GA</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        <p>© 2026 Jeep JL 油液手册 · 基于原厂技术规范 · 实际加注请以实车标尺为准</p>
+    </div>
+</div>
+
+<!-- 筛选脚本 (重构：按组 + 通用表格始终参与) -->
+<script>
+    (function() {
+        const engineSelect = document.getElementById('engineFilter');
+        const fluidSelect = document.getElementById('fluidFilter');
+        const filterBtn = document.getElementById('filterBtn');
+        const resetBtn = document.getElementById('resetBtn');
+
+        // 获取所有组和每个组内的表格
+        const groups = document.querySelectorAll('.engine-group');
+
+        function filterAll() {
+            const selectedEngine = engineSelect.value;
+            const selectedFluid = fluidSelect.value;
+
+            groups.forEach(group => {
+                // 获取该组内的第一个表格 (每组只有一个)
+                const table = group.querySelector('.fluid-table');
+                if (!table) return;
+
+                const tableEngine = table.getAttribute('data-engine'); // "2.0L", "all" ...
+
+                // ----- 发动机匹配逻辑：通用表(all) 或 完全匹配 或 全选 -----
+                let engineMatch = false;
+                if (selectedEngine === 'all') {
+                    engineMatch = true;  // 显示所有组
+                } else {
+                    if (tableEngine === 'all') {
+                        engineMatch = true;  // 通用表总是显示 (但还要看行)
+                    } else {
+                        engineMatch = (tableEngine === selectedEngine);
                     }
-                });
-            }
-            
-            // 第二步：先重置所有元素为隐藏状态
-            tables.forEach(table => {
-                table.style.display = 'none';
-                // 隐藏表格对应的标题元素
-                let header = table;
-                while (header && header.tagName !== 'H2') {
-                    header = header.previousElementSibling;
                 }
-                if (header && header.tagName === 'H2') {
-                    header.style.display = 'none';
-                    // 隐藏标题的兄弟元素（提示框等）
-                    let sibling = header.nextElementSibling;
-                    while (sibling && sibling.tagName !== 'TABLE') {
-                        if (sibling.classList.contains('warning-box') || sibling.classList.contains('note-box')) {
-                            sibling.style.display = 'none';
-                        }
-                        sibling = sibling.nextElementSibling;
-                    }
-                }
-                // 隐藏所有行
+
+                // 获取表格所有数据行
                 const rows = table.querySelectorAll('tbody tr');
-                rows.forEach(row => row.style.display = 'none');
-            });
-            
-            // 第三步：根据筛选规则显示对应内容
-            tables.forEach(table => {
-                const tableEngine = table.getAttribute('data-engine');
-                const rows = table.querySelectorAll('tbody tr');
-                let tableHasVisibleRows = false;
-                
-                // 遍历表格行
+                let anyRowVisible = false;
+
                 rows.forEach(row => {
                     const rowFluid = row.getAttribute('data-fluid');
-                    let shouldShowRow = false;
-                    
-                    // 规则1：选择特定发动机+特定油液
-                    if (engineFilter !== 'all' && fluidFilter !== 'all') {
-                        if (hasEngineFluidData) {
-                            // 有对应数据：只显示该发动机下的对应油液
-                            shouldShowRow = (tableEngine === engineFilter && rowFluid === fluidFilter);
-                        } else {
-                            // 无对应数据：显示所有该油液类型（不受发动机限制）
-                            shouldShowRow = (rowFluid === fluidFilter);
-                        }
-                    }
-                    // 规则2：选择特定发动机+全部油液
-                    else if (engineFilter !== 'all' && fluidFilter === 'all') {
-                        // 显示该发动机油液 + 通用油液（data-engine="all"）
-                        shouldShowRow = (tableEngine === engineFilter || tableEngine === 'all');
-                    }
-                    // 规则3：选择全部发动机+特定油液
-                    else if (engineFilter === 'all' && fluidFilter !== 'all') {
-                        // 显示所有该油液类型
-                        shouldShowRow = (rowFluid === fluidFilter);
-                    }
-                    // 规则4：选择全部发动机+全部油液
-                    else {
-                        // 显示所有内容
-                        shouldShowRow = true;
-                    }
-                    
-                    if (shouldShowRow) {
-                        row.style.display = '';
-                        tableHasVisibleRows = true;
+                    let fluidMatch = (selectedFluid === 'all') || (rowFluid === selectedFluid);
+
+                    // 如果发动机不匹配，行肯定隐藏；否则根据流体决定
+                    if (engineMatch && fluidMatch) {
+                        row.classList.remove('hidden-row');
+                        anyRowVisible = true;
+                    } else {
+                        row.classList.add('hidden-row');
                     }
                 });
-                
-                // 控制表格显示/隐藏（如果有可见行则显示表格）
-                if (tableHasVisibleRows) {
-                    table.style.display = '';
-                    // 显示表格对应的标题和相关提示框
-                    let header = table;
-                    while (header && header.tagName !== 'H2') {
-                        header = header.previousElementSibling;
-                    }
-                    if (header && header.tagName === 'H2') {
-                        header.style.display = '';
-                        // 显示标题的兄弟元素（提示框等）
-                        let sibling = header.nextElementSibling;
-                        while (sibling && sibling !== table) {
-                            if (sibling.classList.contains('warning-box') || sibling.classList.contains('note-box')) {
-                                sibling.style.display = '';
-                            }
-                            sibling = sibling.nextElementSibling;
-                        }
-                    }
+
+                // 控制整个组的显示：发动机匹配且至少有一行可见 (若流体=all且行全存在则anyRowVisible为true)
+                if (engineMatch && anyRowVisible) {
+                    group.classList.remove('hidden-group');
+                } else {
+                    group.classList.add('hidden-group');
                 }
             });
         }
 
-        // 重置筛选条件
+        // 重置
         function resetFilters() {
-            document.getElementById('engineFilter').value = 'all';
-            document.getElementById('fluidFilter').value = 'all';
-            filterTables();
+            engineSelect.value = 'all';
+            fluidSelect.value = 'all';
+            filterAll();
         }
 
-        // 页面加载完成后初始化并显示全部内容
-        window.onload = function() {
-            // 为筛选按钮添加点击事件
-            document.querySelector('.filter-btn[onclick="filterTables()"]').addEventListener('click', filterTables);
-            document.querySelector('.filter-btn[onclick="resetFilters()"]').addEventListener('click', resetFilters);
-            // 初始化显示全部内容
-            filterTables();
-        };
-    </script>
+        filterBtn.addEventListener('click', filterAll);
+        resetBtn.addEventListener('click', resetFilters);
+
+        // 执行一次初始筛选 (显示全部)
+        window.addEventListener('load', () => {
+            // 确保所有行可见、组可见
+            groups.forEach(g => g.classList.remove('hidden-group'));
+            document.querySelectorAll('.fluid-table tbody tr').forEach(r => r.classList.remove('hidden-row'));
+        });
+    })();
+</script>
 </body>
 </html>
