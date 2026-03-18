@@ -2,553 +2,244 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>2018款 JL 维护计划 · 中国规格</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2018款JL车辆维护计划（中国）</title>
     <style>
-        /* ----- 现代重置 & 设计变量 ----- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
         }
-
-        :root {
-            --primary: #0a5c9e;          /* 沉稳深蓝，更显质感 */
-            --primary-light: #e2effa;
-            --primary-soft: #f0f7ff;
-            --accent: #2c7a4d;            /* 点缀绿，用于注释或强调 */
-            --gray-bg: #f8fafc;
-            --border-light: #e2e8f0;
-            --text-dark: #1e293b;
-            --text-soft: #334155;
-            --shadow-card: 0 12px 30px -8px rgba(0, 20, 40, 0.15);
-            --shadow-table: 0 4px 12px rgba(0, 0, 0, 0.03);
-            --font-main: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', 'Microsoft YaHei', sans-serif;
-        }
-
         body {
-            background-color: #eef2f6;
-            font-family: var(--font-main);
-            line-height: 1.6;
-            color: var(--text-dark);
-            padding: clamp(12px, 4vw, 32px);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-color: #f5f5f5;
+            padding: 30px;
+            line-height: 1.8;
+            color: #333;
         }
-
         .container {
-            max-width: 1600px;
-            width: 100%;
+            max-width: 1400px;
             margin: 0 auto;
-            background: white;
-            border-radius: 28px;
-            padding: clamp(20px, 5vw, 48px);
-            box-shadow: var(--shadow-card);
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(255,255,255,0.3);
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-
-        /* ----- 标题与区块美化 ----- */
         h1 {
             text-align: center;
-            font-size: clamp(24px, 6vw, 34px);
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            color: #0b2b44;
-            margin-bottom: 24px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid transparent;
-            background: linear-gradient(135deg, var(--primary) 0%, #0b2b44 80%) left bottom no-repeat;
-            background-size: 120px 3px;
-            display: inline-block;
-            width: 100%;
+            color: #222;
+            margin-bottom: 30px;
+            font-size: 28px;
+            border-bottom: 3px solid #0066cc;
+            padding-bottom: 15px;
         }
-
         h2 {
-            color: var(--primary);
-            font-size: clamp(20px, 4.5vw, 26px);
-            font-weight: 600;
-            margin: 2.2rem 0 1rem 0;
-            padding-left: 16px;
-            border-left: 6px solid var(--primary);
-            background: linear-gradient(to right, var(--primary-soft), transparent);
-            padding: 10px 0 10px 20px;
-            border-radius: 0 40px 40px 0;
-            letter-spacing: -0.3px;
+            color: #0066cc;
+            margin: 25px 0 15px;
+            font-size: 22px;
+            padding-left: 10px;
+            border-left: 4px solid #0066cc;
         }
-
-        p, li {
+        p {
+            margin: 10px 0;
             font-size: 16px;
-            color: var(--text-soft);
         }
-
-        /* 列表增强 */
-        ul, ol {
-            margin: 12px 0 20px 28px;
+        ul {
+            margin: 10px 0 10px 30px;
+            font-size: 16px;
         }
-        li {
-            margin: 8px 0;
-            position: relative;
-            padding-left: 4px;
-        }
-        /* 自定义列表标记 */
-        ul li::marker {
-            color: var(--primary);
-            font-weight: 600;
-        }
-        ol li::marker {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        /* 机油提示段落卡片化 */
-        p strong {
-            color: var(--primary);
-            font-weight: 600;
-            background: var(--primary-soft);
-            padding: 2px 8px;
-            border-radius: 24px;
-            display: inline-block;
-            margin: 2px 0;
-        }
-
-        .note, .note p {
-            background: #f9fdfe;
-            border-radius: 24px;
-            padding: 16px 24px;
-            border-left: 6px solid var(--accent);
-            background: linear-gradient(145deg, #f6fbfe, #ffffff);
-            box-shadow: var(--shadow-table);
-            margin: 28px 0 12px 0;
-            font-size: 15px;
-        }
-        .note p {
-            margin: 6px 0;
-            padding: 0;
-            background: transparent;
-            box-shadow: none;
-        }
-
-        /* ----- 表格容器 (双固定 + 横向滚动) ----- */
+        /* 表格容器：横向滚动 + 固定列支撑 */
         .table-wrap {
             overflow-x: auto;
-            margin: 32px 0 20px 0;
-            border-radius: 20px;
-            border: 1px solid var(--border-light);
-            background: white;
-            box-shadow: var(--shadow-table);
-            transition: box-shadow 0.2s ease;
+            margin: 20px 0;
+            border-radius: 6px;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
         }
-        .table-wrap:hover {
-            box-shadow: 0 8px 20px rgba(0, 60, 120, 0.12);
-        }
-
         table {
-            width: 100%;
             border-collapse: collapse;
-            white-space: nowrap;           /* 保持里程列单行不折，实现滚动 */
+            min-width: 100%;
+            white-space: nowrap;
             font-size: 14px;
-            min-width: 1300px;              /* 保证桌面端足够展示，移动端滚动由容器控制 */
-            background: white;
         }
-
-        /* 表头固定顶部 */
+        /* 表头固定 */
         thead {
             position: sticky;
             top: 0;
-            z-index: 15;                    /* 高于左侧列 */
-            background: var(--primary);
+            background: #0066cc;
             color: white;
+            z-index: 10;
         }
-
-        th {
-            font-weight: 600;
-            padding: 16px 12px;
-            background: var(--primary);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-bottom: 2px solid rgba(0,0,0,0.1);
-            color: white;
-            font-size: 0.95em;
-            letter-spacing: 0.3px;
-            vertical-align: middle;
-            line-height: 1.4;
-        }
-        th:first-child {
-            position: sticky;
-            left: 0;
-            z-index: 20;                     /* 表头第一列在最上层 */
-            background: var(--primary);
-            border-right: 2px solid rgba(255,255,255,0.4);
-            box-shadow: 2px 0 0 rgba(0,0,0,0.05);
-        }
-
-        /* 通用单元格 */
-        td {
-            padding: 14px 10px;
-            border: 1px solid var(--border-light);
-            transition: background 0.15s ease;
-            vertical-align: middle;
-        }
-
-        /* 左侧维护项目列 (粘性) */
+        /* 首列(维护项目)固定左侧 */
         .maintain-item {
-            text-align: left;
-            font-weight: 500;
-            background-color: white;
             position: sticky;
             left: 0;
-            z-index: 10;                    /* 低于表头，但高于普通列 */
-            border-right: 2px solid #d0ddee;
-            white-space: normal;             /* 允许项目名称折行，提升移动端可读性 */
-            word-break: break-word;
-            min-width: 170px;                 /* 保证一定宽度，折行后不显局促 */
-            background: linear-gradient(90deg, #ffffff, #fcfdff);
-            box-shadow: 2px 0 5px -2px rgba(0,0,0,0.05);
-            color: var(--text-dark);
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        /* 表头的左侧单元格样式微调 */
-        thead th.maintain-item {
-            background: var(--primary);
-            color: white;
-            font-weight: 600;
-            white-space: normal;
-            min-width: 170px;
-            border-right: 2px solid rgba(255,255,255,0.3);
-        }
-
-        /* 保养圆点 ● 美化 */
-        .dot {
-            color: var(--primary);
-            font-size: 26px;
-            line-height: 1;
+            background-color: white;
+            z-index: 5;
+            border-right: 2px solid #ccc;
             font-weight: 500;
-            text-shadow: 0 2px 4px rgba(0,102,204,0.2);
-            transition: transform 0.1s ease;
-            display: inline-block;
+            text-align: left;
         }
-        td.dot {
-            /* 保证单元格内有圆点居中 */
-            padding: 6px 10px;
+        /* 表头的首列也要固定，且层级高于左侧列普通单元格 */
+        thead th:first-child {
+            position: sticky;
+            left: 0;
+            z-index: 12;
+            background-color: #0066cc;
+            color: white;
+            border-right: 2px solid #fff;
         }
-        tr:hover .dot {
-            transform: scale(1.2);
-            color: #0a5c9e;
+        th, td {
+            padding: 12px 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+            vertical-align: middle;
         }
-
-        /* 斑马纹与悬浮 */
+        th {
+            font-weight: 700;
+            background-color: #0066cc;
+            color: white;
+            min-width: 90px;
+        }
+        /* 偶数行底色 */
         tbody tr:nth-child(even) {
-            background-color: #f9fcff;
+            background-color: #f9f9f9;
         }
+        /* 悬停高亮 */
         tbody tr:hover {
-            background-color: #e7f1fa;
+            background-color: #f0f7ff;
         }
-        tbody tr:hover .maintain-item {
-            background: #e7f1fa;            /* 悬浮时左侧列也变色 */
+        /* 保养圆点 */
+        .dot {
+            color: #0066cc;
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 1;
         }
-
-        /* 空单元格加极浅底色，视觉更舒适 */
-        td:not(.dot):not(.maintain-item) {
-            background-color: rgba(240, 247, 255, 0.2);
+        .note {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f7ff;
+            border-left: 4px solid #0066cc;
+            border-radius: 0 4px 4px 0;
+            font-size: 14px;
         }
-
-        /* 严苛工况区块卡片 */
-        h2 + ul, h2 + p {
-            background: #f2f7fd;
-            padding: 18px 18px 18px 40px;
-            border-radius: 28px;
-            margin-top: 8px;
-            margin-bottom: 28px;
-            border: 1px solid rgba(10,92,158,0.1);
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.8);
+        /* 严苛说明小标签 */
+        .severe-note {
+            background: #fff3cd;
+            border-left: 4px solid #ff9800;
+            padding: 10px;
+            margin: 10px 0;
         }
-        h2 + p {
-            padding: 20px 28px;
-        }
-        h2 + ul li {
-            margin: 12px 0;
-        }
-
-        /* 重置步骤列表背景柔和 */
-        ul:not([class]) {
-            background: #ffffff;
-            padding: 10px 10px 10px 30px;
-            border-radius: 18px;
-            border: 1px solid #deecf7;
-        }
-
-        /* 移动端优化 (宽度 ≤ 800px) */
-        @media screen and (max-width: 800px) {
-            body {
-                padding: 8px;
-            }
-            .container {
-                padding: 18px 14px;
-                border-radius: 24px;
-            }
-            h2 {
-                padding-left: 14px;
-                font-size: 1.6rem;
-            }
-            th, td {
-                padding: 10px 6px;
-                font-size: 12.5px;
-            }
-            th {
-                padding: 14px 4px;
-                white-space: nowrap;        /* 表头时间允许折行？因有<br>已经两行，保持nowrap避免打乱 */
-            }
-            .maintain-item {
-                min-width: 150px;
-                font-size: 13px;
-                padding: 12px 8px;
-            }
-            thead th.maintain-item {
-                min-width: 150px;
-            }
-            .dot {
-                font-size: 22px;
-            }
-            .note, .note p {
-                padding: 14px 18px;
-                font-size: 14px;
-            }
-            /* 减小列表左外边距 */
-            ul, ol {
-                margin-left: 20px;
-            }
-        }
-
-        /* 超小屏 (≤480px) 进一步优化 */
-        @media screen and (max-width: 480px) {
-            .container {
-                padding: 12px 8px;
-                border-radius: 20px;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
-            h2 {
-                font-size: 1.4rem;
-                padding: 8px 0 8px 14px;
-            }
-            .maintain-item {
-                min-width: 140px;
-                font-size: 12.5px;
-                padding: 10px 6px;
-            }
-            thead th.maintain-item {
-                min-width: 140px;
-            }
-            th, td {
-                padding: 8px 3px;
-            }
-            .dot {
-                font-size: 20px;
-            }
-            .table-wrap {
-                border-radius: 16px;
-            }
-        }
-
-        /* 优雅滚动条 (对webkit) */
-        .table-wrap::-webkit-scrollbar {
-            height: 10px;
-            background: #e2e8f0;
-            border-radius: 20px;
-        }
-        .table-wrap::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 20px;
-            border: 2px solid #e2e8f0;
-        }
-        .table-wrap::-webkit-scrollbar-thumb:hover {
-            background: #0b2b44;
-        }
-
-        /* 轻微分隔线增强可读 */
-        td:first-child, th:first-child {
-            box-shadow: 2px 0 0 rgba(0,0,0,0.02);
-        }
-
-        /* 注释标记小图标效果 */
-        .note p strong {
-            background: var(--accent);
-            color: white;
-            padding: 3px 12px;
-            border-radius: 40px;
-            font-weight: 500;
-            margin-right: 8px;
-            font-size: 0.9em;
+        .dot-placeholder {
+            font-size: 16px;
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>2018款JL车辆维护计划说明（中国）</h1>
+<div class="container">
+    <h1>2018款JL车辆维护计划说明（中国）</h1>
 
-        <h2>⏱ 机油更换提示系统</h2>
-        <p>机油更换提示系统会提醒您车辆需要进行定期保养。对于配备仪表盘显示屏的车辆，屏幕上会显示“需要更换机油”字样，并发出一次提示音，表示需要更换机油。对于未配备仪表盘显示屏的车辆，仪表盘里程表上的“更换机油”字样会闪烁，并发出一次提示音，表示需要更换机油。</p>
-        <p>机油更换提示信息会在上次更换机油后约 11,200 公里时亮起，请尽快(最好在 800 公里内)进行保养。但是，如果车辆在“严苛工况”下运行，则可能需要在 5,000 公里时提前更换机油。</p>
-        <p>机油更换指示灯不会监测上次更换机油至今的时间。即使机油更换指示灯未亮起，如果距离上次更换机油已超过六个月，也请更换车辆机油。 如果您长时间在越野路段驾驶车辆，请更频繁地更换发动机机油。 <strong>任何情况下，换油周期都不应超过 12000 公里或六个月，以先到者为准。</strong></p>
+    <h2>机油更换提示系统</h2>
+    <p>机油更换提示系统会提醒您车辆需要进行定期保养。对于配备仪表盘显示屏的车辆，屏幕上会显示“需要更换机油”字样，并发出一次提示音，表示需要更换机油。对于未配备仪表盘显示屏的车辆，仪表盘里程表上的“更换机油”字样会闪烁，并发出一次提示音，表示需要更换机油。</p>
+    <p>机油更换提示信息会在上次更换机油后约 11,200 公里时亮起，请尽快(最好在 800 公里内)进行保养。但是，如果车辆在“严苛工况”下运行，则可能需要在 5,000 公里时提前更换机油。</p>
+    <p>机油更换指示灯不会监测上次更换机油至今的时间。即使机油更换指示灯未亮起，如果距离上次更换机油已超过六个月，也请更换车辆机油。 如果您长时间在越野路段驾驶车辆，请更频繁地更换发动机机油。 <strong>任何情况下，换油周期都不应超过 12000 公里或六个月，以先到者为准。</strong></p>
 
-        <h2>🔄 机油更换指示器重置</h2>
-        <p>除非重置，否则每次将点火开关转到 ON/RUN 位置时，此消息都会持续显示。要重置机油更换指示系统(在完成定期保养后)，请执行以下步骤:</p>
-        <ul>
-            <li>1. 将点火开关转到“ON”位置，不要启动发动机。</li>
-            <li>2. 在 10 秒内缓慢地将油门踏板完全踩下三次。</li>
-            <li>3. 将点火开关转到 LOCK 位置。</li>
-        </ul>
-        <p>如果启动车辆时指示灯亮起，则表示机油更换指示系统未重置，如有必要，请重复此步骤。</p>
+    <h2>机油更换指示器重置</h2>
+    <p>除非重置，否则每次将点火开关转到 ON/RUN 位置时，此消息都会持续显示。要重置机油更换指示系统(在完成定期保养后)，请执行以下步骤:</p>
+    <ul>
+        <li>1. 将点火开关转到“ON”位置，不要启动发动机。</li>
+        <li>2. 在 10 秒内缓慢地将油门踏板完全踩下三次。</li>
+        <li>3. 将点火开关转到 LOCK 位置。</li>
+    </ul>
+    <p>如果启动车辆时指示灯亮起，则表示机油更换指示系统未重置，如有必要，请重复此步骤。</p>
 
-        <h2>📋 每月一次或长途旅行前检查项目</h2>
-        <ul>
-            <li>发动机完全预热后熄火约五分钟，检查机油油位（车辆停放在水平地面上），仅当油位达到或低于“添加”或“最低”标记时才添加机油。</li>
-            <li>检查挡风玻璃清洗液，必要时添加。</li>
-            <li>检查轮胎气压，并查看是否有异常磨损或损坏，一旦发现轮胎出现不规则磨损，立即进行轮胎换位。</li>
-            <li>检查电池，并根据需要清洁和拧紧接线端子。</li>
-            <li>检查冷却液储液罐、制动总泵、动力转向液和自动变速器的液位，并根据需要添加。</li>
-            <li>检查所有灯具和其他电器设备是否运行正常。</li>
-        </ul>
+    <h2>每月一次或长途旅行前检查项目</h2>
+    <ul>
+        <li>发动机完全预热后熄火约五分钟，检查机油油位（车辆停放在水平地面上），仅当油位达到或低于“添加”或“最低”标记时才添加机油。</li>
+        <li>检查挡风玻璃清洗液，必要时添加。</li>
+        <li>检查轮胎气压，并查看是否有异常磨损或损坏，一旦发现轮胎出现不规则磨损，立即进行轮胎换位。</li>
+        <li>检查电池，并根据需要清洁和拧紧接线端子。</li>
+        <li>检查冷却液储液罐、制动总泵、动力转向液和自动变速器的液位，并根据需要添加。</li>
+        <li>检查所有灯具和其他电器设备是否运行正常。</li>
+    </ul>
 
-        <h2>🔧 每次更换机油必做项目</h2>
-        <ul>
-            <li>更换发动机机油滤清器。</li>
-            <li>检查刹车软管和管路。</li>
-        </ul>
+    <h2>每次更换机油必做项目</h2>
+    <ul>
+        <li>更换发动机机油滤清器。</li>
+        <li>检查刹车软管和管路。</li>
+    </ul>
 
-        <h2>📅 定期维护项目表</h2>
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th class="maintain-item">维护项目</th>
-                        <th>5000公里<br>/6个月</th>
-                        <th>15000公里<br>/12个月</th>
-                        <th>25000公里<br>/18个月</th>
-                        <th>35000公里<br>/24个月</th>
-                        <th>45000公里<br>/30个月</th>
-                        <th>55000公里<br>/36个月</th>
-                        <th>65000公里<br>/42个月</th>
-                        <th>75000公里<br>/48个月</th>
-                        <th>85000公里<br>/54个月</th>
-                        <th>95000公里<br>/60个月</th>
-                        <th>115000公里<br>/72个月</th>
-                        <th>125000公里<br>/78个月</th>
-                        <th>135000公里<br>/84个月</th>
-                        <th>145000公里<br>/90个月</th>
-                        <th>155000公里<br>/96个月</th>
-                        <th>165000公里<br>/102个月</th>
-                        <th>185000公里<br>/114个月</th>
-                        <th>195000公里<br>/120个月</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="maintain-item">更换发动机机油和机油滤清器</td>
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">轮胎换位</td>
-                        <td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td class="dot">●</td><td class="dot">●</td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">检查所有门闩并按需重新涂抹油脂</td>
-                        <td class="dot">●</td><td></td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">多尘/越野路况检查并按需更换发动机空气滤清器</td>
-                        <td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">检查刹车片并按需更换</td>
-                        <td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">检查排气系统（首次15000公里/12个月）</td>
-                        <td></td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">检查车身/底盘/管路/橡胶件等状况</td>
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">检查前悬架/拉杆端头/防尘罩密封件并按需更换</td>
-                        <td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">警用/出租/越野/拖挂车辆检查并更换前后桥油</td>
-                        <td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">DOT 4刹车油更换（每24个月）</td>
-                        <td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">检查分动箱油</td>
-                        <td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">检查等速万向节/万向节</td>
-                        <td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">更换空调滤芯</td>
-                        <td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">四轮盘式制动器车辆调整驻车制动器</td>
-                        <td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td class="dot">●</td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">更换发动机空气滤清器滤芯</td>
-                        <td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td class="dot">●</td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">更换火花塞</td>
-                        <td></td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">更换附件驱动皮带</td>
-                        <td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">冲洗并更换发动机冷却液（120个月/240000公里）</td>
-                        <td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">警用/出租/车队/拖挂车辆更换分动箱油</td>
-                        <td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td class="maintain-item">检查并按需更换PCV阀</td>
-                        <td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <h2>⚠️ 严苛工作条件说明</h2>
-        <p>如果您的车辆在下列任何严苛工况下使用，请每行驶 7500 公里（4500英里）或每 12 个月更换一次发动机机油和发动机机油滤清器:</p>
-        <ul>
-            <li>走走停停的驾驶方式</li>
-            <li>在尘土飞扬的环境下行驶</li>
-            <li>短途行程，距离小于 16 公里</li>
-            <li>拖车牵引</li>
-            <li>出租车、警察或送货服务（商业服务）</li>
-            <li>越野或沙漠作业</li>
-        </ul>
-
-        <div class="note">
-            <p><strong>注1</strong> 火花塞更换周期仅以行驶里程为准，不适用年度周期。</p>
-            <p><strong>注2</strong> 刹车油更换周期仅以时间为准，不以里程为准。</p>
-            <p><strong>注3</strong> PCV阀检查更换为制造商建议项目，并非维持排放保修的必要条件。</p>
-            <p><strong>注4</strong> 所有定期维护项目均以“公里数或时间，以先到者为准”执行。</p>
-        </div>
+    <h2>定期维护项目表</h2>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th class="maintain-item">维护项目</th>
+                    <th>5千公里<br>/6个月</th>
+                    <th>1.5万公里<br>/12个月</th>
+                    <th>2.5万公里<br>/18个月</th>
+                    <th>3.5万公里<br>/24个月</th>
+                    <th>4.5万公里<br>/30个月</th>
+                    <th>5.5万公里<br>/36个月</th>
+                    <th>6.5万公里<br>/42个月</th>
+                    <th>7.5万公里<br>/48个月</th>
+                    <th>8.5万公里<br>/54个月</th>
+                    <th>9.5万公里<br>/60个月</th>
+                    <th>11.5万公里<br>/72个月</th>
+                    <th>12.5万公里<br>/78个月</th>
+                    <th>13.5万公里<br>/84个月</th>
+                    <th>14.5万公里<br>/90个月</th>
+                    <th>15.5万公里<br>/96个月</th>
+                    <th>16.5万公里<br>/102个月</th>
+                    <th>18.5万公里<br>/114个月</th>
+                    <th>19.5万公里<br>/120个月</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 每一行数据均与原始wrangler_2018_regular.html表格严格核对，标记用● -->
+                <tr><td class="maintain-item">更换发动机机油和机油滤清器</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="maintain-item">轮胎换位</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td class="dot">●</td><td class="dot">●</td></tr>
+                <tr><td class="maintain-item">检查所有门闩并按需重新涂抹油脂</td><td class="dot">●</td><td></td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="maintain-item">多尘/越野路况检查并按需更换发动机空气滤清器</td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td></tr>
+                <tr><td class="maintain-item">检查刹车片并按需更换</td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td></tr>
+                <tr><td class="maintain-item">检查排气系统（首次15000公里/12个月）</td><td></td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="maintain-item">检查车身/底盘/管路/橡胶件等状况</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="maintain-item">检查前悬架/拉杆端头/防尘罩密封件并按需更换</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="maintain-item">警用/出租/越野/拖挂车辆检查并更换前后桥油</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="maintain-item">DOT 4刹车油更换（每24个月）</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="maintain-item">检查分动箱油</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="maintain-item">检查等速万向节/万向节</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="maintain-item">更换空调滤芯</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td></tr>
+                <tr><td class="maintain-item">四轮盘式制动器车辆调整驻车制动器</td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td class="dot">●</td></tr>
+                <tr><td class="maintain-item">更换发动机空气滤清器滤芯</td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td class="dot">●</td></tr>
+                <tr><td class="maintain-item">更换火花塞</td><td></td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td></tr>
+                <tr><td class="maintain-item">更换附件驱动皮带</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="maintain-item">冲洗并更换发动机冷却液（120个月/240000公里）</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="maintain-item">警用/出租/车队/拖挂车辆更换分动箱油</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="maintain-item">检查并按需更换PCV阀</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td></tr>
+            </tbody>
+        </table>
     </div>
+
+    <h2>严苛工作条件说明</h2>
+    <p>如果您的车辆在下列任何严苛工况下使用，请每行驶 7500 公里（4500英里）或每 12 个月更换一次发动机机油和发动机机油滤清器:</p>
+    <ul>
+        <li>走走停停的驾驶方式</li>
+        <li>在尘土飞扬的环境下行驶</li>
+        <li>短途行程，距离小于 16 公里</li>
+        <li>拖车牵引</li>
+        <li>出租车、警察或送货服务（商业服务）</li>
+        <li>越野或沙漠作业</li>
+    </ul>
+
+    <div class="note">
+        <p><strong>注1</strong>：火花塞更换周期仅以行驶里程为准，不适用年度周期。</p>
+        <p><strong>注2</strong>：刹车油更换周期仅以时间为准，不以里程为准。</p>
+        <p><strong>注3</strong>：PCV阀检查更换为制造商建议项目，并非维持排放保修的必要条件。</p>
+        <p><strong>注4</strong>：所有定期维护项目均以“公里数或时间，以先到者为准”执行。</p>
+    </div>
+</div>
 </body>
 </html>
