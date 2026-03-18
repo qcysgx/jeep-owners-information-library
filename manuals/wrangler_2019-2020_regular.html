@@ -2,131 +2,152 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2019-2020款JL车辆维护计划（中国）</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Wrangler 2019-2020 维护计划（中国）</title>
     <style>
+        /* 完全复用2018版全局样式 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: "Microsoft YaHei", Arial, sans-serif;
         }
+
         body {
             background-color: #f5f5f5;
-            padding: 30px;
-            line-height: 1.8;
+            padding: 20px;
+            line-height: 1.7;
             color: #333;
+            min-width: 320px;
         }
+
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            background: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 6px;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.08);
         }
+
+        /* 标题样式完全对齐2018版 */
         h1 {
             text-align: center;
+            font-size: 24px;
             color: #222;
-            margin-bottom: 30px;
-            font-size: 28px;
-            border-bottom: 3px solid #0066cc;
-            padding-bottom: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0056b3;
         }
+
         h2 {
-            color: #0066cc;
-            margin: 25px 0 15px;
-            font-size: 22px;
-            padding-left: 10px;
-            border-left: 4px solid #0066cc;
+            font-size: 18px;
+            color: #0056b3;
+            margin: 20px 0 12px;
+            padding-left: 8px;
+            border-left: 3px solid #0056b3;
         }
+
+        /* 文本样式完全对齐2018版 */
         p {
-            margin: 10px 0;
-            font-size: 16px;
+            font-size: 14px;
+            margin: 8px 0;
         }
+
         ul {
-            margin: 10px 0 10px 30px;
-            font-size: 16px;
+            margin: 8px 0 8px 25px;
+            font-size: 14px;
         }
-        /* 核心优化：表格容器样式，实现横向滚动+双固定 */
-        .table-wrap {
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        /* 表格容器（2018版核心样式） */
+        .table-container {
             overflow-x: auto;
-            margin: 20px 0;
-            border-radius: 6px;
-            box-shadow: 0 1px 5px rgba(0,0,0,0.08);
-            position: relative; /* 为固定列提供定位基准 */
+            margin: 18px 0;
+            -webkit-overflow-scrolling: touch;
         }
+
         table {
             width: 100%;
+            min-width: 900px;
             border-collapse: collapse;
-            white-space: nowrap; /* 保证表格单行展示 */
+            white-space: nowrap;
         }
-        /* 表头整体固定在顶部 */
+
         thead {
-            position: sticky;
-            top: 0;
-            background: #0066cc;
-            color: #fff;
-            z-index: 10; /* 确保表头在最上层 */
+            background-color: #0056b3;
+            color: #ffffff;
         }
-        /* 维护项目列（首列）固定在左侧 */
-        .maintain-item {
-            text-align: left;
-            font-weight: 500;
-            position: sticky;
-            left: 0;
-            background: #fff;
-            z-index: 5; /* 低于表头层级，避免遮挡 */
-            border-right: 2px solid #e0e0e0; /* 增加分隔线，视觉更清晰 */
-        }
-        /* 表头的维护项目列双重固定 */
-        thead th:first-child {
-            position: sticky;
-            left: 0;
-            z-index: 11; /* 高于普通表头层级 */
-            background: #0066cc;
-            border-right: 2px solid #fff; /* 白色分隔线更美观 */
-        }
+
         th, td {
-            padding: 12px 15px;
+            padding: 10px 12px;
             text-align: center;
-            border: 1px solid #e0e0e0;
-            font-size: 14px;
+            border: 1px solid #e1e1e1;
+            font-size: 13px;
         }
+
         th {
-            font-weight: bold;
+            font-weight: normal;
         }
+
+        /* 首列样式（2018版固定逻辑） */
+        .item-column {
+            text-align: left;
+            position: sticky;
+            left: 0;
+            background: #ffffff;
+            z-index: 2;
+            font-weight: 500;
+            border-right: 2px solid #e1e1e1;
+        }
+
+        thead .item-column {
+            background: #0056b3;
+            color: #ffffff;
+            z-index: 3;
+        }
+
+        /* 表格行样式（2018版交互） */
         tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: #f8f9fa;
         }
+
         tbody tr:hover {
-            background-color: #f0f7ff;
+            background-color: #e8f4ff;
         }
-        /* 保养项目圆点标记 */
-        .dot {
-            color: #0066cc;
-            font-size: 20px;
+
+        /* 标记点样式（2018版） */
+        .marker {
+            color: #0056b3;
+            font-size: 16px;
             line-height: 1;
         }
-        .note {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f0f7ff;
-            border-left: 4px solid #0066cc;
-            border-radius: 0 4px 4px 0;
-            font-size: 14px;
+
+        /* 备注样式（2018版） */
+        .remarks {
+            margin-top: 18px;
+            padding: 12px;
+            background: #e8f4ff;
+            border-left: 3px solid #0056b3;
+            font-size: 13px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>2019-2020款JL车辆维护计划说明（中国）</h1>
+        <!-- 标题：格式与2018版一致，仅替换年份 -->
+        <h1>Jeep Wrangler 2019-2020款 车辆维护计划（中国地区）</h1>
 
+        <!-- 机油更换提示系统：结构与2018版一致 -->
         <h2>机油更换提示系统</h2>
         <p>机油更换提示系统会提醒您车辆需要进行定期保养。对于配备仪表盘显示屏的车辆，屏幕上会显示“需要更换机油”字样，并发出一次提示音，表示需要更换机油。对于未配备仪表盘显示屏的车辆，仪表盘里程表上的“更换机油”字样会闪烁，并发出一次提示音，表示需要更换机油。</p>
         <p>机油更换提示信息会在上次更换机油后约 11,200 公里时亮起，请尽快(最好在 800 公里内)进行保养。但是，如果车辆在“严苛工况”下运行，则可能需要在 5,000 公里时提前更换机油。</p>
         <p>机油更换指示灯不会监测上次更换机油至今的时间。即使机油更换指示灯未亮起，如果距离上次更换机油已超过六个月，也请更换车辆机油。 如果您长时间在越野路段驾驶车辆，请更频繁地更换发动机机油。 <strong>任何情况下，换油周期都不应超过 12000 公里或六个月，以先到者为准。</strong></p>
 
+        <!-- 机油更换指示器重置：结构与2018版一致 -->
         <h2>机油更换指示器重置</h2>
         <p>除非重置，否则每次将点火开关转到 ON/RUN 位置时，此消息都会持续显示。要重置机油更换指示系统(在完成定期保养后)，请执行以下步骤:</p>
         <ul>
@@ -136,6 +157,7 @@
         </ul>
         <p>如果启动车辆时指示灯亮起，则表示机油更换指示系统未重置，如有必要，请重复此步骤。</p>
 
+        <!-- 每月检查项目：结构与2018版一致 -->
         <h2>每月一次或长途旅行前检查项目</h2>
         <ul>
             <li>发动机完全预热后熄火约五分钟，检查机油油位（车辆停放在水平地面上），仅当油位达到或低于“添加”或“最低”标记时才添加机油。</li>
@@ -146,6 +168,7 @@
             <li>检查所有灯具和其他电器设备是否运行正常。</li>
         </ul>
 
+        <!-- 每次换油必做项目：结构与2018版一致 -->
         <h2>每次更换机油必做项目</h2>
         <ul>
             <li>更换发动机机油滤清器。</li>
@@ -153,12 +176,13 @@
             <li>检查轮胎气压，并查看是否有异常磨损或损坏，发现不规则磨损立即进行轮胎换位。</li>
         </ul>
 
+        <!-- 定期维护项目表：表格结构与2018版完全一致 -->
         <h2>定期维护项目表</h2>
-        <div class="table-wrap">
+        <div class="table-container">
             <table>
                 <thead>
                     <tr>
-                        <th class="maintain-item">维护项目</th>
+                        <th class="item-column">维护项目</th>
                         <th>5000公里<br>/6个月</th>
                         <th>15000公里<br>/12个月</th>
                         <th>25000公里<br>/18个月</th>
@@ -183,89 +207,90 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="maintain-item">更换发动机机油和机油滤清器</td>
-                        <td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td>
+                        <td class="item-column">更换发动机机油和机油滤清器</td>
+                        <td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">轮胎换位</td>
-                        <td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td class="item-column">轮胎换位</td>
+                        <td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">检查所有门闩并按需重新涂抹油脂</td>
-                        <td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td class="item-column">检查所有门闩并按需重新涂抹油脂</td>
+                        <td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">多尘/越野路况检查并按需更换发动机空气滤清器</td>
-                        <td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td class="item-column">多尘/越野路况检查并按需更换发动机空气滤清器</td>
+                        <td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">检查刹车片并按需更换</td>
-                        <td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td class="item-column">检查刹车片并按需更换</td>
+                        <td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">检查排气系统（首次15000公里/12个月）</td>
-                        <td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td class="item-column">检查排气系统（首次15000公里/12个月）</td>
+                        <td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">检查车身/底盘/管路/橡胶件等状况</td>
-                        <td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td class="item-column">检查车身/底盘/管路/橡胶件等状况</td>
+                        <td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">检查前悬架/拉杆端头/防尘罩密封件并按需更换</td>
-                        <td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td class="item-column">检查前悬架/拉杆端头/防尘罩密封件并按需更换</td>
+                        <td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">警用/出租/越野/拖挂车辆检查并更换前后桥油</td>
-                        <td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td class="item-column">警用/出租/越野/拖挂车辆检查并更换前后桥油</td>
+                        <td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">DOT 4刹车油更换（每24个月）</td>
-                        <td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td class="item-column">DOT 4刹车油更换（每24个月）</td>
+                        <td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">检查分动箱油</td>
-                        <td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td class="item-column">检查分动箱油</td>
+                        <td class="marker">●</td><td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">检查等速万向节/万向节</td>
-                        <td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td class="item-column">检查等速万向节/万向节</td>
+                        <td class="marker">●</td><td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">更换空调滤芯</td>
-                        <td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td><td></td><td class="dot">●</td>
+                        <td class="item-column">更换空调滤芯</td>
+                        <td></td><td class="marker">●</td><td></td><td class="marker">●</td><td></td><td class="marker">●</td><td></td><td class="marker">●</td><td></td><td class="marker">●</td><td></td><td class="marker">●</td><td></td><td class="marker">●</td><td></td><td class="marker">●</td><td></td><td class="marker">●</td><td></td><td class="marker">●</td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">四轮盘式制动器车辆调整驻车制动器</td>
-                        <td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td class="dot">●</td>
+                        <td class="item-column">四轮盘式制动器车辆调整驻车制动器</td>
+                        <td></td><td></td><td></td><td></td><td class="marker">●</td><td></td><td></td><td></td><td></td><td class="marker">●</td><td></td><td></td><td></td><td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td class="marker">●</td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">更换发动机空气滤清器滤芯</td>
-                        <td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td class="dot">●</td>
+                        <td class="item-column">更换发动机空气滤清器滤芯</td>
+                        <td></td><td></td><td></td><td></td><td class="marker">●</td><td></td><td></td><td></td><td></td><td class="marker">●</td><td></td><td></td><td></td><td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td class="marker">●</td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">更换火花塞</td>
-                        <td></td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td class="dot">●</td><td></td><td></td>
+                        <td class="item-column">更换火花塞</td>
+                        <td></td><td></td><td></td><td></td><td></td><td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td class="marker">●</td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">更换附件驱动皮带</td>
-                        <td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td class="item-column">更换附件驱动皮带</td>
+                        <td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">冲洗并更换发动机冷却液（120个月/240000公里）</td>
-                        <td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td class="item-column">冲洗并更换发动机冷却液（120个月/240000公里）</td>
+                        <td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">警用/出租/车队/拖挂车辆更换分动箱油</td>
-                        <td class="dot">●</td><td class="dot">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td class="item-column">警用/出租/车队/拖挂车辆更换分动箱油</td>
+                        <td class="marker">●</td><td class="marker">●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                     </tr>
                     <tr>
-                        <td class="maintain-item">检查并按需更换PCV阀</td>
-                        <td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td></td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td><td class="dot">●</td>
+                        <td class="item-column">检查并按需更换PCV阀</td>
+                        <td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td></td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td><td class="marker">●</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
+        <!-- 严苛工作条件：结构与2018版一致 -->
         <h2>严苛工作条件说明</h2>
         <p>如果您的车辆在下列任何严苛工况下使用，请每行驶 7500 公里（4500英里）或每 12 个月更换一次发动机机油和发动机机油滤清器:</p>
         <ul>
@@ -277,7 +302,8 @@
             <li>越野或沙漠作业</li>
         </ul>
 
-        <div class="note">
+        <!-- 备注：结构与2018版一致 -->
+        <div class="remarks">
             <p><strong>注1</strong>：火花塞更换周期仅以行驶里程为准，不适用年度周期。</p>
             <p><strong>注2</strong>：刹车油更换周期仅以时间为准，不以里程为准。</p>
             <p><strong>注3</strong>：PCV阀检查更换为制造商建议项目，并非维持排放保修的必要条件。</p>
