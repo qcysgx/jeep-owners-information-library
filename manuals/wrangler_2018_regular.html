@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>2018款JL车辆维护计划（中国）</title>
     <style>
-        /* 全局重置与基础样式 */
+        /* ===== 全局重置与基础样式 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -14,7 +14,7 @@
         }
         body {
             background-color: #f5f5f5;
-            padding: 15px; /* 移动端减少外间距 */
+            padding: 15px;
             line-height: 1.8;
             color: #333;
         }
@@ -22,12 +22,12 @@
             max-width: 1400px;
             margin: 0 auto;
             background: #fff;
-            padding: clamp(20px, 4vw, 40px); /* 响应式内边距 */
+            padding: clamp(20px, 4vw, 40px);
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        /* 标题样式 */
+        /* ===== 标题样式 ===== */
         h1 {
             text-align: center;
             color: #222;
@@ -44,7 +44,7 @@
             border-left: 4px solid #0066cc;
         }
 
-        /* 文本与列表样式 */
+        /* ===== 文本与列表样式 ===== */
         p {
             margin: 10px 0;
             font-size: clamp(14px, 2vw, 16px);
@@ -54,18 +54,17 @@
             font-size: clamp(14px, 2vw, 16px);
         }
 
-        /* 核心优化：表格容器（重点适配移动端） */
+        /* ===== 表格容器 (核心滚动优化) ===== */
         .table-wrap {
             overflow-x: auto;
             margin: 20px 0;
             border-radius: 6px;
             box-shadow: 0 1px 5px rgba(0,0,0,0.08);
             position: relative;
-            /* 移动端增加滚动提示 */
-            scrollbar-width: thin; /* 火狐 */
+            scrollbar-width: thin;
             scrollbar-color: #0066cc #f0f7ff;
         }
-        /* 自定义滚动条（webkit内核） */
+        /* 自定义滚动条 (WebKit) */
         .table-wrap::-webkit-scrollbar {
             height: 8px;
         }
@@ -81,15 +80,15 @@
             background: #0052a3;
         }
 
-        /* 表格基础样式 */
+        /* ===== 表格基础 ===== */
         table {
             width: 100%;
-            min-width: 800px; /* 保证PC端表格宽度，移动端触发滚动 */
+            min-width: 800px;          /* 保证窄屏可滚动，PC宽屏可适当增加 */
             border-collapse: collapse;
             white-space: nowrap;
         }
 
-        /* 表头固定 + 首列固定（双重固定优化） */
+        /* ===== 表头固定 + 首列固定 (双重固定) ===== */
         thead {
             position: sticky;
             top: 0;
@@ -97,7 +96,7 @@
             color: #fff;
             z-index: 10;
         }
-        /* 维护项目列（首列）固定 */
+        /* 维护项目列 (首列) 固定 */
         .maintain-item {
             text-align: left;
             font-weight: 500;
@@ -106,7 +105,7 @@
             background: #fff;
             z-index: 5;
             border-right: 2px solid #e0e0e0;
-            min-width: 180px; /* 移动端首列最小宽度，保证内容不挤压 */
+            min-width: 180px;
         }
         /* 表头首列双重固定 */
         thead th:first-child {
@@ -116,36 +115,50 @@
             background: #0066cc;
             border-right: 2px solid #fff;
             min-width: 180px;
+            text-align: left;
+            padding-left: 15px;
         }
 
-        /* 单元格样式 */
+        /* ===== 单元格通用样式 ===== */
         th, td {
             padding: clamp(8px, 1.5vw, 12px) clamp(8px, 1.5vw, 15px);
             text-align: center;
             border: 1px solid #e0e0e0;
-            font-size: clamp(12px, 1.8vw, 14px); /* 移动端字号自适应 */
+            font-size: clamp(12px, 1.8vw, 14px);
         }
         th {
             font-weight: bold;
         }
 
-        /* 表格行样式 */
+        /* 表格行交替背景 & 悬停 */
         tbody tr:nth-child(even) {
             background-color: #f9f9f9;
         }
         tbody tr:hover {
             background-color: #f0f7ff;
-            transition: background-color 0.2s ease; /* 增加过渡动画 */
+            transition: background-color 0.2s ease;
         }
 
-        /* 保养项目圆点标记 */
+        /* 保养项目圆点 */
         .dot {
             color: #0066cc;
             font-size: clamp(16px, 2.5vw, 20px);
             line-height: 1;
         }
 
-        /* 提示框样式 */
+        /* ===== PHEV专属标签 (适配蓝色主题) ===== */
+        .phev-tag {
+            display: inline-block;
+            background: #0066cc;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-left: 8px;
+            font-weight: normal;
+        }
+
+        /* ===== 提示框样式 ===== */
         .note {
             margin-top: 20px;
             padding: 15px;
@@ -155,7 +168,7 @@
             font-size: clamp(12px, 2vw, 14px);
         }
 
-        /* 移动端专属优化（768px以下） */
+        /* ===== 移动端专属优化 ===== */
         @media (max-width: 768px) {
             body {
                 padding: 10px;
@@ -163,11 +176,9 @@
             .container {
                 padding: 15px;
             }
-            /* 移动端表格单元格内边距减小，提升紧凑性 */
             th, td {
                 padding: 8px 10px;
             }
-            /* 移动端增加滚动提示文字 */
             .table-wrap::before {
                 content: "← 左右滑动查看完整维护表 →";
                 display: block;
@@ -178,21 +189,30 @@
                 background: #f0f7ff;
                 border-radius: 4px 4px 0 0;
             }
+            /* ----- 维护项目列收窄约1.5cm (原180px - 1.5cm ≈ 123px) ----- */
+            .maintain-item,
+            thead th:first-child {
+                min-width: calc(180px - 1.5cm);   /* 移动端首列宽度精确减少1.5cm */
+                width: calc(180px - 1.5cm);        /* 保证实际宽度应用，同时允许换行 */
+                white-space: normal;                /* 内容折行，避免文字溢出 */
+                word-break: break-word;             /* 长单词/链接也可断行 */
+                /* 保留原有粘性定位、背景色、边框等所有其他样式 */
+            }
         }
 
-        /* PC端优化（1200px以上） */
+        /* ===== PC端大屏微调 ===== */
         @media (min-width: 1200px) {
             .container {
                 padding: 40px;
             }
             table {
-                min-width: 1200px;
+                min-width: 1200px;      /* 20列表格依然可滚动，但更宽松 */
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+<div class="container">
         <h1>2018款JL车辆维护计划说明（中国）</h1>
 
         <h2>机油更换提示系统</h2>
