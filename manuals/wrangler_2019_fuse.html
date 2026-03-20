@@ -626,14 +626,22 @@
         <div class="card">
             <h1>2018-2019 Jeep牧马人JL保险盒图解</h1>
             
-            <!-- 保险盒图片展示区 (图片链接不变) -->
+            <!-- 保险盒图片展示区（替换为WebP，添加兼容性降级） -->
             <div class="fuse-box-images">
                 <div class="fuse-box-image-item">
-                    <img src="https://github.com/qcysgx/jeep-owners-information-library/raw/main/manuals/fuse-box-location.jpg" alt="Jeep牧马人JL保险盒位置图">
+                    <picture>
+                        <!-- 优先加载WebP格式 -->
+                        <source srcset="https://github.com/qcysgx/jeep-owners-information-library/raw/main/manuals/fuse-box-location.webp" type="image/webp">
+                        <!-- 降级加载原始JPG -->
+                        <img src="https://github.com/qcysgx/jeep-owners-information-library/raw/main/manuals/fuse-box-location.jpg" alt="Jeep牧马人JL保险盒位置图" loading="lazy">
+                    </picture>
                     <p>保险盒位置示意图</p>
                 </div>
                 <div class="fuse-box-image-item">
-                    <img src="https://github.com/qcysgx/jeep-owners-information-library/raw/main/manuals/fuse-box-layout.jpg" alt="Jeep牧马人JL保险盒内部布局图">
+                    <picture>
+                        <source srcset="https://github.com/qcysgx/jeep-owners-information-library/raw/main/manuals/fuse-box-layout.webp" type="image/webp">
+                        <img src="https://github.com/qcysgx/jeep-owners-information-library/raw/main/manuals/fuse-box-layout.jpg" alt="Jeep牧马人JL保险盒内部布局图" loading="lazy">
+                    </picture>
                     <p>保险盒内部布局图</p>
                 </div>
             </div>
