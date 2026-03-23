@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2021 Jeep牧马人JL保险盒图解 · 精绘手册</title>
+    <style>
+        /* ===== 全局重置与设计令牌 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* 主色调 — 深邃Jeep蓝 */
+            --primary: #0a3d62;
+            --primary-light: #eef5fc;
+            --primary-lighter: #d9e9ff;
+            --primary-dark: #052a44;
+            --primary-soft: #1e4f7a;
+            --primary-glow: rgba(10, 61, 98, 0.2);
+            /* 辅助色 */
+            --warning: #f3b33d;
+            --warning-bg: #fff6e5;
+            --warning-border: #f0c27b;
+            /* 中性色 */
+            --bg-body: #f4f7fc;
+            --surface: #ffffff;
+            --gray-50: #f9fbfd;
+            --gray-100: #f2f5f8;
+            --gray-200: #e9edf2;
+            --gray-300: #dbe0e6;
+            --gray-400: #b0b9c4;
+            --gray-600: #6f7885;
+            --gray-800: #2e3846;
+            --gray-900: #1a2634;
+            /* 阴影系统 */
+            --shadow-sm: 0 4px 10px rgba(0, 20, 40, 0.04), 0 2px 4px rgba(0, 20, 30, 0.03);
+            --shadow-md: 0 8px 24px rgba(0, 30, 60, 0.06), 0 4px 12px rgba(0, 20, 40, 0.03);
+            --shadow-lg: 0 20px 40px rgba(0, 35, 70, 0.08), 0 8px 20px rgba(0, 20, 40, 0.06);
+            --shadow-xl: 0 30px 60px rgba(0, 35, 70, 0.12);
+            --shadow-glow: 0 0 20px rgba(10, 61, 98, 0.3);
+            /* 圆角 */
+            --radius-md: 10px;
+            --radius-lg: 18px;
+            --radius-xl: 26px;
+            --radius-full: 999px;
+            /* 过渡 */
+            --transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        body {
+            background-color: var(--bg-body);
+            font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Microsoft YaHei", "PingFang SC", sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* ===== 顶部导航 — 高透玻璃 ===== */
+        .header {
+            background: rgba(10, 61, 98, 0.82);
+            backdrop-filter: blur(14px) saturate(200%);
+            -webkit-backdrop-filter: blur(14px) saturate(200%);
+            color: white;
+            padding: 12px 0;
+            box-shadow: 0 8px 28px rgba(0, 20, 30, 0.25);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .header-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-logo {
+            font-size: clamp(16px, 4vw, 20px);
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .header-logo::before {
+            content: "";
+            display: inline-block;
+            width: clamp(22px, 5vw, 26px);
+            height: clamp(22px, 5vw, 26px);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.4);
+        }
+
+        .header-right {
+            font-weight: 400;
+            font-size: 0.95rem;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 14px;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.35);
+        }
+
+        /* ===== 主容器 ===== */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 30px 24px;
+            width: 100%;
+        }
+
+        /* ===== 卡片 — 纯净微光 ===== */
+        .card {
+            background-color: var(--surface);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            padding: clamp(28px, 6vw, 44px);
+            margin-bottom: 32px;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.7);
+            backdrop-filter: blur(2px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 60%);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* ===== 标题设计 ===== */
+        h1 {
+            font-size: clamp(24px, 6vw, 34px);
+            color: var(--gray-900);
+            text-align: center;
+            margin-bottom: 36px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-light);
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), #5a9bd4, var(--primary));
+            border-radius: 4px;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        h2 {
+            font-size: clamp(20px, 5vw, 26px);
+            color: var(--primary-dark);
+            margin: 40px 0 24px;
+            padding-left: 18px;
+            border-left: 6px solid transparent;
+            border-image: linear-gradient(180deg, var(--primary), #4a90e2) 1;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: -0.2px;
+            text-shadow: 0 2px 4px rgba(10,61,98,0.05);
+        }
+
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--primary), #4a90e2);
+            border-radius: 4px;
+            margin-right: 4px;
+            box-shadow: 0 0 8px var(--primary-glow);
+        }
+
+        /* ===== 保险盒图片区域 ===== */
+        .fuse-box-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            margin: 0 auto 40px;
+            justify-content: center;
+            padding: 24px 20px;
+            background: var(--gray-50);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--gray-200);
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .fuse-box-image-item {
+            flex: 1;
+            min-width: 280px;
+            max-width: 500px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .fuse-box-image-item img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 14px;
+            border: 1px solid var(--gray-300);
+            object-fit: contain;
+            background: white;
+            transition: var(--transition);
+        }
+
+        .fuse-box-image-item img:hover {
+            transform: scale(1.01);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .fuse-box-image-item p {
+            font-size: clamp(14px, 3vw, 17px);
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        /* ===== 快捷导航胶囊 — 半透明玻璃 ===== */
+        .quick-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 28px 0 20px;
+            justify-content: center;
+        }
+
+        .quick-nav a {
+            display: inline-block;
+            padding: 10px 24px;
+            background: rgba(255,255,255,0.65);
+            backdrop-filter: blur(10px) saturate(160%);
+            -webkit-backdrop-filter: blur(10px) saturate(160%);
+            color: var(--primary);
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: clamp(13px, 2.5vw, 15px);
+            font-weight: 500;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.9);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            white-space: nowrap;
+        }
+
+        .quick-nav a:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -10px rgba(10,61,98,0.5);
+        }
+
+        /* ===== 表格 — 清爽阅读 ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: var(--radius-lg);
+            margin: 28px 0;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            background: white;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 640px;
+            font-size: 0.95rem;
+        }
+
+        table th {
+            background: linear-gradient(145deg, var(--primary), var(--primary-dark));
+            color: white;
+            font-weight: 600;
+            padding: 16px 12px;
+            text-align: center;
+            font-size: clamp(13px, 2.5vw, 15px);
+            white-space: nowrap;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        table th:last-child {
+            border-right: none;
+        }
+
+        table td {
+            border: 1px solid var(--gray-200);
+            padding: 12px 10px;
+            text-align: center;
+            font-size: clamp(12px, 2.3vw, 14px);
+            background-color: white;
+            transition: background 0.15s;
+        }
+
+        table tr:nth-child(even) td {
+            background-color: var(--gray-50);
+        }
+
+        table tr:hover td {
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+        }
+
+        table td:first-child {
+            font-weight: 600;
+            color: var(--primary-dark);
+            background-color: rgba(10,61,98,0.02);
+        }
+
+        /* ===== 注意事项 — 柔和警示 ===== */
+        .note {
+            background-color: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+            padding: clamp(20px, 5vw, 28px);
+            border-radius: var(--radius-lg);
+            margin: 36px 0;
+            color: var(--gray-800);
+            font-size: clamp(14px, 2.5vw, 16px);
+            border-left: 6px solid var(--warning);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .note::before {
+            content: "⚠️";
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 40px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .note strong {
+            color: var(--primary-dark);
+            font-size: clamp(16px, 3vw, 18px);
+            display: block;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .note ul {
+            padding-left: 24px;
+            margin: 0;
+        }
+
+        .note li {
+            margin-bottom: 10px;
+        }
+
+        /* ===== 联系我们 — 玻璃质感网格 ===== */
+        .contact {
+            margin-top: 48px;
+            padding: clamp(30px, 7vw, 50px) clamp(24px, 5vw, 40px);
+            background: linear-gradient(145deg, #f0f7fe, #e6f0fc);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(255,255,255,0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(10,61,98,0.03) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .contact h2 {
+            margin: 0 0 36px 0;
+            padding-left: 0;
+            border-left: none;
+            color: var(--primary-dark);
+            text-align: center;
+            justify-content: center;
+            font-size: clamp(22px, 6vw, 32px);
+            background: none;
+        }
+
+        .contact h2::before {
+            display: none;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 22px 20px;
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border-radius: var(--radius-xl);
+            box-shadow: 0 15px 30px -12px rgba(0,35,70,0.2);
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.9);
+            border-bottom: 3px solid transparent;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255,255,255,0.9);
+            border-bottom-color: var(--primary);
+            box-shadow: 0 24px 40px -16px rgba(10,61,98,0.3);
+        }
+
+        .contact-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 60px;
+            background: linear-gradient(145deg, var(--primary), var(--primary-soft));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            flex-shrink: 0;
+            box-shadow: 0 8px 18px rgba(10,61,98,0.3);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.05) rotate(2deg);
+            background: linear-gradient(145deg, var(--primary-dark), var(--primary));
+        }
+
+        .contact-text {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--gray-600);
+            margin-bottom: 4px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .contact-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gray-900);
+            line-height: 1.3;
+            word-break: break-word;
+        }
+
+        /* ===== 悬浮返回顶部 — iPhone风格玻璃按钮 ===== */
+        .fixed-back-to-top {
+            position: fixed;
+            top: 50%;
+            right: 24px;
+            transform: translateY(-50%);
+            width: 64px;
+            height: 64px;
+            background: rgba(10, 61, 98, 0.3);
+            backdrop-filter: blur(18px) saturate(200%);
+            -webkit-backdrop-filter: blur(18px) saturate(200%);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 35px -8px rgba(0, 30, 50, 0.4), 0 0 0 1.5px rgba(255, 255, 255, 0.7) inset, 0 0 20px rgba(10, 61, 98, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 99;
+            border: none;
+            line-height: 1;
+            color: white;
+            font-size: 32px;
+            font-weight: 600;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            /* 使用更醒目的向上箭头字符 */
+            font-family: "SF Pro Display", "Inter", "Helvetica Neue", sans-serif;
+        }
+
+        .fixed-back-to-top::before {
+            content: "▲";
+            font-size: 28px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            transform: translateY(-2px);
+        }
+
+        .fixed-back-to-top:hover {
+            background: rgba(10, 61, 98, 0.6);
+            transform: translateY(-50%) scale(1.15);
+            box-shadow: 0 25px 45px -10px var(--primary), 0 0 0 2px rgba(255,255,255,0.9) inset, 0 0 30px rgba(10, 61, 98, 0.8);
+            backdrop-filter: blur(22px) saturate(220%);
+        }
+
+        /* 添加脉动光晕 */
+        .fixed-back-to-top::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: inherit;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(10,61,98,0.2) 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .fixed-back-to-top:hover::after {
+            opacity: 0.5;
+        }
+
+        /* ===== 响应式优化 ===== */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 16px;
+            }
+            .container {
+                padding: 20px 16px;
+            }
+            .card {
+                padding: 20px 16px;
+            }
+            .fuse-box-images {
+                padding: 16px 10px;
+                gap: 16px;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .contact-card {
+                padding: 18px 16px;
+            }
+            .contact-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 22px;
+            }
+            .contact-value {
+                font-size: 16px;
+            }
+            .fixed-back-to-top {
+                width: 56px;
+                height: 56px;
+                right: 16px;
+                font-size: 28px;
+            }
+            .fixed-back-to-top::before {
+                font-size: 24px;
+            }
+            table th, table td {
+                padding: 10px 6px;
+            }
+        }
+
+        /* 打印时隐藏按钮 */
+        @media print {
+            .fixed-back-to-top, .quick-nav, .header {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 (内容不变) -->
+    <div class="header">
+        <div class="header-content">
+            <div class="header-logo">Jeep 牧马人 JL 维修手册</div>
+            <div class="header-right">2021 款</div>
+        </div>
+    </div>
+
+    <!-- 主容器 (内容完全不变) -->
+    <div class="container">
+        <div class="card">
+            <h1>2021 Jeep牧马人JL保险盒图解</h1>
+            
+            <!-- 保险盒图片展示区 (图片链接不变) -->
+            <div class="fuse-box-images">
+                <div class="fuse-box-image-item">
+                    <img src="https://github.com/qcysgx/jeep-owners-information-library/raw/main/manuals/fuse-box-location.jpg" alt="Jeep牧马人JL保险盒位置图">
+                    <p>保险盒位置示意图</p>
+                </div>
+                <div class="fuse-box-image-item">
+                    <img src="https://github.com/qcysgx/jeep-owners-information-library/raw/main/manuals/fuse-box-layout.jpg" alt="Jeep牧马人JL保险盒内部布局图">
+                    <p>保险盒内部布局图</p>
+                </div>
+            </div>
+            
+            <!-- 快捷导航 (锚点不变) -->
+            <div class="quick-nav">
+                <a href="#fuse-table">保险丝对照表</a>
+                <a href="#note-section">注意事项</a>
+                <a href="#relay-table">继电器对照表</a>
+                <a href="#contact-section">联系我们</a>
+            </div>
+
+            <!-- 保险丝对照表 (表格数据一字不动) -->
+            <h2 id="fuse-table">汽油发动机车型保险丝对照表</h2>
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>保险丝位</th>
+                        <th>筒式保险丝</th>
+                        <th>微型保险丝</th>
+                        <th>功能说明</th>
+                    </tr>
+                    <tr><td>F01</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F02</td><td>40A(绿色)</td><td></td><td>起动机</td></tr>
+                    <tr><td>F03</td><td></td><td>5A(棕褐色)</td><td>智能电池传感器(IBS)</td></tr>
+                    <tr><td>F04</td><td></td><td>25A(透明色)</td><td>备用(选装)</td></tr>
+                    <tr><td>F05</td><td></td><td>5A(棕褐色)</td><td>安全网关</td></tr>
+                    <tr><td>F06</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F07</td><td></td><td>15A(蓝色)</td><td>低温散热器冷却泵(选装)</td></tr>
+                    <tr><td>F08</td><td></td><td>15A(蓝色)</td><td>8HP变速箱控制模块(天鹅座平台)</td></tr>
+                    <tr><td>F09</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F10</td><td></td><td>15A(蓝色)</td><td>钥匙点火节点/射频集线器/电子转向柱锁</td></tr>
+                    <tr><td>F11</td><td></td><td>10A(红色)</td><td>车载信息接口(USB和AUX)</td></tr>
+                    <tr><td>F12</td><td></td><td>25A(透明色)</td><td>高保真放大器</td></tr>
+                    <tr><td>F13</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F14</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F15</td><td></td><td>15A(蓝色)</td><td>组合仪表/重型电气包开关组</td></tr>
+                    <tr><td>F16</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F17</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F18</td><td></td><td>10A(红色)</td><td>空调离合器</td></tr>
+                    <tr><td>F19</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F20</td><td>30A(粉色)</td><td></td><td>中央车身控制器1-车内照明</td></tr>
+                    <tr><td>F21</td><td></td><td>20A(黄色)</td><td>后雨刮器</td></tr>
+                    <tr><td>F22</td><td></td><td>10A(红色)</td><td>发动机控制模块/动力总成控制模块/电机发电单元唤醒/电源包单元唤醒</td></tr>
+                    <tr><td>F23</td><td></td><td>10A(红色)</td><td>发动机控制模块/动力总成控制模块</td></tr>
+                    <tr><td>F24</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F25</td><td></td><td>10A(红色)</td><td>线控换挡模块</td></tr>
+                    <tr><td>F26</td><td>40A(绿色)</td><td></td><td>中央车身控制器2-外部照明#1</td></tr>
+                    <tr><td>F27</td><td>30A(粉色)</td><td></td><td>前雨刮器</td></tr>
+                    <tr><td>F28</td><td>40A(绿色)</td><td></td><td>中央车身控制器3-电动门锁</td></tr>
+                    <tr><td>F29</td><td>40A(绿色)</td><td></td><td>中央车身控制器4-外部照明#2</td></tr>
+                    <tr><td>F30</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F31</td><td></td><td>10A(红色)</td><td>诊断接口</td></tr>
+                    <tr><td>F32</td><td></td><td>10A(红色)</td><td>倒车雷达系统/红外摄像头模块/安全气囊关闭指示灯</td></tr>
+                    <tr><td>F33</td><td></td><td>10A(红色)</td><td>空调控制模块/转向柱锁/乘员分类模块/驾驶员存在检测模块</td></tr>
+                    <tr><td>F34</td><td></td><td>10A(红色)</td><td>电子稳定控制系统/电动液压助力转向/智能扶手控制模块唤醒</td></tr>
+                    <tr><td>F35</td><td>30A(粉色)</td><td></td><td>制动真空泵(选装)</td></tr>
+                    <tr><td>F36</td><td>30A(粉色)</td><td></td><td>拖车电子制动模块(选装)</td></tr>
+                    <tr><td>F37</td><td>30A(粉色)</td><td></td><td>7针拖车连接口(选装)</td></tr>
+                    <tr><td>F38</td><td></td><td>20A(蓝色)</td><td>发动机控制模块</td></tr>
+                    <tr><td>F39</td><td></td><td>15A(蓝色)</td><td>电机发电单元冷却液泵(3.6L)(选装)</td></tr>
+                    <tr><td>F40</td><td></td><td>15A(蓝色)</td><td>传动系统控制模块/前后桥差速锁</td></tr>
+                    <tr><td>F41</td><td></td><td>15A(蓝色)</td><td>组合仪表/安全网关唤醒</td></tr>
+                    <tr><td>F42</td><td></td><td>10A(红色)</td><td>电源控制继电器控制供电(发动机启停系统)(选装)</td></tr>
+                    <tr><td>F43</td><td></td><td>20A(黄色)</td><td>货箱电源插座(常电)</td></tr>
+                    <tr><td>F44</td><td></td><td>10A(红色)</td><td>红外摄像头加热器</td></tr>
+                    <tr><td>F45</td><td></td><td>20A(黄色)</td><td>货箱电源插座(点火供电)(选装)</td></tr>
+                    <tr><td>F46</td><td></td><td>10A(红色)</td><td>自动大灯高度调节模块/高度调节电机/大灯开关</td></tr>
+                    <tr><td>F47</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F48</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F49</td><td></td><td>10A(红色)</td><td>乘员约束控制器</td></tr>
+                    <tr><td>F50</td><td></td><td>10A(红色)</td><td>高级驾驶辅助系统(选装)</td></tr>
+                    <tr><td>F51</td><td></td><td>10A(红色)</td><td>数字电视/USB/内后视镜/指南针模块</td></tr>
+                    <tr><td>F52</td><td></td><td>20A(黄色)</td><td>点烟器</td></tr>
+                    <tr><td>F53</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F54</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F55</td><td></td><td>10A(红色)</td><td>中央视觉处理模块</td></tr>
+                    <tr><td>F56</td><td></td><td>10A(红色)</td><td>车内温度传感器/正温度系数加热器线圈供电</td></tr>
+                    <tr><td>F57</td><td></td><td>20A(黄色)</td><td>驾驶员座椅加热</td></tr>
+                    <tr><td>F58</td><td></td><td>20A(黄色)</td><td>副驾驶座椅加热</td></tr>
+                    <tr><td>F59</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F60</td><td></td><td>15A(蓝色)</td><td>多功能方向盘模块(方向盘加热)</td></tr>
+                    <tr><td>F61</td><td></td><td>10A(红色)</td><td>左/右盲点监测传感器</td></tr>
+                    <tr><td>F62</td><td></td><td>10A(红色)</td><td>排气电磁阀(选装)</td></tr>
+                    <tr><td>F63</td><td></td><td>10A(红色)</td><td>乘员约束控制器</td></tr>
+                    <tr><td>F64</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F65</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F66</td><td>40A(绿色)</td><td></td><td>前空调鼓风机电机</td></tr>
+                    <tr><td>F67</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F68</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F69</td><td></td><td>5A(棕褐色)</td><td>电机发电单元皮带启动发电机(选装)</td></tr>
+                    <tr><td>F70</td><td></td><td>25A(透明色)</td><td>喷油嘴/点火线圈(汽油)/预热塞模块(柴油)</td></tr>
+                    <tr><td>F71</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F72</td><td></td><td>10A(红色)</td><td>重型电气附件包(选装)</td></tr>
+                    <tr><td>F73</td><td>20A(蓝色)</td><td></td><td>电动软顶左侧(选装)</td></tr>
+                    <tr><td>F74</td><td>20A(蓝色)</td><td></td><td>电动软顶右侧(选装)</td></tr>
+                    <tr><td>F75</td><td></td><td>10A(红色)</td><td>电源包单元-电池组控制模块和辅助电源模块(皮带启动发电机)(选装)</td></tr>
+                    <tr><td>F76</td><td></td><td>20A(黄色)</td><td>发动机控制模块(汽油)/动力总成控制模块(柴油)</td></tr>
+                    <tr><td>F77</td><td></td><td>10A(红色)</td><td>后视镜加热</td></tr>
+                    <tr><td>F78</td><td></td><td>10A(红色)</td><td>入侵检测模块/警报器/入侵检测传感器</td></tr>
+                    <tr><td>F79</td><td></td><td>20A(黄色)</td><td>智能扶手控制模块</td></tr>
+                    <tr><td>F80</td><td></td><td>15A(蓝色)</td><td>动力总成控制模块/换挡电磁阀1、2(选装)</td></tr>
+                    <tr><td>F81</td><td>30A(粉色)</td><td></td><td>后风挡除霜(选装)</td></tr>
+                    <tr><td>F82</td><td>30A(粉色)</td><td></td><td>燃油加热器(选装)</td></tr>
+                    <tr><td>F83</td><td>60A(黄色)</td><td></td><td>预热塞(选装)</td></tr>
+                    <tr><td>F84</td><td>30A(粉色)</td><td></td><td>尿素加热器控制单元(选装)</td></tr>
+                    <tr><td>F85</td><td></td><td>10A(红色)</td><td>颗粒物传感器(选装)</td></tr>
+                    <tr><td>F86</td><td>30A(粉色)</td><td></td><td>制动真空泵2(选装)</td></tr>
+                    <tr><td>F87</td><td></td><td>10A(红色)</td><td>供料/吹扫泵(选装)</td></tr>
+                    <tr><td>F88</td><td>20A(蓝色)</td><td></td><td>氮氧传感器1/2(选装)</td></tr>
+                    <tr><td>F89</td><td></td><td>10A(红色)</td><td>转向柱控制模块/定速巡航/数字电视/车辆信息中心/安全气囊关闭指示灯</td></tr>
+                    <tr><td>F90</td><td>20A(蓝色)</td><td></td><td>拖车驻车灯(选装)</td></tr>
+                    <tr><td>F91</td><td></td><td>20A(黄色)</td><td>喇叭</td></tr>
+                    <tr><td>F92</td><td>40A(绿色)</td><td></td><td>重型附件#2(选装)</td></tr>
+                    <tr><td>F93</td><td>40A(绿色)</td><td></td><td>重型附件#1(选装)</td></tr>
+                    <tr><td>F94</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F95</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F96</td><td></td><td>10A(红色)</td><td>电动后视镜开关</td></tr>
+                    <tr><td>F97</td><td></td><td>20A(黄色)</td><td>收音机/车身控制模块</td></tr>
+                    <tr><td>F98</td><td></td><td>10A(红色)</td><td>重型电气开关组/越野模式</td></tr>
+                    <tr><td>F99</td><td></td><td>备用(选装)</td><td>备用(选装)</td></tr>
+                    <tr><td>F100</td><td>30A(粉色)</td><td></td><td>电子稳定控制系统-电控单元及阀体</td></tr>
+                    <tr><td>F101</td><td>30A(粉色)</td><td></td><td>传动系统控制模块</td></tr>
+                    <tr><td>F102</td><td></td><td>15A(蓝色)</td><td>双USB接口</td></tr>
+                    <tr><td>F103</td><td></td><td>15A(蓝色)</td><td>重型附件#3(选装)</td></tr>
+                    <tr><td>F104</td><td></td><td>15A(蓝色)</td><td>电源包单元冷却泵(选装)</td></tr>
+                    <tr><td>F105</td><td></td><td>10A(红色)</td><td>集成中央控制面板/空调系统</td></tr>
+                    <tr><td>F106</td><td>50A(红色)</td><td></td><td>电子稳定控制系统-泵电机</td></tr>
+                    <tr><td>F107</td><td></td><td>20A(黄色)</td><td>拖车制动/转向信号灯(选装)</td></tr>
+                    <tr><td>F108</td><td></td><td>15A(蓝色)</td><td>重型附件#4(选装)</td></tr>
+                    <tr><td>F109</td><td></td><td>20A(黄色)</td><td>拖车右制动/转向信号灯(选装)</td></tr>
+                    <tr><td>F110</td><td>30A(粉色)</td><td></td><td>车载逆变器</td></tr>
+                    <tr><td>F111</td><td>20A(蓝色)</td><td></td><td>拖车倒车灯(选装)</td></tr>
+                </table>
+            </div>
+
+            <!-- 注意事项 (内容原封不动) -->
+            <div class="note" id="note-section">
+                <strong>重要注意事项</strong>
+                <ul>
+                    <li>安装集成电源模块盖时，务必确保盖子位置正确并完全锁紧。否则可能会导致水进入集成电源模块，从而可能引发电气系统故障。</li>
+                    <li>更换熔断的保险丝时，务必仅使用额定电流正确的保险丝。使用非规定额定值的保险丝可能导致危险的电气系统过载。如果正确额定值的保险丝继续熔断，则表明电路存在故障，必须予以排除。</li>
+                    <li>客户可以选择将后备箱电源插座从由蓄电池供电的F43位置，切换至点火开关打开时才供电的F45位置。</li>
+                    <li>标有“选装”的功能仅适用于配备对应配置的车型，具体以车辆实际配置为准。</li>
+                </ul>
+            </div>
+
+            <!-- 继电器对照表 (一字不改) -->
+            <h2 id="relay-table">继电器对照表</h2>
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>继电器位</th>
+                        <th>替代号</th>
+                        <th>描述</th>
+                        <th>电流</th>
+                    </tr>
+                    <tr><td>K01</td><td>D87903</td><td>启停系统</td><td>N/A</td></tr>
+                    <tr><td>K02</td><td>D823</td><td>燃油泵</td><td>N/A</td></tr>
+                    <tr><td>K03</td><td>D87901A</td><td>起动机电磁开关</td><td>N/A</td></tr>
+                    <tr><td>K04</td><td>D819</td><td>空调压缩机离合器</td><td>N/A</td></tr>
+                    <tr><td>K07</td><td>D839</td><td>雨刮器开启/关闭</td><td>N/A</td></tr>
+                    <tr><td>K08</td><td>D893</td><td>运行/启动</td><td>N/A</td></tr>
+                    <tr><td>K09</td><td>D2759A</td><td>真空泵1</td><td>N/A</td></tr>
+                    <tr><td>K10</td><td>D835</td><td>雨刮器高速/低速</td><td>N/A</td></tr>
+                    <tr><td>K11</td><td>D842B</td><td>运行2</td><td>N/A</td></tr>
+                    <tr><td>K12</td><td>D876</td><td>鼓风机电机(前)</td><td>N/A</td></tr>
+                    <tr><td>K13</td><td>D842A</td><td>运行1</td><td>N/A</td></tr>
+                    <tr><td>K14</td><td>D851A</td><td>运行/附件1</td><td>N/A</td></tr>
+                    <tr><td>K15</td><td>D851B</td><td>运行/附件2</td><td>N/A</td></tr>
+                    <tr><td>K16</td><td>D820</td><td>自动关闭</td><td>N/A</td></tr>
+                    <tr><td>K17</td><td>R0107</td><td>辅助2</td><td>N/A</td></tr>
+                    <tr><td>K18</td><td>R0106</td><td>辅助1</td><td>N/A</td></tr>
+                    <tr><td>K20</td><td>R0108</td><td>辅助3</td><td>N/A</td></tr>
+                    <tr><td>K21</td><td>R0109</td><td>辅助4</td><td>N/A</td></tr>
+                </table>
+            </div>
+
+            <!-- 联系我们 — 视觉完全美化但内容不变 -->
+            <div class="contact" id="contact-section">
+                <h2>联系我们</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">💬</div>
+                        <div class="contact-text">
+                            <div class="contact-label">微信</div>
+                            <div class="contact-value">NUT-Jeeper</div>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🎵</div>
+                        <div class="contact-text">
+                            <div class="contact-label">抖音</div>
+                            <div class="contact-value">NUTAUTO</div>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📕</div>
+                        <div class="contact-text">
+                            <div class="contact-label">小红书</div>
+                            <div class="contact-value">554752051</div>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-text">
+                            <div class="contact-label">邮箱</div>
+                            <div class="contact-value">nut@nutauto.cn</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 右侧悬浮返回顶部按钮 — 极致玻璃质感，iPhone风格 -->
+    <button class="fixed-back-to-top" onclick="scrollToTop()" aria-label="返回顶部"></button>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
