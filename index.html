@@ -1406,7 +1406,15 @@
                 }
                 
                 resultText.textContent = `${year}款 · ${typeText}`;
-                viewBtn.onclick = () => window.open(filePath, '_blank');
+                // PDF 也使用预览模式
+                viewBtn.onclick = () => {
+                    if(filePath.endsWith('.pdf')){
+                        const previewUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(filePath)}`;
+                        window.open(previewUrl, '_blank', 'width=1000,height=700');
+                    }else{
+                        window.open(filePath, '_blank');
+                    }
+                };
                 result.classList.add('show');
             }
 
