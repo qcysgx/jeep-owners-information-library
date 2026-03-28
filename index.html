@@ -366,7 +366,7 @@
             height: 56px;
             margin: 0 auto 16px;
             border-radius: 28px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
@@ -1213,24 +1213,21 @@
     </div>
 
     <script>
-        // 标签切换逻辑 (与原版完全一致，仅美化样式)
+        // 标签切换逻辑
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabContents = document.querySelectorAll('.tab-content');
         
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // 移除所有激活状态
                 tabBtns.forEach(b => b.classList.remove('active'));
                 tabContents.forEach(c => c.classList.remove('active'));
-                
-                // 添加当前激活状态
                 btn.classList.add('active');
                 const tabId = btn.dataset.tab;
                 document.getElementById(tabId).classList.add('active');
             });
         });
 
-        // ========== 车主手册按车型模块查询逻辑 ==========
+        // ========== 车主手册：所有 PDF 强制在线预览，绝不下载 ==========
         const yearSelectors = document.querySelectorAll('.manual-year-select');
         
         yearSelectors.forEach(selector => {
@@ -1252,13 +1249,16 @@
                 resultElement.classList.add('show');
                 
                 const filePath = selectedOption.dataset.file;
+
+                // 🔥 核心修复：所有 PDF 统一走在线预览
                 viewBtn.onclick = function() {
-                    window.open(filePath, '_blank');
+                    const previewUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(filePath)}`;
+                    window.open(previewUrl, '_blank', 'width=1000,height=700');
                 };
             });
         });
 
-        // ========== 其他板块的查询逻辑 (文件映射) ==========
+        // ========== 其他板块逻辑 ==========
         const fileMap = {
             parameters: {
                 wrangler: {
@@ -1307,7 +1307,7 @@
                     2023: { basic: "manuals/wrangler_2023_basic.pdf", multimedia: "manuals/wrangler_2023_multimedia.pdf" },
                    "2023_4xe": { basic: "manuals/wrangler4xe_2023_basic.pdf", multimedia: "manuals/wrangler_2023_multimedia.pdf" },
                     2022: { basic: "manuals/wrangler_2022_basic.pdf", multimedia: "manuals/wrangler_2022_multimedia.pdf" },
-                   "2022_4xe": { basic: "manuals/wrangler4xe_2022_basicpdf", multimedia: "manuals/wrangler_2022_multimedia.pdf.pdf" },
+                   "2022_4xe": { basic: "manuals/wrangler4xe_2022_basic.pdf", multimedia: "manuals/wrangler_2022_multimedia.pdf" },
                     2021: { multimedia: "manuals/wrangler_2021_multimedia.pdf" },
                     2020: { multimedia: "manuals/wrangler_2020_multimedia.pdf" }
                 },
@@ -1371,7 +1371,6 @@
             }
         };
 
-        // 统一的参数查询逻辑
         document.querySelectorAll('.param-car-item').forEach(car => {
             const yearSelect = car.querySelector('.year');
             const typeSelect = car.querySelector('.type');
@@ -1407,7 +1406,6 @@
                 
                 resultText.textContent = `${year}款 · ${typeText}`;
                 
-                // PDF 也使用预览模式
                 viewBtn.onclick = () => {
                     if(filePath.endsWith('.pdf')){
                         const previewUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(filePath)}`;
